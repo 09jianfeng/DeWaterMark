@@ -13,9 +13,13 @@
 		7816B1A81FAD5F77007A6350 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7816B1A71FAD5F77007A6350 /* Assets.xcassets */; };
 		7816B1AB1FAD5F77007A6350 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7816B1A91FAD5F77007A6350 /* LaunchScreen.storyboard */; };
 		7816B1AE1FAD5F77007A6350 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B1AD1FAD5F77007A6350 /* main.m */; };
+		7816B1B71FAD61FD007A6350 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B1B61FAD61FD007A6350 /* EditViewController.m */; };
+		B0054FD734633A011F74A7FA /* libPods-DeWaterMark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD91559F3BC1914E85766A2 /* libPods-DeWaterMark.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6AD91559F3BC1914E85766A2 /* libPods-DeWaterMark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeWaterMark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		74D21B5D31B6FE3298C545D2 /* Pods-DeWaterMark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeWaterMark.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark.release.xcconfig"; sourceTree = "<group>"; };
 		7816B19B1FAD5F77007A6350 /* DeWaterMark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeWaterMark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7816B19E1FAD5F77007A6350 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7816B19F1FAD5F77007A6350 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +30,9 @@
 		7816B1AA1FAD5F77007A6350 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7816B1AC1FAD5F77007A6350 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7816B1AD1FAD5F77007A6350 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7816B1B51FAD61FD007A6350 /* EditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		7816B1B61FAD61FD007A6350 /* EditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		D5A7B4A3F9CD70FB2B85E626 /* Pods-DeWaterMark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeWaterMark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0054FD734633A011F74A7FA /* libPods-DeWaterMark.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +52,8 @@
 			children = (
 				7816B19D1FAD5F77007A6350 /* DeWaterMark */,
 				7816B19C1FAD5F77007A6350 /* Products */,
+				B160A45D379441B40FAC253F /* Pods */,
+				AD5B086707C6767EB09DF68C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +68,7 @@
 		7816B19D1FAD5F77007A6350 /* DeWaterMark */ = {
 			isa = PBXGroup;
 			children = (
+				7816B1B41FAD61C8007A6350 /* EditGroup */,
 				7816B19E1FAD5F77007A6350 /* AppDelegate.h */,
 				7816B19F1FAD5F77007A6350 /* AppDelegate.m */,
 				7816B1A11FAD5F77007A6350 /* ViewController.h */,
@@ -71,6 +82,32 @@
 			path = DeWaterMark;
 			sourceTree = "<group>";
 		};
+		7816B1B41FAD61C8007A6350 /* EditGroup */ = {
+			isa = PBXGroup;
+			children = (
+				7816B1B51FAD61FD007A6350 /* EditViewController.h */,
+				7816B1B61FAD61FD007A6350 /* EditViewController.m */,
+			);
+			path = EditGroup;
+			sourceTree = "<group>";
+		};
+		AD5B086707C6767EB09DF68C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6AD91559F3BC1914E85766A2 /* libPods-DeWaterMark.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B160A45D379441B40FAC253F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D5A7B4A3F9CD70FB2B85E626 /* Pods-DeWaterMark.debug.xcconfig */,
+				74D21B5D31B6FE3298C545D2 /* Pods-DeWaterMark.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,9 +115,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7816B1B11FAD5F77007A6350 /* Build configuration list for PBXNativeTarget "DeWaterMark" */;
 			buildPhases = (
+				025025AF85A2B2018B85AD2C /* [CP] Check Pods Manifest.lock */,
 				7816B1971FAD5F77007A6350 /* Sources */,
 				7816B1981FAD5F77007A6350 /* Frameworks */,
 				7816B1991FAD5F77007A6350 /* Resources */,
+				7B299A2694CA986E823E448F /* [CP] Embed Pods Frameworks */,
+				4B523D80C64980C6546B3844 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -137,11 +177,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		025025AF85A2B2018B85AD2C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4B523D80C64980C6546B3844 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B299A2694CA986E823E448F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7816B1971FAD5F77007A6350 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7816B1B71FAD61FD007A6350 /* EditViewController.m in Sources */,
 				7816B1A31FAD5F77007A6350 /* ViewController.m in Sources */,
 				7816B1AE1FAD5F77007A6350 /* main.m in Sources */,
 				7816B1A01FAD5F77007A6350 /* AppDelegate.m in Sources */,
@@ -276,11 +365,13 @@
 		};
 		7816B1B21FAD5F77007A6350 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5A7B4A3F9CD70FB2B85E626 /* Pods-DeWaterMark.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7H57TJHB75;
 				INFOPLIST_FILE = DeWaterMark/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianlong.DeWaterMark;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -290,11 +381,13 @@
 		};
 		7816B1B31FAD5F77007A6350 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74D21B5D31B6FE3298C545D2 /* Pods-DeWaterMark.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7H57TJHB75;
 				INFOPLIST_FILE = DeWaterMark/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianlong.DeWaterMark;
 				PRODUCT_NAME = "$(TARGET_NAME)";

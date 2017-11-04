@@ -1,0 +1,35 @@
+PODS:
+  - CocoaLumberjack (3.1.0):
+    - CocoaLumberjack/Default (= 3.1.0)
+    - CocoaLumberjack/Extensions (= 3.1.0)
+  - CocoaLumberjack/Default (3.1.0)
+  - CocoaLumberjack/Extensions (3.1.0):
+    - CocoaLumberjack/Default
+  - GCDWebServer/Core (3.4)
+  - GCDWebServer/WebDAV (3.4):
+    - GCDWebServer/WebDAV/Core (= 3.4)
+  - GCDWebServer/WebDAV/Core (3.4):
+    - GCDWebServer/Core
+  - KVOController (1.2.0)
+  - Masonry (1.0.2)
+  - NSLogger (1.8.3):
+    - NSLogger/ObjC (= 1.8.3)
+  - NSLogger/ObjC (1.8.3)
+
+DEPENDENCIES:
+  - CocoaLumberjack (= 3.1.0)
+  - GCDWebServer/WebDAV (~> 3.0)
+  - KVOController
+  - Masonry (= 1.0.2)
+  - NSLogger
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: 8311463ddf9ee86a06ef92a071dd656c89244500
+  GCDWebServer: 20d53c3181b3c78d865e93e326faf506306f5338
+  KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  NSLogger: c9b80dbeee1d65eb553647a1f6f1f72171b04808
+
+PODFILE CHECKSUM: 316796bec2605eda8e4665e96512e7ddabd7ac71
+
+COCOAPODS: 1.2.0
