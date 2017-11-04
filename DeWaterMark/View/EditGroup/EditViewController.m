@@ -13,8 +13,13 @@
 
 int ffmpegmain(int argc, char **argv);
 
-@interface EditViewController ()<EditSliderViewDelegate>
+static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list vl)
+{
+    NSString *input = [[NSString alloc] initWithFormat:[NSString stringWithFormat:@"%s",fmt] arguments:vl];
+    NSLog(@"____ %@",input);
+}
 
+@interface EditViewController ()<EditSliderViewDelegate>
 @end
 
 @implementation EditViewController
@@ -44,7 +49,6 @@ int ffmpegmain(int argc, char **argv);
 }
 
 - (IBAction)clickRunButton:(id)sender {
-    char command_str_full[1024]={0};
     
     NSString *bundleString = [[NSBundle mainBundle] bundlePath];
     NSString *resourcePath = [bundleString stringByAppendingPathComponent:@"resource.bundle/war3end.mp4"];
@@ -55,7 +59,7 @@ int ffmpegmain(int argc, char **argv);
     NSString *command = [NSString stringWithFormat:@"ffmpeg -i %@ -vf delogo=x=0:y=0:w=100:h=77:band=10 %@",resourcePath,targetPath];
     NSString *command_str= [NSString stringWithFormat:@"%@",command];
     NSArray *argv_array=[command_str componentsSeparatedByString:(@" ")];
-    int argc=argv_array.count;
+    int argc=(int)argv_array.count;
     char** argv=(char**)malloc(sizeof(char*)*argc);
     for(int i=0;i<argc;i++)
     {
@@ -63,6 +67,7 @@ int ffmpegmain(int argc, char **argv);
         strcpy(argv[i],[[argv_array objectAtIndex:i] UTF8String]);
     }
     
+    av_log_set_callback(ffmpeg_log_callback);
     ffmpegmain(argc, argv);
     
     for(int i=0;i<argc;i++)
