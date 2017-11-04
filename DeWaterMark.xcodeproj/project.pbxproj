@@ -35,6 +35,11 @@
 		7816B2F01FAE1186007A6350 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7816B2E01FAE1186007A6350 /* libswresample.a */; };
 		7816B2F11FAE1186007A6350 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7816B2E11FAE1186007A6350 /* libswscale.a */; };
 		7816B2F21FAE1186007A6350 /* libx264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7816B2E21FAE1186007A6350 /* libx264.a */; };
+		7816B2FF1FAE1BD4007A6350 /* KxAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2F51FAE1BD4007A6350 /* KxAudioManager.m */; };
+		7816B3001FAE1BD4007A6350 /* kxmovie.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7816B2F81FAE1BD4007A6350 /* kxmovie.bundle */; };
+		7816B3011FAE1BD4007A6350 /* KxMovieDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FA1FAE1BD4007A6350 /* KxMovieDecoder.m */; };
+		7816B3021FAE1BD4007A6350 /* KxMovieGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FC1FAE1BD4007A6350 /* KxMovieGLView.m */; };
+		7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */; };
 		B0054FD734633A011F74A7FA /* libPods-DeWaterMark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD91559F3BC1914E85766A2 /* libPods-DeWaterMark.a */; };
 /* End PBXBuildFile section */
 
@@ -184,6 +189,17 @@
 		7816B2E01FAE1186007A6350 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
 		7816B2E11FAE1186007A6350 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswscale.a; sourceTree = "<group>"; };
 		7816B2E21FAE1186007A6350 /* libx264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libx264.a; sourceTree = "<group>"; };
+		7816B2F41FAE1BD4007A6350 /* KxAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxAudioManager.h; sourceTree = "<group>"; };
+		7816B2F51FAE1BD4007A6350 /* KxAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxAudioManager.m; sourceTree = "<group>"; };
+		7816B2F61FAE1BD4007A6350 /* KxLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxLogger.h; sourceTree = "<group>"; };
+		7816B2F71FAE1BD4007A6350 /* kxmovie-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "kxmovie-Prefix.pch"; sourceTree = "<group>"; };
+		7816B2F81FAE1BD4007A6350 /* kxmovie.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = kxmovie.bundle; sourceTree = "<group>"; };
+		7816B2F91FAE1BD4007A6350 /* KxMovieDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMovieDecoder.h; sourceTree = "<group>"; };
+		7816B2FA1FAE1BD4007A6350 /* KxMovieDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMovieDecoder.m; sourceTree = "<group>"; };
+		7816B2FB1FAE1BD4007A6350 /* KxMovieGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMovieGLView.h; sourceTree = "<group>"; };
+		7816B2FC1FAE1BD4007A6350 /* KxMovieGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMovieGLView.m; sourceTree = "<group>"; };
+		7816B2FD1FAE1BD4007A6350 /* KxMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMovieViewController.h; sourceTree = "<group>"; };
+		7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMovieViewController.m; sourceTree = "<group>"; };
 		D5A7B4A3F9CD70FB2B85E626 /* Pods-DeWaterMark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeWaterMark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +248,7 @@
 		7816B19D1FAD5F77007A6350 /* DeWaterMark */ = {
 			isa = PBXGroup;
 			children = (
+				7816B2F31FAE1BD4007A6350 /* kxmovie */,
 				7816B25B1FAE1186007A6350 /* ffmpeg */,
 				7816B24C1FAE0E09007A6350 /* resource.bundle */,
 				7816B1BC1FADF1ED007A6350 /* Model */,
@@ -496,6 +513,24 @@
 			path = libswscale;
 			sourceTree = "<group>";
 		};
+		7816B2F31FAE1BD4007A6350 /* kxmovie */ = {
+			isa = PBXGroup;
+			children = (
+				7816B2F41FAE1BD4007A6350 /* KxAudioManager.h */,
+				7816B2F51FAE1BD4007A6350 /* KxAudioManager.m */,
+				7816B2F61FAE1BD4007A6350 /* KxLogger.h */,
+				7816B2F71FAE1BD4007A6350 /* kxmovie-Prefix.pch */,
+				7816B2F81FAE1BD4007A6350 /* kxmovie.bundle */,
+				7816B2F91FAE1BD4007A6350 /* KxMovieDecoder.h */,
+				7816B2FA1FAE1BD4007A6350 /* KxMovieDecoder.m */,
+				7816B2FB1FAE1BD4007A6350 /* KxMovieGLView.h */,
+				7816B2FC1FAE1BD4007A6350 /* KxMovieGLView.m */,
+				7816B2FD1FAE1BD4007A6350 /* KxMovieViewController.h */,
+				7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */,
+			);
+			path = kxmovie;
+			sourceTree = "<group>";
+		};
 		AD5B086707C6767EB09DF68C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +612,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7816B1AB1FAD5F77007A6350 /* LaunchScreen.storyboard in Resources */,
+				7816B3001FAE1BD4007A6350 /* kxmovie.bundle in Resources */,
 				7816B1A81FAD5F77007A6350 /* Assets.xcassets in Resources */,
 				7816B1A61FAD5F77007A6350 /* Main.storyboard in Resources */,
 				7816B24D1FAE0E09007A6350 /* resource.bundle in Resources */,
@@ -642,13 +678,17 @@
 				7816B2E81FAE1186007A6350 /* strtod.c in Sources */,
 				7816B1BA1FAD66AA007A6350 /* EditSliderView.m in Sources */,
 				7816B2E31FAE1186007A6350 /* cmdutils.c in Sources */,
+				7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */,
 				7816B2E41FAE1186007A6350 /* ffmpeg_filter.c in Sources */,
 				7816B1B71FAD61FD007A6350 /* EditViewController.m in Sources */,
 				7816B1BF1FADF224007A6350 /* MyFileManage.m in Sources */,
 				7816B2E71FAE1186007A6350 /* getopt.c in Sources */,
+				7816B3021FAE1BD4007A6350 /* KxMovieGLView.m in Sources */,
 				7816B1A31FAD5F77007A6350 /* ViewController.m in Sources */,
 				7816B2E51FAE1186007A6350 /* ffmpeg_mod.c in Sources */,
+				7816B2FF1FAE1BD4007A6350 /* KxAudioManager.m in Sources */,
 				7816B1AE1FAD5F77007A6350 /* main.m in Sources */,
+				7816B3011FAE1BD4007A6350 /* KxMovieDecoder.m in Sources */,
 				7816B1A01FAD5F77007A6350 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
