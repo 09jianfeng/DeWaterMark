@@ -4,8 +4,8 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -62,10 +62,10 @@
             </objects>
             <point key="canvasLocation" x="85.599999999999994" y="124.58770614692655"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit View Controller-->
         <scene sceneID="d7t-VW-YKs">
             <objects>
-                <viewController id="Flf-Un-4yG" sceneMemberID="viewController">
+                <viewController id="Flf-Un-4yG" customClass="EditViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gse-F6-4er"/>
                         <viewControllerLayoutGuide type="bottom" id="uyL-LM-tWt"/>
@@ -81,10 +81,23 @@
                                     <constraint firstAttribute="height" constant="386" id="oeP-FY-jwv"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J52-tb-ycd">
+                                <rect key="frame" x="172" y="617" width="31" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="31" id="0P2-qn-3HU"/>
+                                    <constraint firstAttribute="height" constant="30" id="lxV-y7-eIU"/>
+                                </constraints>
+                                <state key="normal" title="开始"/>
+                                <connections>
+                                    <action selector="clickRunButton:" destination="Flf-Un-4yG" eventType="touchUpInside" id="EPn-PV-9nE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="8zg-IH-gxE" secondAttribute="trailing" constant="37" id="6s0-oo-UFm"/>
+                            <constraint firstItem="uyL-LM-tWt" firstAttribute="top" secondItem="J52-tb-ycd" secondAttribute="bottom" constant="20" id="AfN-9B-CmP"/>
+                            <constraint firstItem="J52-tb-ycd" firstAttribute="centerX" secondItem="neI-iI-2td" secondAttribute="centerX" id="elB-v9-uKG"/>
                             <constraint firstItem="8zg-IH-gxE" firstAttribute="top" secondItem="Gse-F6-4er" secondAttribute="bottom" constant="28" id="hCl-Fa-nZQ"/>
                             <constraint firstItem="8zg-IH-gxE" firstAttribute="leading" secondItem="neI-iI-2td" secondAttribute="leading" constant="39" id="iHk-Bf-HGS"/>
                         </constraints>
