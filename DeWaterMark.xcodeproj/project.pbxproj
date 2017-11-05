@@ -40,6 +40,7 @@
 		7816B3011FAE1BD4007A6350 /* KxMovieDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FA1FAE1BD4007A6350 /* KxMovieDecoder.m */; };
 		7816B3021FAE1BD4007A6350 /* KxMovieGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FC1FAE1BD4007A6350 /* KxMovieGLView.m */; };
 		7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */; };
+		7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B3051FAF5622007A6350 /* ChoosingRectView.m */; };
 		B0054FD734633A011F74A7FA /* libPods-DeWaterMark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD91559F3BC1914E85766A2 /* libPods-DeWaterMark.a */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +201,8 @@
 		7816B2FC1FAE1BD4007A6350 /* KxMovieGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMovieGLView.m; sourceTree = "<group>"; };
 		7816B2FD1FAE1BD4007A6350 /* KxMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMovieViewController.h; sourceTree = "<group>"; };
 		7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMovieViewController.m; sourceTree = "<group>"; };
+		7816B3041FAF5622007A6350 /* ChoosingRectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChoosingRectView.h; sourceTree = "<group>"; };
+		7816B3051FAF5622007A6350 /* ChoosingRectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoosingRectView.m; sourceTree = "<group>"; };
 		D5A7B4A3F9CD70FB2B85E626 /* Pods-DeWaterMark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeWaterMark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -273,6 +276,8 @@
 				7816B1B61FAD61FD007A6350 /* EditViewController.m */,
 				7816B1B81FAD66AA007A6350 /* EditSliderView.h */,
 				7816B1B91FAD66AA007A6350 /* EditSliderView.m */,
+				7816B3041FAF5622007A6350 /* ChoosingRectView.h */,
+				7816B3051FAF5622007A6350 /* ChoosingRectView.m */,
 			);
 			path = EditGroup;
 			sourceTree = "<group>";
@@ -681,6 +686,7 @@
 				7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */,
 				7816B2E41FAE1186007A6350 /* ffmpeg_filter.c in Sources */,
 				7816B1B71FAD61FD007A6350 /* EditViewController.m in Sources */,
+				7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */,
 				7816B1BF1FADF224007A6350 /* MyFileManage.m in Sources */,
 				7816B2E71FAE1186007A6350 /* getopt.c in Sources */,
 				7816B3021FAE1BD4007A6350 /* KxMovieGLView.m in Sources */,

@@ -35,15 +35,20 @@
     CGPoint location = [toucher locationInView:self];
     
     if (fabs(_selectedLineX - location.x) < 30) {
-        _selectedLineX = location.x;
+        _selectedLineX = location.x > 0? location.x:0;
     }else if(fabs(_selectedLineLastX - location.x)<30){
-        _selectedLineLastX = location.x;
+        _selectedLineLastX = location.x < CGRectGetWidth(self.bounds) ? location.x:CGRectGetWidth(self.bounds);
     }
     
     [self setNeedsDisplay];
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    
+    if ([self pointInside:point withEvent:event]) {
+        return self;
+    }
+    
     return [super hitTest:point withEvent:event];
 }
 
