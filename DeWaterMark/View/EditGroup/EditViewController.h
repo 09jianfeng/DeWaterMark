@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface EditViewController : UIViewController
-
+@property (nonatomic , copy) NSString *videoPath;
 @end

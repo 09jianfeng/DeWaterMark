@@ -10,6 +10,7 @@
 
 @implementation ChoosingRectView{
     UIView *_choosingView;
+    CGPoint _beginPoint;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -45,6 +46,11 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    NSEnumerator *enumerator = [touches objectEnumerator];
+    UITouch *toucher = enumerator.nextObject;
+    CGPoint location = [toucher locationInView:self];
+    _beginPoint = location;
+
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -77,6 +83,12 @@
         
     }else if (fabs(chosViewRighBottomX - location.x) < 30 && fabs(chosViewRighBottomY - location.y) < 30){
         _choosingView.frame = CGRectMake(chosViewLeftTopX, chosViewLeftTopY, location.x -chosViewLeftTopX, location.y - chosViewLeftTopY);
+    }else{
+        CGPoint _choosingPoint = [_choosingView convertPoint:location fromView:self];
+        if ([_choosingView pointInside:_choosingPoint withEvent:event]){
+            _choosingView.frame = CGRectMake(location.x-_beginPoint.x+chosViewLeftTopX, location.y-_beginPoint.y+chosViewLeftTopY, choViewWidth, choViewHeigh);
+            _beginPoint = location;
+        }
     }
     
     [self setNeedsDisplay];

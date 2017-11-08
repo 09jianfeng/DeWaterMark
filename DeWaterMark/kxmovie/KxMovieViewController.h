@@ -26,5 +26,5 @@ extern NSString * const KxMovieParameterDisableDeinterlacing;   // BOOL
 
 - (void) play;
 - (void) pause;
-
+- (void) playDidTouch: (id) sender;
 @end

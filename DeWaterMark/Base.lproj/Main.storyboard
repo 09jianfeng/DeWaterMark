@@ -102,6 +102,9 @@
                             <constraint firstItem="8zg-IH-gxE" firstAttribute="leading" secondItem="neI-iI-2td" secondAttribute="leading" constant="39" id="iHk-Bf-HGS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="videoView" destination="8zg-IH-gxE" id="HGP-tP-3jy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSD-y9-Kh1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,6 +10,8 @@
 #import "EditSliderView.h"
 #import "Masonry.h"
 #include "ffmpeg.h"
+#include "KxMovieViewController.h"
+#include "ChoosingRectView.h"
 
 int ffmpegmain(int argc, char **argv);
 
@@ -20,14 +22,39 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 }
 
 @interface EditViewController ()<EditSliderViewDelegate>
+@property (weak, nonatomic) IBOutlet ChoosingRectView *videoView;
 @end
 
-@implementation EditViewController
+@implementation EditViewController{
+    KxMovieViewController *_vc;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
+    _videoPath = [bundlePath stringByAppendingPathComponent:@"resource.bundle/war3end.mp4"];
     [self addSubViews];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    // increase buffering for .wmv, it solves problem with delaying audio frames
+    if ([_videoPath.pathExtension isEqualToString:@"wmv"])
+        parameters[KxMovieParameterMinBufferedDuration] = @(5.0);
+    
+    // disable deinterlacing for iPhone, because it's complex operation can cause stuttering
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+        parameters[KxMovieParameterDisableDeinterlacing] = @(YES);
+
+    _vc = [KxMovieViewController movieViewControllerWithContentPath:_videoPath
+                                                                               parameters:parameters];
+    [self addChildViewController:_vc];
+    _vc.view.frame = _videoView.bounds;
+    [_videoView insertSubview:_vc.view atIndex:0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +77,10 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 
 - (IBAction)clickRunButton:(id)sender {
     
+    [_vc playDidTouch:nil];
+}
+
+- (void)dealVideoWithDelogo{
     NSString *bundleString = [[NSBundle mainBundle] bundlePath];
     NSString *resourcePath = [bundleString stringByAppendingPathComponent:@"resource.bundle/war3end.mp4"];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSAllDomainsMask, YES);

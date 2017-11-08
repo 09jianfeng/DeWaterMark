@@ -260,7 +260,10 @@ _messageLabel.hidden = YES;
     [self.view addSubview:_topBar];
     [self.view addSubview:_topHUD];
     [self.view addSubview:_bottomBar];
-
+    _topBar.hidden = YES;
+    _topHUD.hidden = YES;
+    _bottomBar.hidden = YES;
+    
     // top hud
 
     _doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -702,11 +705,11 @@ _messageLabel.hidden = YES;
 
 - (void) restorePlay
 {
-    NSNumber *n = [gHistory valueForKey:_decoder.path];
-    if (n)
-        [self updatePosition:n.floatValue playMode:YES];
-    else
-        [self play];
+//    NSNumber *n = [gHistory valueForKey:_decoder.path];
+//    if (n)
+//        [self updatePosition:n.floatValue playMode:YES];
+//    else
+//        [self play];
 }
 
 - (void) setupPresentView
