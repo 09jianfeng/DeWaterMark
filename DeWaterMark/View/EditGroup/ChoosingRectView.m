@@ -92,6 +92,7 @@
     }
     
     [self setNeedsDisplay];
+    [_delegate choosingRect:_choosingView.frame];
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{

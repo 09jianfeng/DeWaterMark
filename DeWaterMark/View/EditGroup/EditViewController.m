@@ -21,12 +21,13 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     NSLog(@"____ %@",input);
 }
 
-@interface EditViewController ()<EditSliderViewDelegate>
+@interface EditViewController ()<EditSliderViewDelegate,ChoosingRectView>
 @property (weak, nonatomic) IBOutlet ChoosingRectView *videoView;
 @end
 
 @implementation EditViewController{
     KxMovieViewController *_vc;
+    CGRect _choosingVideoRect;
 }
 
 - (void)viewDidLoad {
@@ -55,6 +56,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     [self addChildViewController:_vc];
     _vc.view.frame = _videoView.bounds;
     [_videoView insertSubview:_vc.view atIndex:0];
+    _videoView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,10 +71,13 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     [self.view addSubview:slidView];
     [slidView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottomMargin.mas_equalTo(self.view).offset(-80);
-        make.rightMargin.mas_equalTo(self.view).offset(-50);
-        make.leftMargin.mas_equalTo(self.view).offset(50);
-        make.height.equalTo(@50);
+        make.rightMargin.mas_equalTo(self.view).offset(-100);
+        make.leftMargin.mas_equalTo(self.view).offset(100);
+        make.height.equalTo(@30);
     }];
+}
+- (IBAction)delogoPressed:(id)sender {
+    [self dealVideoWithDelogoWithChoosingRect:_choosingVideoRect];
 }
 
 - (IBAction)clickRunButton:(id)sender {
@@ -80,14 +85,14 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     [_vc playDidTouch:nil];
 }
 
-- (void)dealVideoWithDelogo{
+- (void)dealVideoWithDelogoWithChoosingRect:(CGRect)choosingRect{
     NSString *bundleString = [[NSBundle mainBundle] bundlePath];
     NSString *resourcePath = [bundleString stringByAppendingPathComponent:@"resource.bundle/war3end.mp4"];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSAllDomainsMask, YES);
     NSString *documentPath = paths[0];
     NSString *targetPath = [documentPath stringByAppendingPathComponent:@"test.mp4"];
     
-    NSString *command = [NSString stringWithFormat:@"ffmpeg -i %@ -vf delogo=x=0:y=0:w=100:h=77:band=10 %@",resourcePath,targetPath];
+    NSString *command = [NSString stringWithFormat:@"ffmpeg -i %@ -vf delogo=x=%d:y=%d:w=%d:h=%d:band=10 %@",resourcePath,(int)choosingRect.origin.x,(int)choosingRect.origin.y,(int)choosingRect.size.width,(int)choosingRect.size.height,targetPath];
     NSString *command_str= [NSString stringWithFormat:@"%@",command];
     NSArray *argv_array=[command_str componentsSeparatedByString:(@" ")];
     int argc=(int)argv_array.count;
@@ -109,6 +114,31 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 #pragma mark - sliderDelegate
 - (void)valuehangeing:(float)duration x1Posi:(float)x1Posi x2Posi:(float)x2Posi{
     NSLog(@"posi:%f seletPosi:%f selecDura:%f",duration, x1Posi, x2Posi);
+}
+
+- (void)choosingRect:(CGRect)rect{
+    NSUInteger videoWidth = [_vc getVideoWidth];
+    NSUInteger videoHeigh = [_vc getVideoHeigh];
+    
+    CGRect vcRect = _vc.view.frame;
+    NSUInteger _backingHeight = vcRect.size.height;
+    NSUInteger _backingWidth = vcRect.size.width;
+    
+    const float width   = videoWidth;
+    const float height  = videoHeigh;
+    const float dH      = (float)_backingHeight / height;
+    const float dW      = (float)_backingWidth      / width;
+    const float dd      = MIN(dH, dW); //: MAX(dH, dW);
+    
+    float videoActW = dd * videoWidth;
+    float videoActH = dd * videoHeigh;
+    CGRect videoRect = CGRectMake(_backingWidth/2.0 - videoActW/2.0, _backingHeight/2.0 - videoActH/2.0, videoActW, videoActH);
+    
+    CGRect selectedRectInVideoRect = CGRectIntersection(videoRect, rect);
+    CGRect chooseRectInVideoview = CGRectMake((selectedRectInVideoRect.origin.x - videoRect.origin.x)/dd, (selectedRectInVideoRect.origin.y - videoRect.origin.y)/dd, selectedRectInVideoRect.size.width/dd, selectedRectInVideoRect.size.height/dd);
+    
+//    NSLog(@"__ chos:%@ videoWith:%d heig:%d",NSStringFromCGRect(chooseRectInVideoview),videoWidth,videoHeigh);
+    _choosingVideoRect = chooseRectInVideoview;
 }
 
 @end

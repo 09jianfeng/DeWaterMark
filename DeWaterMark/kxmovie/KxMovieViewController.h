@@ -23,8 +23,13 @@ extern NSString * const KxMovieParameterDisableDeinterlacing;   // BOOL
                                parameters: (NSDictionary *) parameters;
 
 @property (readonly) BOOL playing;
+@property (readonly) int duration;
 
 - (void) play;
 - (void) pause;
 - (void) playDidTouch: (id) sender;
+- (void) setMoviePosition: (CGFloat) position;
+
+- (NSUInteger)getVideoWidth;
+- (NSUInteger)getVideoHeigh;
 @end

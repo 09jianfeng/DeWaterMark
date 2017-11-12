@@ -515,6 +515,14 @@ _messageLabel.hidden = YES;
 
 #pragma mark - public
 
+- (NSUInteger)getVideoWidth{
+    return _decoder.frameWidth;
+}
+
+- (NSUInteger)getVideoHeigh{
+    return _decoder.frameHeight;
+}
+
 -(void) play
 {
     if (self.playing)
