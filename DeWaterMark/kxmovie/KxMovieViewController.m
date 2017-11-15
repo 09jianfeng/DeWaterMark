@@ -709,6 +709,8 @@ _messageLabel.hidden = YES;
                  [self handleDecoderMovieError: error];
          }
     }
+    
+    [_delegate movieViewControCallback:_decoder.frameWidth vHeigh:_decoder.frameHeight vDuration:_decoder.duration];
 }
 
 - (void) restorePlay
@@ -1316,7 +1318,7 @@ _messageLabel.hidden = YES;
     if (_decoder.duration != MAXFLOAT)
         _leftLabel.text = formatTimeInterval(duration - position, YES);
 
-#ifdef DEBUG
+#if 0
     const NSTimeInterval timeSinceStart = [NSDate timeIntervalSinceReferenceDate] - _debugStartTime;
     NSString *subinfo = _decoder.validSubtitles ? [NSString stringWithFormat: @" %d",_subtitles.count] : @"";
     

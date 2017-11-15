@@ -41,6 +41,22 @@
     }
     
     [self setNeedsDisplay];
+    
+    CGFloat width = CGRectGetWidth(self.frame);
+    float deltax1 = _selectedLineX/width;
+    float deltax2 = _selectedLineLastX/width;
+    
+    float x1 = _selectedLineX;
+    float x2 = _selectedLineLastX;
+    if (_duration <= 0) {
+        x1 = 0;
+        x2 = 0;
+    }else{
+        x1 *= deltax1;
+        x2 *= deltax2;
+    }
+    
+    [_delegate valuehangeing:_duration x1Posi:x1 x2Posi:x2];
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{

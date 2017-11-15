@@ -21,13 +21,14 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     NSLog(@"____ %@",input);
 }
 
-@interface EditViewController ()<EditSliderViewDelegate,ChoosingRectView>
+@interface EditViewController ()<EditSliderViewDelegate,ChoosingRectView,KxMovieViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet ChoosingRectView *videoView;
 @end
 
 @implementation EditViewController{
     KxMovieViewController *_vc;
     CGRect _choosingVideoRect;
+    EditSliderView *_slidView;
 }
 
 - (void)viewDidLoad {
@@ -55,6 +56,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
                                                                                parameters:parameters];
     [self addChildViewController:_vc];
     _vc.view.frame = _videoView.bounds;
+    _vc.delegate = self;
     [_videoView insertSubview:_vc.view atIndex:0];
     _videoView.delegate = self;
 }
@@ -65,11 +67,11 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 }
 
 - (void)addSubViews{
-    EditSliderView *slidView = [[EditSliderView alloc] initWithFrame:CGRectZero];
-    slidView.backgroundColor = [UIColor brownColor];
-    slidView.delegate = self;
-    [self.view addSubview:slidView];
-    [slidView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _slidView = [[EditSliderView alloc] initWithFrame:CGRectZero];
+    _slidView.backgroundColor = [UIColor brownColor];
+    _slidView.delegate = self;
+    [self.view addSubview:_slidView];
+    [_slidView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottomMargin.mas_equalTo(self.view).offset(-80);
         make.rightMargin.mas_equalTo(self.view).offset(-100);
         make.leftMargin.mas_equalTo(self.view).offset(100);
@@ -140,5 +142,10 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 //    NSLog(@"__ chos:%@ videoWith:%d heig:%d",NSStringFromCGRect(chooseRectInVideoview),videoWidth,videoHeigh);
     _choosingVideoRect = chooseRectInVideoview;
 }
+
+- (void)movieViewControCallback:(CGFloat)vWidth vHeigh:(CGFloat)vHeigh vDuration:(CGFloat)vDuration{
+    NSLog(@"____ vWidth:%f H:%f vDurat:%f",vWidth,vHeigh,vDuration);
+}
+
 
 @end

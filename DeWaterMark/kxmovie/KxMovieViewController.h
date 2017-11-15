@@ -11,6 +11,10 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol KxMovieViewControllerDelegate<NSObject>
+- (void)movieViewControCallback:(CGFloat)vWidth vHeigh:(CGFloat)vHeigh vDuration:(CGFloat)vDuration;
+@end
+
 @class KxMovieDecoder;
 
 extern NSString * const KxMovieParameterMinBufferedDuration;    // Float
@@ -24,6 +28,7 @@ extern NSString * const KxMovieParameterDisableDeinterlacing;   // BOOL
 
 @property (readonly) BOOL playing;
 @property (readonly) int duration;
+@property (nonatomic, weak) id<KxMovieViewControllerDelegate> delegate;
 
 - (void) play;
 - (void) pause;
