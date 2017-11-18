@@ -23,12 +23,13 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 
 @interface EditViewController ()<EditSliderViewDelegate,ChoosingRectView,KxMovieViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet ChoosingRectView *videoView;
+
+@property (weak, nonatomic) IBOutlet EditSliderView *slidView;
 @end
 
 @implementation EditViewController{
     KxMovieViewController *_vc;
     CGRect _choosingVideoRect;
-    EditSliderView *_slidView;
 }
 
 - (void)viewDidLoad {
@@ -67,16 +68,16 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 }
 
 - (void)addSubViews{
-    _slidView = [[EditSliderView alloc] initWithFrame:CGRectZero];
-    _slidView.backgroundColor = [UIColor brownColor];
-    _slidView.delegate = self;
-    [self.view addSubview:_slidView];
-    [_slidView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottomMargin.mas_equalTo(self.view).offset(-80);
-        make.rightMargin.mas_equalTo(self.view).offset(-100);
-        make.leftMargin.mas_equalTo(self.view).offset(100);
-        make.height.equalTo(@30);
-    }];
+//    _slidView = [[EditSliderView alloc] initWithFrame:CGRectZero];
+//    _slidView.backgroundColor = [UIColor brownColor];
+//    _slidView.delegate = self;
+//    [self.view addSubview:_slidView];
+//    [_slidView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottomMargin.mas_equalTo(self.view).offset(-80);
+//        make.rightMargin.mas_equalTo(self.view).offset(-100);
+//        make.leftMargin.mas_equalTo(self.view).offset(100);
+//        make.height.equalTo(@30);
+//    }];
 }
 - (IBAction)delogoPressed:(id)sender {
     [self dealVideoWithDelogoWithChoosingRect:_choosingVideoRect];
@@ -116,6 +117,8 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 #pragma mark - sliderDelegate
 - (void)valuehangeing:(float)duration x1Posi:(float)x1Posi x2Posi:(float)x2Posi{
     NSLog(@"posi:%f seletPosi:%f selecDura:%f",duration, x1Posi, x2Posi);
+    _leftLabel.text = [NSString stringWithFormat:@"%f",x1Posi];
+    _rightLabel.text = [NSString stringWithFormat:@"%f",x2Posi];
 }
 
 - (void)choosingRect:(CGRect)rect{
@@ -145,6 +148,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 
 - (void)movieViewControCallback:(CGFloat)vWidth vHeigh:(CGFloat)vHeigh vDuration:(CGFloat)vDuration{
     NSLog(@"____ vWidth:%f H:%f vDurat:%f",vWidth,vHeigh,vDuration);
+    _slidView.duration = vDuration;
 }
 
 

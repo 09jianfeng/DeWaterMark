@@ -36,8 +36,14 @@
     
     if (fabs(_selectedLineX - location.x) < 30) {
         _selectedLineX = location.x > 0? location.x:0;
+        if (_selectedLineX > CGRectGetWidth(self.bounds)) {
+            _selectedLineX = CGRectGetWidth(self.bounds);
+        }
     }else if(fabs(_selectedLineLastX - location.x)<30){
         _selectedLineLastX = location.x < CGRectGetWidth(self.bounds) ? location.x:CGRectGetWidth(self.bounds);
+        if (_selectedLineLastX < 0) {
+            _selectedLineLastX = 0;
+        }
     }
     
     [self setNeedsDisplay];
