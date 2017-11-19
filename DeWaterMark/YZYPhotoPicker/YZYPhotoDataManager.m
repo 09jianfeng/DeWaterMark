@@ -104,8 +104,8 @@ NSString *  const kPDMAlbumInfoCountKey = @"PDMAlbumInfoCountKey";
         
         [smartAlbums enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
             //过滤掉视频和最近删除
-            if (!([collection.localizedTitle isEqualToString:@"Recently Deleted"] ||
-                  [collection.localizedTitle isEqualToString:@"Videos"])) {
+            //视频 [collection.localizedTitle isEqualToString:@"Videos"]
+            if (!([collection.localizedTitle isEqualToString:@"Recently Deleted"])) {
                 
                 PHFetchResult * fetchResult = [PHAsset fetchAssetsInAssetCollection: collection options: nil];
                 
@@ -173,10 +173,10 @@ NSString *  const kPDMAlbumInfoCountKey = @"PDMAlbumInfoCountKey";
             //只添加图片类型资源，去除视频类型资源
             //当mediaType == 2时，这个资源则为视频资源
             
-            if (asset.mediaType == 1) {
-                
+//            if (asset.mediaType == 1) {
+            
                 [_photosArray addObject:asset];
-            }
+//            }
             
         }
         
@@ -235,10 +235,10 @@ NSString *  const kPDMAlbumInfoCountKey = @"PDMAlbumInfoCountKey";
             
             for (PHAsset *asset in fetchResult) {
                 
-                if (asset.mediaType == PHAssetMediaTypeImage) {
-                    
+                //只添加相片
+//                if (asset.mediaType == PHAssetMediaTypeImage) {
                     [_photosArray addObject:asset];
-                }
+//                }
             }
             
             if (_bReverse) {

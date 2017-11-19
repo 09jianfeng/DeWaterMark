@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AlbumManager.h"
+#import "YZYPhotoPicker.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewTopLay;
@@ -37,8 +38,30 @@
 }
 
 - (IBAction)myVideos:(id)sender {
-    AlbumManager *alMan = [AlbumManager new];
-    [alMan getVideosFromAlbum];
+    YZYPhotoPicker *photoPicker = [[YZYPhotoPicker alloc] init];
+    
+    photoPicker.isImgType = NO;
+    [photoPicker showPhotoPickerWithController: self maxSelectCount:1 completion:^(NSArray *imageSources, BOOL isImgType) {
+        
+//        [_view.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        NSInteger i = 0;
+        if (isImgType) { // 如果是UIImage
+            for (UIImage *img in imageSources) {
+                UIImageView *imgView = [[UIImageView alloc] initWithFrame: CGRectMake(i % 3 * 105, i / 3 * 105, 100, 100)];
+                imgView.image = img;
+                i ++;
+            }
+        } else {  // 是照片资源 iOS8 以下为AlAsset  iOS8以上为PHAsset
+            for (id asset in imageSources) {
+                [[YZYPhotoDataManager shareInstance] fetchImageFromAsset: asset type: ePhotoResolutionTypeScreenSize targetSize: [UIScreen mainScreen].bounds.size result:^(UIImage *img) {
+                    UIImageView *imgView = [[UIImageView alloc] initWithFrame: CGRectMake(i % 3 * 105, i / 3 * 105, 100, 100)];
+                    
+                    imgView.image = img;
+                }];
+                i ++;
+            }
+        }
+    }];
 }
 
 @end

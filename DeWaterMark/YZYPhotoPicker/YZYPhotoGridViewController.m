@@ -189,7 +189,7 @@ static NSString *const cellIdentifier = @"YZYPhotoGridCell";
     flowLayout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
     
     _listCollectionView = [[UICollectionView alloc] initWithFrame: CGRectMake(0, 64, self.view.width, self.view.height - 64 - 40) collectionViewLayout: flowLayout];
-    _listCollectionView.prefetchingEnabled = NO;
+//    _listCollectionView.prefetchingEnabled = NO;
     _listCollectionView.dataSource  = self;
     _listCollectionView.delegate = self;
     _listCollectionView.backgroundColor = [UIColor whiteColor];
@@ -289,6 +289,11 @@ static NSString *const cellIdentifier = @"YZYPhotoGridCell";
     if (data) {
 //        [self reloaddDsignatedDataPhotos];
        
+        [[YZYPhotoDataManager shareInstance] fetchPhotoListOfAlbumData:data result:^(NSArray * photoList) {
+            _dataArray = photoList;
+            [_listCollectionView reloadData];
+        }];
+        
         [[YZYPhotoDataManager shareInstance] fetchAlbumInfoWithThumbImgSize: CGSizeZero albumData: data fetchResult:^(NSDictionary * infoDic) {
            
             _titleLabel.text = infoDic[kPDMAlbumInfoNameKey];
@@ -452,8 +457,6 @@ static NSString *const cellIdentifier = @"YZYPhotoGridCell";
 }
 
 - (void)didTapCellWithAsset:(id)selectAsset selectState:(BOOL)selectState cell:(YZYPhotoGridCell *)cell {
-    
-    
     if (_maxSelectCount == 1) {
         [cell selectCellItem: YES anim: YES];
         self.selectedCompletion(@[selectAsset] , NO);
