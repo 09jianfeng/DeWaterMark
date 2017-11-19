@@ -489,6 +489,9 @@ NSString *DefautlDir = @"defaultdir";
                         NSError *e = [exportSession error];
                         NSLog(@"%@",e);
                         failure([[exportSession error] localizedDescription]);
+                        if (e.code == -11823) {
+                            result(savePath,[savePath lastPathComponent]);
+                        }
                     }
                     break;
                 }

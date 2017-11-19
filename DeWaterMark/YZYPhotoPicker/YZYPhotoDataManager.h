@@ -126,4 +126,8 @@ typedef void (^fetchResultBlock)(NSArray *);
  */
 - (void)savePhotoWithImage:(UIImage *)image completion:(void (^)(NSError *error))completion;
 
+/**
+ * 视频
+ */
+- (void)fetchVideoPathFromAsset:(id)asset result:(void (^)(NSString *path))result;
 @end

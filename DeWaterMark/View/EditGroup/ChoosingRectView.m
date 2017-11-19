@@ -35,7 +35,7 @@
 - (void)layoutSubviews{
     if (!_choosingView) {
         _choosingView = [[UIView alloc] initWithFrame:self.bounds];
-        _choosingView.backgroundColor = [UIColor blackColor];
+        _choosingView.backgroundColor = [UIColor whiteColor];
         _choosingView.alpha = 0.5;
         [self addSubview:_choosingView];
 
