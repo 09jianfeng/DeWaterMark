@@ -151,5 +151,5 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     _slidView.duration = vDuration;
 }
 
-
+//http://www.btsoso.info/search/%E4%BC%8A%E4%B8%9C%E9%81%A5_ctime_1.html
 @end

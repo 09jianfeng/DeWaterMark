@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AlbumManager.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewTopLay;
@@ -35,5 +36,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)myVideos:(id)sender {
+    AlbumManager *alMan = [AlbumManager new];
+    [alMan getVideosFromAlbum];
+}
 
 @end
