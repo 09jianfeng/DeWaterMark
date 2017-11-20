@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "AlbumManager.h"
+#import "YZYPhotoPicker.h"
+#import "EditViewController.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewTopLay;
@@ -14,7 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIView *introlView;
 @end
 
-@implementation ViewController
+@implementation ViewController{
+    NSString *_videoPath;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,5 +40,51 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)myVideos:(id)sender {
+    YZYPhotoPicker *photoPicker = [[YZYPhotoPicker alloc] init];
+    
+    photoPicker.isImgType = NO;
+    [photoPicker showPhotoPickerWithController: self maxSelectCount:1 completion:^(NSArray *imageSources, BOOL isImgType) {
+        
+//        [_view.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        NSInteger i = 0;
+        if (isImgType) { // 如果是UIImage
+            for (UIImage *img in imageSources) {
+                UIImageView *imgView = [[UIImageView alloc] initWithFrame: CGRectMake(i % 3 * 105, i / 3 * 105, 100, 100)];
+                imgView.image = img;
+                i ++;
+            }
+        } else {  // 是照片资源 iOS8 以下为AlAsset  iOS8以上为PHAsset
+//            for (id asset in imageSources) {
+//                [[YZYPhotoDataManager shareInstance] fetchImageFromAsset: asset type: ePhotoResolutionTypeScreenSize targetSize: [UIScreen mainScreen].bounds.size result:^(UIImage *img) {
+//                    UIImageView *imgView = [[UIImageView alloc] initWithFrame: CGRectMake(i % 3 * 105, i / 3 * 105, 100, 100)];
+//
+//                    imgView.image = img;
+//                }];
+//                i ++;
+//            }
+            
+            for (id asset in imageSources) {
+                [[YZYPhotoDataManager shareInstance] fetchVideoPathFromAsset:asset result:^(NSString *path) {
+                    NSLog(@"____ videoPath:%@",path);
+                    _videoPath = path;
+                }];
+            }
+        }
+    }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if (!_videoPath || [_videoPath isEqualToString:@""]) {
+        return;
+    }
+    
+    UIViewController *toViewCon = [segue destinationViewController];
+    if ([toViewCon isKindOfClass:[EditViewController class]]) {
+        EditViewController *editCon = (EditViewController *)toViewCon;
+        editCon.videoPath = _videoPath;
+    }
+}
 
 @end

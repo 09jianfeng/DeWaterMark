@@ -12,6 +12,7 @@
 #include "ffmpeg.h"
 #include "KxMovieViewController.h"
 #include "ChoosingRectView.h"
+#import "MyFileManage.h"
 
 int ffmpegmain(int argc, char **argv);
 
@@ -36,8 +37,8 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
-    _videoPath = [bundlePath stringByAppendingPathComponent:@"resource.bundle/war3end.mp4"];
+//    NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
+//    _videoPath = [bundlePath stringByAppendingPathComponent:@"resource.bundle/war3end.mp4"];
     [self addSubViews];
 }
 
@@ -89,11 +90,13 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 }
 
 - (void)dealVideoWithDelogoWithChoosingRect:(CGRect)choosingRect{
-    NSString *bundleString = [[NSBundle mainBundle] bundlePath];
-    NSString *resourcePath = [bundleString stringByAppendingPathComponent:@"resource.bundle/war3end.mp4"];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSAllDomainsMask, YES);
-    NSString *documentPath = paths[0];
-    NSString *targetPath = [documentPath stringByAppendingPathComponent:@"test.mp4"];
+//    NSString *bundleString = [[NSBundle mainBundle] bundlePath];
+//    NSString *resourcePath = [bundleString stringByAppendingPathComponent:@"resource.bundle/war3end.mp4"];
+    NSString *resourcePath = _videoPath;
+    
+    NSString *documentPath =[MyFileManage rootDirDoc];
+    [MyFileManage getDir:@"transform" rootDir:documentPath];
+    NSString *targetPath = [documentPath stringByAppendingString:[NSString stringWithFormat:@"/transform/%@",[resourcePath lastPathComponent]]];
     
     NSString *command = [NSString stringWithFormat:@"ffmpeg -i %@ -vf delogo=x=%d:y=%d:w=%d:h=%d:band=10 %@",resourcePath,(int)choosingRect.origin.x,(int)choosingRect.origin.y,(int)choosingRect.size.width,(int)choosingRect.size.height,targetPath];
     NSString *command_str= [NSString stringWithFormat:@"%@",command];
@@ -112,6 +115,10 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     for(int i=0;i<argc;i++)
         free(argv[i]);
     free(argv);
+}
+
+- (void)ffmpegTranformVideoForm{
+    // ffmpeg -i out.flv -vcodec copy -acodec copy out.mp4
 }
 
 #pragma mark - sliderDelegate
@@ -151,5 +158,5 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     _slidView.duration = vDuration;
 }
 
-
+//http://www.btsoso.info/search/%E4%BC%8A%E4%B8%9C%E9%81%A5_ctime_1.html
 @end
