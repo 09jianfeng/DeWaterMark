@@ -16,6 +16,11 @@
 
 int ffmpegmain(int argc, char **argv);
 
+/**
+ *	sample_count= 获取最大的最大的值。总值
+ *  frame= 为进度
+ *	Total: 这个是总共处理了多少帧。结束
+ */
 static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list vl)
 {
     NSString *input = [[NSString alloc] initWithFormat:[NSString stringWithFormat:@"%s",fmt] arguments:vl];
@@ -40,6 +45,8 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 //    NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
 //    _videoPath = [bundlePath stringByAppendingPathComponent:@"resource.bundle/war3end.mp4"];
     [self addSubViews];
+    
+    [self ffmpegTranformVideoForm];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -69,16 +76,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 }
 
 - (void)addSubViews{
-//    _slidView = [[EditSliderView alloc] initWithFrame:CGRectZero];
-//    _slidView.backgroundColor = [UIColor brownColor];
-//    _slidView.delegate = self;
-//    [self.view addSubview:_slidView];
-//    [_slidView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottomMargin.mas_equalTo(self.view).offset(-80);
-//        make.rightMargin.mas_equalTo(self.view).offset(-100);
-//        make.leftMargin.mas_equalTo(self.view).offset(100);
-//        make.height.equalTo(@30);
-//    }];
+    _slidView.delegate = self;
 }
 - (IBAction)delogoPressed:(id)sender {
     [self dealVideoWithDelogoWithChoosingRect:_choosingVideoRect];
@@ -94,9 +92,8 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 //    NSString *resourcePath = [bundleString stringByAppendingPathComponent:@"resource.bundle/war3end.mp4"];
     NSString *resourcePath = _videoPath;
     
-    NSString *documentPath =[MyFileManage rootDirDoc];
-    [MyFileManage getDir:@"transform" rootDir:documentPath];
-    NSString *targetPath = [documentPath stringByAppendingString:[NSString stringWithFormat:@"/transform/%@",[resourcePath lastPathComponent]]];
+    NSString *root = [MyFileManage getMyProductionsDirPath];
+    NSString *targetPath = [root stringByAppendingString:[NSString stringWithFormat:@"/%@",[resourcePath lastPathComponent]]];
     
     NSString *command = [NSString stringWithFormat:@"ffmpeg -i %@ -vf delogo=x=%d:y=%d:w=%d:h=%d:band=10 %@",resourcePath,(int)choosingRect.origin.x,(int)choosingRect.origin.y,(int)choosingRect.size.width,(int)choosingRect.size.height,targetPath];
     NSString *command_str= [NSString stringWithFormat:@"%@",command];
@@ -119,6 +116,34 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 
 - (void)ffmpegTranformVideoForm{
     // ffmpeg -i out.flv -vcodec copy -acodec copy out.mp4
+    //@"ffmpeg -i %@ -vcodec copy -acodec copy %@"
+    NSString *resourcePath = _videoPath;
+    
+    NSDateFormatter *dateFormatter =[[NSDateFormatter alloc] init];
+    // 设置日期格式
+    [dateFormatter setDateFormat:@"YYYY_MM_dd_hh_mm_ss"];
+    NSString *dayTime = [dateFormatter stringFromDate:[NSDate date]];
+    
+    NSString *root = [MyFileManage getFFMPEGTransformDirPath];
+    NSString *targetPath = [root stringByAppendingString:[NSString stringWithFormat:@"/%@_%@",dayTime,[resourcePath lastPathComponent]]];
+    NSString *command = [NSString stringWithFormat:@"ffmpeg -i %@ -vf delogo=x=0:y=0:w=0:h=0:band=1 %@",_videoPath,targetPath];
+    _videoPath = targetPath;
+    NSString *command_str= [NSString stringWithFormat:@"%@",command];
+    NSArray *argv_array=[command_str componentsSeparatedByString:(@" ")];
+    int argc=(int)argv_array.count;
+    char** argv=(char**)malloc(sizeof(char*)*argc);
+    for(int i=0;i<argc;i++)
+    {
+        argv[i]=(char*)malloc(sizeof(char)*1024);
+        strcpy(argv[i],[[argv_array objectAtIndex:i] UTF8String]);
+    }
+    
+    av_log_set_callback(ffmpeg_log_callback);
+    ffmpegmain(argc, argv);
+    
+    for(int i=0;i<argc;i++)
+        free(argv[i]);
+    free(argv);
 }
 
 #pragma mark - sliderDelegate

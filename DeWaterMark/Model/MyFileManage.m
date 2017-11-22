@@ -518,4 +518,30 @@ NSString *DefautlDir = @"defaultdir";
     }];
 }
 
+#pragma mark - 额外的接口
++(NSString *)getOriginVideoDirPath{
+    //originvideo
+    NSString *documentPath =[MyFileManage rootDirDoc];
+    NSString *originString = [MyFileManage getDir:@"originvideo" rootDir:documentPath];
+    return originString;
+}
+
++(NSString *)getFFMPEGTransformDirPath{
+    NSString *documentPath =[MyFileManage rootDirDoc];
+    NSString *productString = [MyFileManage getDir:@"transform" rootDir:documentPath];
+    return productString;
+}
+
++(NSString *)getMyProductionsDirPath{
+    NSString *documentPath =[MyFileManage rootDirDoc];
+    NSString *productString = [MyFileManage getDir:@"products" rootDir:documentPath];
+    return productString;
+}
+
++(NSArray *)getMyProductionsVideoPaths{
+    NSString *producDirPath = [MyFileManage getMyProductionsDirPath];
+    return [MyFileManage filePathsWithDirPath:producDirPath];
+}
+
+
 @end

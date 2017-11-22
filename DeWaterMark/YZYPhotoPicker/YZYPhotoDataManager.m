@@ -106,8 +106,8 @@ NSString *  const kPDMAlbumInfoCountKey = @"PDMAlbumInfoCountKey";
         [smartAlbums enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
             //过滤掉视频和最近删除
             //视频 [collection.localizedTitle isEqualToString:@"Videos"]
-            if (!([collection.localizedTitle isEqualToString:@"Recently Deleted"])) {
-                
+//            if (!([collection.localizedTitle isEqualToString:@"Recently Deleted"])) {
+            if ([collection.localizedTitle isEqualToString:@"Videos"]) {
                 PHFetchResult * fetchResult = [PHAsset fetchAssetsInAssetCollection: collection options: nil];
                 
                 if (fetchResult.count > 0) {
@@ -116,6 +116,7 @@ NSString *  const kPDMAlbumInfoCountKey = @"PDMAlbumInfoCountKey";
             }
         }];
         
+        /*
         //获取用户创建的相册
         PHFetchResult *userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil];
         
@@ -126,6 +127,7 @@ NSString *  const kPDMAlbumInfoCountKey = @"PDMAlbumInfoCountKey";
                 [_albumsArray addObject: collection];
             }
         }];
+        */
         
         result(_albumsArray);
         
@@ -238,8 +240,13 @@ NSString *  const kPDMAlbumInfoCountKey = @"PDMAlbumInfoCountKey";
                 
                 //只添加相片
 //                if (asset.mediaType == PHAssetMediaTypeImage) {
-                    [_photosArray addObject:asset];
+//                    [_photosArray addObject:asset];
 //                }
+                
+                //只添加视频
+                if (asset.mediaType == PHAssetMediaTypeVideo) {
+                    [_photosArray addObject:asset];
+                }
             }
             
             if (_bReverse) {

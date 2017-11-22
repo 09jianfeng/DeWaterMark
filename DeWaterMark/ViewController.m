@@ -41,12 +41,16 @@
 }
 
 - (IBAction)myVideos:(id)sender {
+}
+
+
+- (IBAction)beginEditVideo:(id)sender {
     YZYPhotoPicker *photoPicker = [[YZYPhotoPicker alloc] init];
     
     photoPicker.isImgType = NO;
-    [photoPicker showPhotoPickerWithController: self maxSelectCount:1 completion:^(NSArray *imageSources, BOOL isImgType) {
+    [photoPicker showPhotoPickerWithController:self maxSelectCount:1 completion:^(NSArray *imageSources, BOOL isImgType) {
         
-//        [_view.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        //        [_view.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
         NSInteger i = 0;
         if (isImgType) { // 如果是UIImage
             for (UIImage *img in imageSources) {
@@ -55,36 +59,28 @@
                 i ++;
             }
         } else {  // 是照片资源 iOS8 以下为AlAsset  iOS8以上为PHAsset
-//            for (id asset in imageSources) {
-//                [[YZYPhotoDataManager shareInstance] fetchImageFromAsset: asset type: ePhotoResolutionTypeScreenSize targetSize: [UIScreen mainScreen].bounds.size result:^(UIImage *img) {
-//                    UIImageView *imgView = [[UIImageView alloc] initWithFrame: CGRectMake(i % 3 * 105, i / 3 * 105, 100, 100)];
-//
-//                    imgView.image = img;
-//                }];
-//                i ++;
-//            }
+            //            for (id asset in imageSources) {
+            //                [[YZYPhotoDataManager shareInstance] fetchImageFromAsset: asset type: ePhotoResolutionTypeScreenSize targetSize: [UIScreen mainScreen].bounds.size result:^(UIImage *img) {
+            //                    UIImageView *imgView = [[UIImageView alloc] initWithFrame: CGRectMake(i % 3 * 105, i / 3 * 105, 100, 100)];
+            //
+            //                    imgView.image = img;
+            //                }];
+            //                i ++;
+            //            }
             
             for (id asset in imageSources) {
                 [[YZYPhotoDataManager shareInstance] fetchVideoPathFromAsset:asset result:^(NSString *path) {
                     NSLog(@"____ videoPath:%@",path);
                     _videoPath = path;
+                    
+                    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    EditViewController *editCon = [main instantiateViewControllerWithIdentifier:@"EditViewController"];
+                    editCon.videoPath = _videoPath;
+                    [self.navigationController pushViewController:editCon animated:YES];
                 }];
             }
         }
     }];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    if (!_videoPath || [_videoPath isEqualToString:@""]) {
-        return;
-    }
-    
-    UIViewController *toViewCon = [segue destinationViewController];
-    if ([toViewCon isKindOfClass:[EditViewController class]]) {
-        EditViewController *editCon = (EditViewController *)toViewCon;
-        editCon.videoPath = _videoPath;
-    }
 }
 
 @end

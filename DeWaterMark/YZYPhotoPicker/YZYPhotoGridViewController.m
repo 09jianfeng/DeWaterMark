@@ -88,6 +88,7 @@ static NSString *const cellIdentifier = @"YZYPhotoGridCell";
     _navBarView = navView;
     
     {
+        /*
         UIButton *backToListBtn = [UIButton buttonWithType: UIButtonTypeCustom];
         
         [backToListBtn setTitle: @"相机" forState: UIControlStateNormal];
@@ -97,6 +98,7 @@ static NSString *const cellIdentifier = @"YZYPhotoGridCell";
         backToListBtn.frame = CGRectMake(0, 24, 50, 40);
         backToListBtn.titleLabel.font = [UIFont systemFontOfSize: 14];
         _cameraBtn = backToListBtn;
+         */
     }
     
     {
@@ -113,7 +115,7 @@ static NSString *const cellIdentifier = @"YZYPhotoGridCell";
         UILabel *titleLabel = [[UILabel alloc] initWithFrame: CGRectMake(navView.frame.size.width / 2 - 75, 20, 150, 44)];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.font = [UIFont systemFontOfSize: 18];
-        titleLabel.text = @"所有照片";
+        titleLabel.text = @"所有视频";
         [navView addSubview: titleLabel];
         titleLabel.userInteractionEnabled = YES;
         [titleLabel sizeToFit];
