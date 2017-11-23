@@ -480,7 +480,7 @@ NSString *DefautlDir = @"defaultdir";
 //        [FileUtils deleteDataAtPath:savePath];
         exportSession.outputURL = [NSURL fileURLWithPath:savePath];
         exportSession.shouldOptimizeForNetworkUse = NO;
-        exportSession.outputFileType = AVFileTypeMPEG4;
+        exportSession.outputFileType = AVFileTypeQuickTimeMovie;
         [exportSession exportAsynchronouslyWithCompletionHandler:^{
             switch ([exportSession status]) {
                 case AVAssetExportSessionStatusFailed:

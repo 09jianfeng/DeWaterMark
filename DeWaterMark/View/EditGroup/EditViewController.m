@@ -125,8 +125,10 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     NSString *dayTime = [dateFormatter stringFromDate:[NSDate date]];
     
     NSString *root = [MyFileManage getFFMPEGTransformDirPath];
-    NSString *targetPath = [root stringByAppendingString:[NSString stringWithFormat:@"/%@_%@",dayTime,[resourcePath lastPathComponent]]];
-    NSString *command = [NSString stringWithFormat:@"ffmpeg -i %@ -vf delogo=x=0:y=0:w=0:h=0:band=1 %@",_videoPath,targetPath];
+    NSString *videoFileName = [resourcePath lastPathComponent];
+    videoFileName = [videoFileName stringByDeletingPathExtension];
+    NSString *targetPath = [root stringByAppendingString:[NSString stringWithFormat:@"/%@_%@.mp4",dayTime,videoFileName]];
+    NSString *command = [NSString stringWithFormat:@"ffmpeg -i %@ -vcodec copy -acodec copy %@",_videoPath,targetPath];
     _videoPath = targetPath;
     NSString *command_str= [NSString stringWithFormat:@"%@",command];
     NSArray *argv_array=[command_str componentsSeparatedByString:(@" ")];
@@ -148,9 +150,28 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 
 #pragma mark - sliderDelegate
 - (void)valuehangeing:(float)duration x1Posi:(float)x1Posi x2Posi:(float)x2Posi{
-    NSLog(@"posi:%f seletPosi:%f selecDura:%f",duration, x1Posi, x2Posi);
-    _leftLabel.text = [NSString stringWithFormat:@"%f",x1Posi];
-    _rightLabel.text = [NSString stringWithFormat:@"%f",x2Posi];
+    NSLog(@"selecDura:%f pos1:%f posi2:%f",duration, x1Posi, x2Posi);
+    _leftLabel.text = [self formatTimeInterval:x1Posi isleft:NO];
+    _rightLabel.text = [self formatTimeInterval:x2Posi isleft:NO];
+}
+
+-(NSString *)formatTimeInterval:(CGFloat)seconds isleft:(BOOL)isLeft
+{
+    seconds = MAX(0, seconds);
+    
+    NSInteger s = seconds;
+    NSInteger m = s / 60;
+    NSInteger h = m / 60;
+    
+    s = s % 60;
+    m = m % 60;
+    
+    NSMutableString *format = [(isLeft && seconds >= 0.5 ? @"-" : @"") mutableCopy];
+    if (h != 0) [format appendFormat:@"%td:%0.2td", h, m];
+    else        [format appendFormat:@"%td", m];
+    [format appendFormat:@":%0.2td", s];
+    
+    return format;
 }
 
 - (void)choosingRect:(CGRect)rect{

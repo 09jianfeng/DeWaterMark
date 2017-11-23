@@ -52,8 +52,8 @@
     float deltax1 = _selectedLineX/width;
     float deltax2 = _selectedLineLastX/width;
     
-    float x1 = _selectedLineX;
-    float x2 = _selectedLineLastX;
+    float x1 = _duration;
+    float x2 = _duration;
     if (_duration <= 0) {
         x1 = 0;
         x2 = 0;

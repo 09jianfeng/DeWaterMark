@@ -641,7 +641,7 @@ NSString *  const kPDMAlbumInfoCountKey = @"PDMAlbumInfoCountKey";
     NSString *rootDir = [MyFileManage rootDirDoc];
     PHAsset *phasset = (PHAsset*)asset;
     NSString *fileName = [phasset valueForKey:@"filename"];
-    fileName = [[fileName stringByDeletingPathExtension] stringByAppendingString:@".mp4"];
+    fileName = [[fileName stringByDeletingPathExtension] stringByAppendingString:@".mov"];
     
     [MyFileManage getVideoPathFromPHAsset:phasset fileName:fileName fileDir:@"originvideo" rootDir:rootDir complete:^(NSString *path, NSString *filename) {
         result(path);
