@@ -14,9 +14,11 @@
 #import <OpenGLES/EAGLDrawable.h>
 #import <OpenGLES/EAGL.h>
 #import <OpenGLES/ES2/gl.h>
+#import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES2/glext.h>
 #import "KxMovieDecoder.h"
 #import "KxLogger.h"
+#import "CSMath.h"
 
 //////////////////////////////////////////////////////////
 
@@ -31,11 +33,12 @@ NSString *const vertexShaderString = SHADER_STRING
  attribute vec4 position;
  attribute vec2 texcoord;
  uniform mat4 modelViewProjectionMatrix;
+ uniform mat4 transform;
  varying vec2 v_texcoord;
  
  void main()
  {
-     gl_Position = modelViewProjectionMatrix * position;
+     gl_Position = transform * modelViewProjectionMatrix * position;
      v_texcoord = texcoord.xy;
  }
 );
@@ -361,6 +364,7 @@ enum {
     GLuint          _program;
     GLint           _uniformMatrix;
     GLfloat         _vertices[8];
+    GLint           _transformMatrix;
     
     id<KxMovieGLRenderer> _renderer;
 }
@@ -537,7 +541,7 @@ enum {
     }
     
     result = validateProgram(_program);
-        
+    _transformMatrix = glGetUniformLocation(_program, "transform");
     _uniformMatrix = glGetUniformLocation(_program, "modelViewProjectionMatrix");
     [_renderer resolveUniforms:_program];
 	
@@ -564,13 +568,21 @@ exit:
 - (void)updateVertices
 {
     const BOOL fit      = (self.contentMode == UIViewContentModeScaleAspectFit);
-    const float width   = _decoder.frameWidth;
-    const float height  = _decoder.frameHeight;
-    const float dH      = (float)_backingHeight / height;
-    const float dW      = (float)_backingWidth	  / width;
+    float backHei = _backingHeight;
+    float backWid = _backingWidth;
+    
+    float width   = _decoder.frameWidth;
+    float height  = _decoder.frameHeight;
+    if (_decoder.rotation == 90) {
+        backHei = backWid;
+        backWid = _backingHeight;
+    }
+    
+    const float dH      = (float)backHei / height;
+    const float dW      = (float)backWid	  / width;
     const float dd      = fit ? MIN(dH, dW) : MAX(dH, dW);
-    const float h       = (height * dd / (float)_backingHeight);
-    const float w       = (width  * dd / (float)_backingWidth );
+    const float h       = (height * dd / (float)backHei);
+    const float w       = (width  * dd / (float)backWid );
     
     _vertices[0] = - w;
     _vertices[1] = - h;
@@ -583,13 +595,25 @@ exit:
 }
 
 - (void)render: (KxVideoFrame *) frame
-{        
-    static const GLfloat texCoords[] = {
+{
+    
+    static GLfloat texCoords[] = {
         0.0f, 1.0f,
         1.0f, 1.0f,
         0.0f, 0.0f,
         1.0f, 0.0f,
     };
+    
+//    if (_decoder.rotation == 90) {
+//        texCoords[0] = 1.0f;
+//        texCoords[1] = 0.0f;
+//        texCoords[2] = 0.0f;
+//        texCoords[3] = 1.0f;
+//        texCoords[4] = 1.0f;
+//        texCoords[5] = 1.0f;
+//        texCoords[6] = 0.0f;
+//        texCoords[7] = 0.0f;
+//    }
 	
     [EAGLContext setCurrentContext:_context];
     
@@ -609,6 +633,11 @@ exit:
         mat4f_LoadOrtho(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f, modelviewProj);
         glUniformMatrix4fv(_uniformMatrix, 1, GL_FALSE, modelviewProj);
         
+        Matrix3D transform;
+        if (_decoder.rotation == 90) {
+            Matrix3DSetZRotationUsingRadians(transform, -M_PI_2);
+        }
+        glUniformMatrix4fv(_transformMatrix, 1, GL_FALSE, transform);
         glVertexAttribPointer(ATTRIBUTE_VERTEX, 2, GL_FLOAT, 0, 0, _vertices);
         glEnableVertexAttribArray(ATTRIBUTE_VERTEX);
         glVertexAttribPointer(ATTRIBUTE_TEXCOORD, 2, GL_FLOAT, 0, 0, texCoords);

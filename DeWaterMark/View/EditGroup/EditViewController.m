@@ -46,7 +46,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 //    _videoPath = [bundlePath stringByAppendingPathComponent:@"resource.bundle/war3end.mp4"];
     [self addSubViews];
     
-    [self ffmpegTranformVideoForm];
+//    [self ffmpegTranformVideoForm];
 }
 
 - (void)viewDidAppear:(BOOL)animated{

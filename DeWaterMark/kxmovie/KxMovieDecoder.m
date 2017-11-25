@@ -15,6 +15,8 @@
 #include "libswscale/swscale.h"
 #include "libswresample/swresample.h"
 #include "libavutil/pixdesc.h"
+#include "libavutil/eval.h"
+#include "libavutil/display.h"
 #import "KxAudioManager.h"
 #import "KxLogger.h"
 
@@ -596,6 +598,7 @@ static int interrupt_callback(void *ctx);
                 NSMutableArray *ma = [NSMutableArray array];
                 for (NSNumber *n in _videoStreams) {
                     AVStream *st = _formatCtx->streams[n.integerValue];
+                    
                     avcodec_string(buf, sizeof(buf), st->codec, 1);
                     NSString *s = [NSString stringWithCString:buf encoding:NSUTF8StringEncoding];
                     if ([s hasPrefix:@"Video: "])
@@ -655,6 +658,72 @@ static int interrupt_callback(void *ctx);
     }
     
     return _info;
+}
+
+#pragma mark - 补充
+-(double)get_rotation:(AVStream *)st
+{
+    AVDictionaryEntry *rotate_tag = av_dict_get(st->metadata, "rotate", NULL, 0);
+    uint8_t* displaymatrix = av_stream_get_side_data(st,
+                                                     AV_PKT_DATA_DISPLAYMATRIX, NULL);
+    double theta = 0;
+    
+    if (rotate_tag && *rotate_tag->value && strcmp(rotate_tag->value, "0")) {
+        char *tail;
+        theta = av_strtod(rotate_tag->value, &tail);
+        if (*tail)
+            theta = 0;
+    }
+    if (displaymatrix && !theta)
+        theta = -av_display_rotation_get((int32_t*) displaymatrix);
+    
+    theta -= 360*floor(theta/360 + 0.9/360);
+    
+    if (fabs(theta - 90*round(theta/90)) > 2)
+        av_log(NULL, AV_LOG_WARNING, "Odd rotation angle.\n"
+               "If you want to help, upload a sample "
+               "of this file to ftp://upload.ffmpeg.org/incoming/ "
+               "and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)");
+    
+    return theta;
+}
+
+-(void)frame_rotate_90:(AVFrame *)src des:(AVFrame*)des
+{
+    int n = 0;
+    int hw = src->width>>1;
+    int hh = src->height>>1;
+    int size = src->width * src->height;
+    int hsize = size>>2;
+    
+    int pos = 0;
+    //copy y
+    for(int j = 0; j < src->width;j++)
+    {
+        pos = size;
+        for(int i = src->height - 1; i >= 0; i--)
+        {   pos-=src->width;
+            des->data[0][n++] = src->data[0][pos + j];
+        }
+    }
+    //copy uv
+    n = 0;
+    for(int j = 0;j < hw;j++)
+    {   pos= hsize;
+        for(int i = hh - 1;i >= 0;i--)
+        {
+            pos-=hw;
+            des->data[1][n] = src->data[1][ pos + j];
+            des->data[2][n] = src->data[2][ pos + j];
+            n++;
+        }
+    }
+    
+    des->linesize[0] = src->height;
+    des->linesize[1] = src->height>>1;
+    des->linesize[2] = src->height>>1;
+    des->height = src->width;
+    des->width = src->height;
 }
 
 - (NSString *) videoStreamFormatName
@@ -855,6 +924,10 @@ static int interrupt_callback(void *ctx);
     // determine fps
     
     AVStream *st = _formatCtx->streams[_videoStream];
+    double rot = [self get_rotation:st];
+    _rotation = (int)rot;
+    NSLog(@"_____ rotation:%d",_rotation);
+    
     avStreamFPSTimeBase(st, 0.04, &_fps, &_videoTimeBase);
     
     LoggerVideo(1, @"video codec size: %d:%d fps: %.3f tb: %f",
@@ -1387,7 +1460,6 @@ static int interrupt_callback(void *ctx);
                                                 _videoFrame,
                                                 &gotframe,
                                                 &packet);
-                
                 if (len < 0) {
                     LoggerVideo(0, @"decode video error, skip packet");
                     break;
@@ -1623,7 +1695,6 @@ static int interrupt_callback(void *ctx)
     
     return ms;
 }
-
 @end
 
 static void FFLog(void* context, int level, const char* format, va_list args) {
@@ -1648,4 +1719,10 @@ static void FFLog(void* context, int level, const char* format, va_list args) {
         }
     }
 }
+
+
+
+
+
+
 

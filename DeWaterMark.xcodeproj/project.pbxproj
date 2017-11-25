@@ -246,6 +246,7 @@
 		78B76C651FC179EA003DA58E /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		78B76C671FC17E0F003DA58E /* AlbumManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumManager.h; sourceTree = "<group>"; };
 		78B76C681FC17E0F003DA58E /* AlbumManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumManager.m; sourceTree = "<group>"; };
+		78CE36BF1FC7142300F84932 /* CSMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSMath.h; sourceTree = "<group>"; };
 		D5A7B4A3F9CD70FB2B85E626 /* Pods-DeWaterMark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeWaterMark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -568,6 +569,7 @@
 		7816B2F31FAE1BD4007A6350 /* kxmovie */ = {
 			isa = PBXGroup;
 			children = (
+				78CE36BF1FC7142300F84932 /* CSMath.h */,
 				7816B2F41FAE1BD4007A6350 /* KxAudioManager.h */,
 				7816B2F51FAE1BD4007A6350 /* KxAudioManager.m */,
 				7816B2F61FAE1BD4007A6350 /* KxLogger.h */,
