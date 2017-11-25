@@ -13,6 +13,7 @@
 #include "KxMovieViewController.h"
 #include "ChoosingRectView.h"
 #import "MyFileManage.h"
+#import "MBProgressHUD.h"
 
 int ffmpegmain(int argc, char **argv);
 
@@ -22,8 +23,9 @@ int ffmpegmain(int argc, char **argv);
  *	Total: 这个是总共处理了多少帧。结束
  */
 
-static uint32_t totalCount = 0;
-static uint32_t currentFrame = 0;
+static float totalCount = 1;
+static float currentFrame = 0;
+EditViewController *EDITCon;
 
 static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list vl)
 {
@@ -33,8 +35,31 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     if (range.location != NSNotFound) {
         NSRange range2 = [input rangeOfString:@","];
         NSString *countStr = [input substringWithRange:NSMakeRange(range.location + range.length, range2.location - range.location - range.length)];
+        int count = [countStr intValue];
+        if (count > totalCount) {
+            totalCount = count;
+        }
     }
     
+    range = [input rangeOfString:@"frame= "];
+    if (range.location != NSNotFound) {
+        NSRange range2 = [input rangeOfString:@" QP"];
+        if (range2.location != NSNotFound) {
+            NSString *countStr = [input substringWithRange:NSMakeRange(range.location + range.length, range2.location - range.location - range.length)];
+            int frame_count = [countStr intValue];
+            currentFrame = frame_count;
+        }
+    }
+    
+    range = [input rangeOfString:@"Total:"];
+    if (range.location != NSNotFound) {
+        currentFrame = totalCount;
+    }
+    
+    float progress = currentFrame / totalCount;
+    if (EDITCon) {
+        [EDITCon setFFMPEGProgress:progress];
+    }
 }
 
 @interface EditViewController ()<EditSliderViewDelegate,ChoosingRectView,KxMovieViewControllerDelegate>
@@ -46,6 +71,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 @implementation EditViewController{
     KxMovieViewController *_vc;
     CGRect _choosingVideoRect;
+    MBProgressHUD *HUD;
 }
 
 - (void)viewDidLoad {
@@ -53,6 +79,11 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     // Do any additional setup after loading the view.
     
     [self addSubViews];
+    EDITCon = self;
+}
+
+- (void)dealloc{
+    EDITCon = nil;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -82,10 +113,35 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 }
 
 - (void)addSubViews{
-    _slidView.delegate = self;
+    HUD = [[MBProgressHUD alloc] init];
+    [self.view addSubview:HUD];
+    HUD.mode = MBProgressHUDModeIndeterminate;//进度条
+    HUD.square = YES;
+    //14,设置显示和隐藏动画类型  有三种动画效果，如下
+    HUD.animationType = MBProgressHUDAnimationZoomIn; //和上一个相反，前近，最后淡化消失
+    HUD.removeFromSuperViewOnHide = NO;
+    HUD.label.textColor = [UIColor blueColor];
+    //18,进度指示器  模式是0，取值从0.0————1.0
+    HUD.progress = 0.1;
 }
+
+- (void)setFFMPEGProgress:(float)progress{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        HUD.label.text = [NSString stringWithFormat:@"%%%d",(int)(progress*100)];
+    });
+}
+
 - (IBAction)delogoPressed:(id)sender {
-    [self dealVideoWithDelogoWithChoosingRect:_choosingVideoRect];
+    HUD.hidden = NO;
+    [HUD showAnimated:YES];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+       [self dealVideoWithDelogoWithChoosingRect:_choosingVideoRect];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            HUD.hidden = YES;
+            [HUD showAnimated:NO];
+        });
+    });
 }
 
 - (IBAction)clickRunButton:(id)sender {
@@ -94,10 +150,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 }
 
 - (void)dealVideoWithDelogoWithChoosingRect:(CGRect)choosingRect{
-//    NSString *bundleString = [[NSBundle mainBundle] bundlePath];
-//    NSString *resourcePath = [bundleString stringByAppendingPathComponent:@"resource.bundle/war3end.mp4"];
     NSString *resourcePath = _videoPath;
-    
     NSString *root = [MyFileManage getMyProductionsDirPath];
     NSString *targetPath = [root stringByAppendingString:[NSString stringWithFormat:@"/%@",[resourcePath lastPathComponent]]];
     

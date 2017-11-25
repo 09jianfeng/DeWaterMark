@@ -9,8 +9,9 @@ target 'DeWaterMark' do
 pod 'CocoaLumberjack', '3.1.0'
 pod 'Masonry', '1.0.2'
 pod 'GCDWebServer/WebDAV', '~> 3.0'
-pod 'KVOController'
-pod 'NSLogger'
+pod 'KVOController', '1.2.0'
+pod 'NSLogger', '1.8.3'
+pod 'MBProgressHUD', '1.1.0'
 end
 
 post_install do |installer|

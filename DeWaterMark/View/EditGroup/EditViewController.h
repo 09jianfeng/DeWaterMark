@@ -12,4 +12,6 @@
 @property (nonatomic , copy) NSString *videoPath;
 @property (weak, nonatomic) IBOutlet UILabel *leftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightLabel;
+
+- (void)setFFMPEGProgress:(float)progress;
 @end
