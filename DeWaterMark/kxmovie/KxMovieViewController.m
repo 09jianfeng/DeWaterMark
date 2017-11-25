@@ -515,6 +515,13 @@ _messageLabel.hidden = YES;
 
 #pragma mark - public
 
+- (BOOL)isRoration{
+    if (_decoder.rotation == 90) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
 - (NSUInteger)getVideoWidth{
     return _decoder.frameWidth;
 }

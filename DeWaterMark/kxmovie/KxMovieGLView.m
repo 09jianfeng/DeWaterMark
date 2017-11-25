@@ -636,6 +636,8 @@ exit:
         Matrix3D transform;
         if (_decoder.rotation == 90) {
             Matrix3DSetZRotationUsingRadians(transform, -M_PI_2);
+        }else{
+            Matrix3DSetZRotationUsingRadians(transform, 0);
         }
         glUniformMatrix4fv(_transformMatrix, 1, GL_FALSE, transform);
         glVertexAttribPointer(ATTRIBUTE_VERTEX, 2, GL_FLOAT, 0, 0, _vertices);

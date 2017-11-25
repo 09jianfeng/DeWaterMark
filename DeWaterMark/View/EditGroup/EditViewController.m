@@ -21,10 +21,20 @@ int ffmpegmain(int argc, char **argv);
  *  frame= 为进度
  *	Total: 这个是总共处理了多少帧。结束
  */
+
+static uint32_t totalCount = 0;
+static uint32_t currentFrame = 0;
+
 static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list vl)
 {
     NSString *input = [[NSString alloc] initWithFormat:[NSString stringWithFormat:@"%s",fmt] arguments:vl];
-    NSLog(@"____ %@",input);
+    NSLog(@"%@",input);
+    NSRange range = [input rangeOfString:@"sample_count="];
+    if (range.location != NSNotFound) {
+        NSRange range2 = [input rangeOfString:@","];
+        NSString *countStr = [input substringWithRange:NSMakeRange(range.location + range.length, range2.location - range.location - range.length)];
+    }
+    
 }
 
 @interface EditViewController ()<EditSliderViewDelegate,ChoosingRectView,KxMovieViewControllerDelegate>
@@ -42,11 +52,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
-//    _videoPath = [bundlePath stringByAppendingPathComponent:@"resource.bundle/war3end.mp4"];
     [self addSubViews];
-    
-//    [self ffmpegTranformVideoForm];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -177,6 +183,10 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 - (void)choosingRect:(CGRect)rect{
     NSUInteger videoWidth = [_vc getVideoWidth];
     NSUInteger videoHeigh = [_vc getVideoHeigh];
+    if ([_vc isRoration]) {
+        videoHeigh = videoWidth;
+        videoWidth = [_vc getVideoHeigh];
+    }
     
     CGRect vcRect = _vc.view.frame;
     NSUInteger _backingHeight = vcRect.size.height;
