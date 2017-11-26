@@ -105,6 +105,8 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     _vc.delegate = self;
     [_videoView insertSubview:_vc.view atIndex:0];
     _videoView.delegate = self;
+    
+    _slidView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {

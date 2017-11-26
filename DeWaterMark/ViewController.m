@@ -27,6 +27,11 @@
     _introlView.layer.shadowColor = [UIColor blackColor].CGColor;
     _introlView.layer.shadowOffset = CGSizeMake(10, 10);
     _introlView.layer.shadowOpacity = 0.5;
+    
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.backgroundColor = [UIColor redColor];
 }
 
 - (void)viewDidLayoutSubviews{

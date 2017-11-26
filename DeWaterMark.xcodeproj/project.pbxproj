@@ -57,6 +57,8 @@
 		78B76C581FC08BE6003DA58E /* YZYPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B76C4A1FC08BE6003DA58E /* YZYPhotoPicker.m */; };
 		78B76C661FC179F4003DA58E /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B76C651FC179EA003DA58E /* Photos.framework */; };
 		78B76C691FC17E0F003DA58E /* AlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B76C681FC17E0F003DA58E /* AlbumManager.m */; };
+		78CE36C31FC9C81100F84932 /* MyVideosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CE36C21FC9C81100F84932 /* MyVideosController.m */; };
+		78CE36C51FCA7AAA00F84932 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CE36C41FCA7AA400F84932 /* MediaPlayer.framework */; };
 		B0054FD734633A011F74A7FA /* libPods-DeWaterMark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD91559F3BC1914E85766A2 /* libPods-DeWaterMark.a */; };
 /* End PBXBuildFile section */
 
@@ -247,6 +249,9 @@
 		78B76C671FC17E0F003DA58E /* AlbumManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumManager.h; sourceTree = "<group>"; };
 		78B76C681FC17E0F003DA58E /* AlbumManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumManager.m; sourceTree = "<group>"; };
 		78CE36BF1FC7142300F84932 /* CSMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSMath.h; sourceTree = "<group>"; };
+		78CE36C11FC9C81100F84932 /* MyVideosController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyVideosController.h; sourceTree = "<group>"; };
+		78CE36C21FC9C81100F84932 /* MyVideosController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyVideosController.m; sourceTree = "<group>"; };
+		78CE36C41FCA7AA400F84932 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		D5A7B4A3F9CD70FB2B85E626 /* Pods-DeWaterMark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeWaterMark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -255,6 +260,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78CE36C51FCA7AAA00F84932 /* MediaPlayer.framework in Frameworks */,
 				78B76C661FC179F4003DA58E /* Photos.framework in Frameworks */,
 				7816B2F11FAE1186007A6350 /* libswscale.a in Frameworks */,
 				7816B2EB1FAE1186007A6350 /* libavfilter.a in Frameworks */,
@@ -331,6 +337,7 @@
 		7816B1BB1FADF1D3007A6350 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				78CE36C01FC9C72E00F84932 /* MyProducts */,
 				7816B1B41FAD61C8007A6350 /* EditGroup */,
 			);
 			path = View;
@@ -624,9 +631,19 @@
 			path = ImageSource;
 			sourceTree = "<group>";
 		};
+		78CE36C01FC9C72E00F84932 /* MyProducts */ = {
+			isa = PBXGroup;
+			children = (
+				78CE36C11FC9C81100F84932 /* MyVideosController.h */,
+				78CE36C21FC9C81100F84932 /* MyVideosController.m */,
+			);
+			path = MyProducts;
+			sourceTree = "<group>";
+		};
 		AD5B086707C6767EB09DF68C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78CE36C41FCA7AA400F84932 /* MediaPlayer.framework */,
 				78B76C651FC179EA003DA58E /* Photos.framework */,
 				7816B2591FAE0EA1007A6350 /* AVFoundation.framework */,
 				7816B2571FAE0E9D007A6350 /* libz.tbd */,
@@ -779,6 +796,7 @@
 				78B76C691FC17E0F003DA58E /* AlbumManager.m in Sources */,
 				7816B2E81FAE1186007A6350 /* strtod.c in Sources */,
 				78B76C541FC08BE6003DA58E /* YZYPhotoBrowserViewController.m in Sources */,
+				78CE36C31FC9C81100F84932 /* MyVideosController.m in Sources */,
 				78B76C561FC08BE6003DA58E /* YZYPhotoGridCell.m in Sources */,
 				78B76C571FC08BE6003DA58E /* YZYPhotoGridViewController.m in Sources */,
 				78B76C551FC08BE6003DA58E /* YZYPhotoDataManager.m in Sources */,
