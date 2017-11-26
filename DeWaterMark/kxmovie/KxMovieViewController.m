@@ -35,9 +35,9 @@ static NSString * formatTimeInterval(CGFloat seconds, BOOL isLeft)
     m = m % 60;
 
     NSMutableString *format = [(isLeft && seconds >= 0.5 ? @"-" : @"") mutableCopy];
-    if (h != 0) [format appendFormat:@"%d:%0.2d", h, m];
-    else        [format appendFormat:@"%d", m];
-    [format appendFormat:@":%0.2d", s];
+    if (h != 0) [format appendFormat:@"%td:%0.2td", h, m];
+    else        [format appendFormat:@"%td", m];
+    [format appendFormat:@":%0.2td", s];
 
     return format;
 }
@@ -132,6 +132,8 @@ static NSMutableDictionary * gHistory;
     BOOL                _savedIdleTimer;
     
     NSDictionary        *_parameters;
+    
+    BOOL                isFirstFrame;
 }
 
 @property (readwrite) BOOL playing;
@@ -260,9 +262,9 @@ _messageLabel.hidden = YES;
     [self.view addSubview:_topBar];
     [self.view addSubview:_topHUD];
     [self.view addSubview:_bottomBar];
-    _topBar.hidden = YES;
-    _topHUD.hidden = YES;
-    _bottomBar.hidden = YES;
+//    _topBar.hidden = YES;
+//    _topHUD.hidden = YES;
+//    _bottomBar.hidden = YES;
     
     // top hud
 
@@ -722,11 +724,8 @@ _messageLabel.hidden = YES;
 
 - (void) restorePlay
 {
-//    NSNumber *n = [gHistory valueForKey:_decoder.path];
-//    if (n)
-//        [self updatePosition:n.floatValue playMode:YES];
-//    else
-//        [self play];
+    [self play];
+    [self pause];
 }
 
 - (void) setupPresentView
@@ -1317,6 +1316,8 @@ _messageLabel.hidden = YES;
     
     const CGFloat duration = _decoder.duration;
     const CGFloat position = _moviePosition -_decoder.startTime;
+    
+    [_delegate updateMoviePlayPosition:position duration:duration];
     
     if (_progressSlider.state == UIControlStateNormal)
         _progressSlider.value = position / duration;

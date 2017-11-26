@@ -13,6 +13,7 @@
 
 @protocol KxMovieViewControllerDelegate<NSObject>
 - (void)movieViewControCallback:(CGFloat)vWidth vHeigh:(CGFloat)vHeigh vDuration:(CGFloat)vDuration;
+- (void)updateMoviePlayPosition:(CGFloat)position duration:(CGFloat)duration;
 @end
 
 @class KxMovieDecoder;

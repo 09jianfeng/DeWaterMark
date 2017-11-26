@@ -107,6 +107,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     _videoView.delegate = self;
     
     _slidView.delegate = self;
+    _slidView.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -267,6 +268,14 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 - (void)movieViewControCallback:(CGFloat)vWidth vHeigh:(CGFloat)vHeigh vDuration:(CGFloat)vDuration{
     NSLog(@"____ vWidth:%f H:%f vDurat:%f",vWidth,vHeigh,vDuration);
     _slidView.duration = vDuration;
+}
+
+- (void)updateMoviePlayPosition:(CGFloat)position duration:(CGFloat)duration{
+    _slidView.progress = position/duration;
+}
+
+- (void)positionValueChangeing:(CGFloat)position{
+    [_vc setMoviePosition:position];
 }
 
 //http://www.btsoso.info/search/%E4%BC%8A%E4%B8%9C%E9%81%A5_ctime_1.html

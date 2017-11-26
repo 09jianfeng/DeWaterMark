@@ -12,6 +12,8 @@
 @implementation EditSliderView{
     CGFloat _selectedLineX;
     CGFloat _selectedLineLastX;
+    CGFloat _progressX;
+    BOOL _progressChange;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -22,11 +24,20 @@
     return self;
 }
 
+- (void)setProgress:(float)progress{
+    float width = CGRectGetWidth(self.bounds);
+    _progressX = width * progress;
+    [self setNeedsDisplay];
+}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (_progressChange) {
+        [_delegate positionValueChangeing:_progressX*_duration/CGRectGetWidth(self.bounds)];
+        _progressChange = NO;
+    }
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -34,12 +45,24 @@
     UITouch *toucher = enumerator.nextObject;
     CGPoint location = [toucher locationInView:self];
     
+    
+    if (fabs(_progressX - location.x) < 20) {
+        _progressX = location.x > 0 ? location.x:0;
+        if (_progressX > CGRectGetWidth(self.bounds)) {
+            _progressX = CGRectGetWidth(self.bounds);
+        }
+        [self setNeedsDisplay];
+        _progressChange = YES;
+        return;
+    }
+    
+    
     if (fabs(_selectedLineX - location.x) < 30) {
         _selectedLineX = location.x > 0? location.x:0;
         if (_selectedLineX > CGRectGetWidth(self.bounds)) {
             _selectedLineX = CGRectGetWidth(self.bounds);
         }
-    }else if(fabs(_selectedLineLastX - location.x)<30){
+    }else if(fabs(_selectedLineLastX - location.x)<50){
         _selectedLineLastX = location.x < CGRectGetWidth(self.bounds) ? location.x:CGRectGetWidth(self.bounds);
         if (_selectedLineLastX < 0) {
             _selectedLineLastX = 0;
@@ -83,8 +106,8 @@
     UIColor *aColor = [UIColor blackColor];//blue蓝色
     //画线
     CGPoint aPoints[2];//坐标点
-    aPoints[0] =CGPointMake(0, heigh/2.0);//坐标1
-    aPoints[1] =CGPointMake(width, heigh/2.0);//坐标2
+    aPoints[0] =CGPointMake(0, heigh/2.0 - 1.0);//坐标1
+    aPoints[1] =CGPointMake(width, heigh/2.0 - 1.0);//坐标2
     CGContextSetLineWidth(context, 2.0);//线的宽度
     CGContextAddLines(context, aPoints, 2);
     CGContextDrawPath(context, kCGPathStroke); //根据坐标绘制路径
@@ -96,7 +119,13 @@
     if (_selectedLineLastX == 0) {
         _selectedLineLastX = width;
     }
-    CGContextAddRect(context,CGRectMake(_selectedLineX, heigh/4.0, _selectedLineLastX - _selectedLineX, heigh/2.0));//画方框
+    CGContextAddRect(context,CGRectMake(_selectedLineX, heigh/2.0- 5, _selectedLineLastX - _selectedLineX, 10));//画方框
+    CGContextDrawPath(context, kCGPathFillStroke);//绘画路径
+    
+    //画圆
+    aColor = [UIColor whiteColor];
+    CGContextSetFillColorWithColor(context, aColor.CGColor);//填充颜色
+    CGContextAddArc(context, _progressX, heigh/2.0, 10, 0, 2*PI, 0); //添加一个圆
     CGContextDrawPath(context, kCGPathFillStroke);//绘画路径
 }
 

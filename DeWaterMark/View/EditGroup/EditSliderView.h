@@ -10,10 +10,11 @@
 
 @protocol EditSliderViewDelegate<NSObject>
 - (void)valuehangeing:(float)duration x1Posi:(float)x1Posi x2Posi:(float)x2Posi;
+- (void)positionValueChangeing:(CGFloat)position;
 @end
 
 @interface EditSliderView : UIView
 @property(nonatomic, assign) float duration;
 @property(nonatomic, weak)   id<EditSliderViewDelegate> delegate;
-
+@property(nonatomic, assign)  float progress;
 @end
