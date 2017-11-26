@@ -262,9 +262,9 @@ _messageLabel.hidden = YES;
     [self.view addSubview:_topBar];
     [self.view addSubview:_topHUD];
     [self.view addSubview:_bottomBar];
-//    _topBar.hidden = YES;
-//    _topHUD.hidden = YES;
-//    _bottomBar.hidden = YES;
+    _topBar.hidden = YES;
+    _topHUD.hidden = YES;
+    _bottomBar.hidden = YES;
     
     // top hud
 
