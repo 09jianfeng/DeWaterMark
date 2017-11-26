@@ -45,7 +45,7 @@
     UITouch *toucher = enumerator.nextObject;
     CGPoint location = [toucher locationInView:self];
     
-    
+    /* //进度条的进度
     if (fabs(_progressX - location.x) < 20) {
         _progressX = location.x > 0 ? location.x:0;
         if (_progressX > CGRectGetWidth(self.bounds)) {
@@ -55,6 +55,7 @@
         _progressChange = YES;
         return;
     }
+     */
     
     
     if (fabs(_selectedLineX - location.x) < 30) {

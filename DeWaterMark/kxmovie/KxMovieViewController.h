@@ -39,4 +39,6 @@ extern NSString * const KxMovieParameterDisableDeinterlacing;   // BOOL
 - (NSUInteger)getVideoWidth;
 - (NSUInteger)getVideoHeigh;
 - (BOOL)isRoration;
+
+- (void)decodeFrameAndPresent;
 @end

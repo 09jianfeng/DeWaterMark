@@ -1456,6 +1456,11 @@ _messageLabel.hidden = YES;
     });
 }
 
+- (void)decodeFrameAndPresent{
+    [self decodeFrames];
+    [self presentFrame];
+}
+
 - (void) freeBufferedFrames
 {
     @synchronized(_videoFrames) {

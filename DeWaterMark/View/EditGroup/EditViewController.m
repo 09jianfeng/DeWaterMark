@@ -215,6 +215,8 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     NSLog(@"selecDura:%f pos1:%f posi2:%f",duration, x1Posi, x2Posi);
     _leftLabel.text = [self formatTimeInterval:x1Posi isleft:NO];
     _rightLabel.text = [self formatTimeInterval:x2Posi isleft:NO];
+    
+    [_vc decodeFrameAndPresent];
 }
 
 -(NSString *)formatTimeInterval:(CGFloat)seconds isleft:(BOOL)isLeft
