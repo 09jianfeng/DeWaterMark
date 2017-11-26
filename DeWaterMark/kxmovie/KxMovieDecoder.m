@@ -930,7 +930,7 @@ static int interrupt_callback(void *ctx);
     
     avStreamFPSTimeBase(st, 0.04, &_fps, &_videoTimeBase);
     
-    LoggerVideo(1, @"video codec size: %d:%d fps: %.3f tb: %f",
+    LoggerVideo(1, @"video codec size: %td:%td fps: %.3f tb: %f",
                 self.frameWidth,
                 self.frameHeight,
                 _fps,
