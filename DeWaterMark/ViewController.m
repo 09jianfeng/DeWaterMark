@@ -37,7 +37,7 @@
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     
-    _topViewTopLay.constant = CGRectGetWidth(self.view.frame)/4.0;
+    _topViewTopLay.constant = (CGRectGetHeight(self.view.frame) - 418)/2.0;
 }
 
 - (void)didReceiveMemoryWarning {

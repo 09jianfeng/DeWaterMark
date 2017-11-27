@@ -66,6 +66,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 @property (weak, nonatomic) IBOutlet ChoosingRectView *videoView;
 
 @property (weak, nonatomic) IBOutlet EditSliderView *slidView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *playViewHeigh;
 @end
 
 @implementation EditViewController{
@@ -111,6 +112,11 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     
     _slidView.delegate = self;
     _slidView.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
+}
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    _playViewHeigh.constant = CGRectGetHeight(self.view.frame) - 168;
 }
 
 - (void)didReceiveMemoryWarning {
