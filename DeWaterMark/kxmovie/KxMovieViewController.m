@@ -1456,9 +1456,20 @@ _messageLabel.hidden = YES;
     });
 }
 
-- (void)decodeFrameAndPresent{
+- (CGFloat)decodeFrameAndPresent:(CGFloat *)duration{
     [self decodeFrames];
-    [self presentFrame];
+    
+    KxVideoFrame *frame;
+    if (_videoFrames.count > 0) {
+        frame = _videoFrames[0];
+    }
+    
+    CGFloat position = frame.position;
+    CGFloat dura = [self presentFrame];
+    NSLog(@"____ duration:%f posi:%f",dura,position);
+    
+    *duration = dura;
+    return position;
 }
 
 - (void) freeBufferedFrames

@@ -72,6 +72,8 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     KxMovieViewController *_vc;
     CGRect _choosingVideoRect;
     MBProgressHUD *HUD;
+    CGFloat _drafPosition;
+    CGFloat _drafFrameDuration;
 }
 
 - (void)viewDidLoad {
@@ -80,6 +82,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     
     [self addSubViews];
     EDITCon = self;
+    _drafPosition = 0.00001f;
 }
 
 - (void)dealloc{
@@ -210,15 +213,6 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     free(argv);
 }
 
-#pragma mark - sliderDelegate
-- (void)valuehangeing:(float)duration x1Posi:(float)x1Posi x2Posi:(float)x2Posi{
-    NSLog(@"selecDura:%f pos1:%f posi2:%f",duration, x1Posi, x2Posi);
-    _leftLabel.text = [self formatTimeInterval:x1Posi isleft:NO];
-    _rightLabel.text = [self formatTimeInterval:x2Posi isleft:NO];
-    
-    [_vc decodeFrameAndPresent];
-}
-
 -(NSString *)formatTimeInterval:(CGFloat)seconds isleft:(BOOL)isLeft
 {
     seconds = MAX(0, seconds);
@@ -236,6 +230,22 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     [format appendFormat:@":%0.2td", s];
     
     return format;
+}
+
+
+#pragma mark - callback
+- (void)valuehangeing:(float)duration x1Posi:(float)x1Posi x2Posi:(float)x2Posi{
+    NSLog(@"selecDura:%f pos1:%f posi2:%f",duration, x1Posi, x2Posi);
+    _leftLabel.text = [self formatTimeInterval:x1Posi isleft:NO];
+    _rightLabel.text = [self formatTimeInterval:x2Posi isleft:NO];
+    
+    CGFloat frameDuration;
+    if (x1Posi > _drafPosition) {
+        while (x1Posi - _drafFrameDuration > _drafPosition && _drafPosition > 0.00000f) {
+            _drafPosition = [_vc decodeFrameAndPresent:&frameDuration];
+            _drafFrameDuration = frameDuration;
+        }
+    }
 }
 
 - (void)choosingRect:(CGRect)rect{
@@ -274,10 +284,18 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 
 - (void)updateMoviePlayPosition:(CGFloat)position duration:(CGFloat)duration{
     _slidView.progress = position/duration;
+    _drafFrameDuration = position;
+    _slidView.selectedLineX = position*CGRectGetWidth(_slidView.bounds)/duration;
 }
 
 - (void)positionValueChangeing:(CGFloat)position{
     [_vc setMoviePosition:position];
+}
+
+- (void)drafCallback:(BOOL)backward endPosi:(float)endPosi{
+    if (backward) {
+        [_vc setMoviePosition:endPosi];
+    }
 }
 
 //http://www.btsoso.info/search/%E4%BC%8A%E4%B8%9C%E9%81%A5_ctime_1.html

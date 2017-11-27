@@ -10,10 +10,12 @@
 #define PI M_PI
 
 @implementation EditSliderView{
-    CGFloat _selectedLineX;
     CGFloat _selectedLineLastX;
     CGFloat _progressX;
     BOOL _progressChange;
+    
+    CGFloat _touchBeginX;
+    CGFloat _touchEndX;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -31,13 +33,35 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    NSEnumerator *enumerator = [touches objectEnumerator];
+    UITouch *toucher = enumerator.nextObject;
+    CGPoint location = [toucher locationInView:self];
+    
+    _touchBeginX = location.x;
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    NSEnumerator *enumerator = [touches objectEnumerator];
+    UITouch *toucher = enumerator.nextObject;
+    CGPoint location = [toucher locationInView:self];
+    
+    _touchEndX = location.x;
+    
     if (_progressChange) {
         [_delegate positionValueChangeing:_progressX*_duration/CGRectGetWidth(self.bounds)];
         _progressChange = NO;
     }
+    
+    CGFloat width = CGRectGetWidth(self.frame);
+    float deltax2 = location.x/width;
+    
+    float x2 = _duration;
+    if (_duration <= 0) {
+        x2 = 0;
+    }else{
+        x2 *= deltax2;
+    }
+    [_delegate drafCallback:(_touchEndX<_touchBeginX) endPosi:deltax2];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -87,6 +111,7 @@
     }
     
     [_delegate valuehangeing:_duration x1Posi:x1 x2Posi:x2];
+//    _selectedLineX = feedBackPosition * CGRectGetWidth(self.bounds);
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
