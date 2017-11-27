@@ -78,10 +78,12 @@
                     NSLog(@"____ videoPath:%@",path);
                     _videoPath = path;
                     
-                    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    EditViewController *editCon = [main instantiateViewControllerWithIdentifier:@"EditViewController"];
-                    editCon.videoPath = _videoPath;
-                    [self.navigationController pushViewController:editCon animated:YES];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                        EditViewController *editCon = [main instantiateViewControllerWithIdentifier:@"EditViewController"];
+                        editCon.videoPath = _videoPath;
+                        [self.navigationController pushViewController:editCon animated:YES];
+                    });
                 }];
             }
         }
