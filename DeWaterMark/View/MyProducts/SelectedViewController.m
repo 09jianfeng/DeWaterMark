@@ -9,8 +9,9 @@
 #import "SelectedViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "MyFileManage.h"
 
-@interface SelectedViewController ()
+@interface SelectedViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *videoImage;
 
 @end
@@ -29,6 +30,8 @@
     [self addChildViewController:_mpMoview];
     _mpMoview.view.frame = self.videoImage.bounds;
     [self.videoImage addSubview:_mpMoview.view];
+    
+    self.title = [NSString stringWithFormat:@"%@",[_videoPath lastPathComponent]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,14 +44,16 @@
 }
 
 - (IBAction)playBtnPressed:(id)sender {
+
 }
 
 - (IBAction)saveToAlbumPressed:(id)sender {
-    
+    [self saveVideo:_videoPath];
 }
 
 - (IBAction)deleteVideoPressed:(id)sender {
-    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否确定删除视频" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
+    [alertView show];
 }
 
 #pragma mark - 工具
@@ -64,6 +69,34 @@
     UIImage *thumb = [[UIImage alloc] initWithCGImage:image];
     CGImageRelease(image);
     return thumb;
+}
+
+//videoPath为视频下载到本地之后的本地路径
+- (void)saveVideo:(NSString *)videoPath{
+    if (videoPath) {
+        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(videoPath)) {
+            //保存相册核心代码
+            UISaveVideoAtPathToSavedPhotosAlbum(videoPath, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+        }
+    }
+}
+
+- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error
+  contextInfo:(void *)contextInfo {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alertView show];
+}
+
+#pragma mark - alertDelegate
+- (void)alertViewCancel:(UIAlertView *)alertView{
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        
+        [MyFileManage deleteWithFilePath:_videoPath];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end

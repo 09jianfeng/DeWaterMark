@@ -18,6 +18,8 @@
 
 +(void)getVideoPathFromPHAsset:(PHAsset *)asset fileName:(NSString *)fileName fileDir:(NSString *)fileDir rootDir:(NSString *)rootDir complete:(void (^)(NSString *, NSString *))result failure:(void (^)(NSString *))failure cancell:(void (^)(void))cancell progressblock:(void (^)(float progress))progressblock;
 
++(void)deleteWithFilePath:(NSString *)filePath;
+
 +(NSString *)getOriginVideoDirPath;
 +(NSString *)getFFMPEGTransformDirPath;
 

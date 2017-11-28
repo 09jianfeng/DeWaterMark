@@ -11,6 +11,7 @@
 #import "YZYPhotoPicker.h"
 #import "EditViewController.h"
 #import "MBProgressHUD.h"
+#import "MyFileManage.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewTopLay;
@@ -126,7 +127,9 @@
 }
 
 - (IBAction)buttonMorePressed:(id)sender {
-    NSLog(@"");
+    NSLog(@"清理视频");
+    NSString *originPath = [MyFileManage getOriginVideoDirPath];
+    [MyFileManage deleteWithFilePath:originPath];
 }
 
 

@@ -75,6 +75,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     MBProgressHUD *HUD;
     CGFloat _drafPosition;
     CGFloat _drafFrameDuration;
+    UIView *_baseView;
 }
 
 - (void)viewDidLoad {
@@ -125,8 +126,15 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 }
 
 - (void)addSubViews{
+    
+    _baseView = [UIView new];
+    _baseView.frame = self.view.bounds;
+    _baseView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    _baseView.hidden = YES;
+    [self.view addSubview:_baseView];
+    
     HUD = [[MBProgressHUD alloc] init];
-    [self.view addSubview:HUD];
+    [_baseView addSubview:HUD];
     HUD.mode = MBProgressHUDModeIndeterminate;//进度条
     HUD.square = YES;
     //14,设置显示和隐藏动画类型  有三种动画效果，如下
@@ -144,13 +152,13 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 }
 
 - (IBAction)delogoPressed:(id)sender {
-    HUD.hidden = NO;
+    _baseView.hidden = NO;
     [HUD showAnimated:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
        [self dealVideoWithDelogoWithChoosingRect:_choosingVideoRect];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            HUD.hidden = YES;
+            _baseView.hidden = YES;
             [HUD showAnimated:NO];
         });
     });
@@ -164,7 +172,13 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 - (void)dealVideoWithDelogoWithChoosingRect:(CGRect)choosingRect{
     NSString *resourcePath = _videoPath;
     NSString *root = [MyFileManage getMyProductionsDirPath];
-    NSString *targetPath = [root stringByAppendingString:[NSString stringWithFormat:@"/%@",[resourcePath lastPathComponent]]];
+    
+    NSDateFormatter *dateFormatter =[[NSDateFormatter alloc] init];
+    // 设置日期格式
+    [dateFormatter setDateFormat:@"MM_dd_hh:mm:ss"];
+    NSString *dayTime = [dateFormatter stringFromDate:[NSDate date]];
+
+    NSString *targetPath = [root stringByAppendingString:[NSString stringWithFormat:@"/%@%@",dayTime,[resourcePath lastPathComponent]]];
     
     NSString *command = [NSString stringWithFormat:@"ffmpeg -i %@ -vf delogo=x=%d:y=%d:w=%d:h=%d:band=10 %@",resourcePath,(int)choosingRect.origin.x,(int)choosingRect.origin.y,(int)choosingRect.size.width,(int)choosingRect.size.height,targetPath];
     NSString *command_str= [NSString stringWithFormat:@"%@",command];
@@ -192,7 +206,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     
     NSDateFormatter *dateFormatter =[[NSDateFormatter alloc] init];
     // 设置日期格式
-    [dateFormatter setDateFormat:@"YYYY_MM_dd_hh_mm_ss"];
+    [dateFormatter setDateFormat:@"MM/dd/hh:mm:ss"];
     NSString *dayTime = [dateFormatter stringFromDate:[NSDate date]];
     
     NSString *root = [MyFileManage getFFMPEGTransformDirPath];
