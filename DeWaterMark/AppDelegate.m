@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "WXApi.h"
+#import "MMDrawerController.h"
+#import "RightDrawerTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +21,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //向微信注册wxd930ea5d5a258f4f
+    [WXApi registerApp:@"wxb4ba3c02aa476ea1"];
+
+    RightDrawerTableViewController *rightCon = [RightDrawerTableViewController new];
+    
+    UINavigationController *nav = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MyNavigationViewController"];
+    MMDrawerController *draw = [[MMDrawerController alloc] initWithCenterViewController:nav rightDrawerViewController:rightCon];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = draw;
+    
     return YES;
 }
 

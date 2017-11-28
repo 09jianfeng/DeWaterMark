@@ -12,6 +12,8 @@
 #import "EditViewController.h"
 #import "MBProgressHUD.h"
 #import "MyFileManage.h"
+#import "MMDrawerBarButtonItem.h"
+#import "UIViewController+MMDrawerController.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewTopLay;
@@ -38,7 +40,27 @@
     self.navigationController.navigationBar.backgroundColor = [UIColor redColor];
     
     [self addSubViews];
+    
+    MMDrawerBarButtonItem *button = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(buttonPressed:)];
+    [button setTintColor:[UIColor whiteColor]];
+    self.navigationItem.rightBarButtonItem = button;
+//    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_goback"] style:UIBarButtonItemStyleDone target:self action:@selector(buttonPressedDown:)];
+//    [left setTintColor:[UIColor whiteColor]];
+//    self.navigationItem.leftBarButtonItem = left;
+
 }
+
+- (void)buttonPressed:(id)sender{
+    if (self.mm_drawerController.openSide != MMDrawerSideRight) {
+        [self.mm_drawerController openDrawerSide:MMDrawerSideRight animated:YES completion:^(BOOL finished) {
+        }];
+        
+    }else{
+        [self.mm_drawerController closeDrawerAnimated:YES completion:^(BOOL finished) {
+        }];
+    }
+}
+
 
 - (void)addSubViews{
     

@@ -53,6 +53,11 @@
 		7885D7EC1FCD8CFF00A4B59E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7885D7EB1FCD8CFF00A4B59E /* libsqlite3.tbd */; };
 		7885D7EE1FCD8D2000A4B59E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7885D7ED1FCD8D1600A4B59E /* CoreMotion.framework */; };
 		7885D7EF1FCD8D2600A4B59E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7885D7E61FCD8A9700A4B59E /* CoreTelephony.framework */; };
+		7885D7FE1FCD974900A4B59E /* MyNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D7FD1FCD974900A4B59E /* MyNavigationViewController.m */; };
+		7885D8031FCD990000A4B59E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D8011FCD990000A4B59E /* AboutViewController.m */; };
+		7885D8041FCD990000A4B59E /* RightDrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D8021FCD990000A4B59E /* RightDrawerTableViewController.m */; };
+		7885D8081FCD9A1400A4B59E /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D8051FCD9A1300A4B59E /* MyTableViewCell.m */; };
+		7885D8091FCD9A1400A4B59E /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7885D8071FCD9A1300A4B59E /* MyTableViewCell.xib */; };
 		78B76C4B1FC08BE6003DA58E /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78B76C331FC08BE6003DA58E /* arrow@2x.png */; };
 		78B76C4C1FC08BE6003DA58E /* arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78B76C341FC08BE6003DA58E /* arrow@3x.png */; };
 		78B76C4D1FC08BE6003DA58E /* gridCell_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78B76C351FC08BE6003DA58E /* gridCell_select@2x.png */; };
@@ -256,6 +261,15 @@
 		7885D7EA1FCD8AD600A4B59E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		7885D7EB1FCD8CFF00A4B59E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		7885D7ED1FCD8D1600A4B59E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		7885D7FC1FCD974900A4B59E /* MyNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavigationViewController.h; sourceTree = "<group>"; };
+		7885D7FD1FCD974900A4B59E /* MyNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavigationViewController.m; sourceTree = "<group>"; };
+		7885D7FF1FCD98FF00A4B59E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		7885D8001FCD98FF00A4B59E /* RightDrawerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightDrawerTableViewController.h; sourceTree = "<group>"; };
+		7885D8011FCD990000A4B59E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		7885D8021FCD990000A4B59E /* RightDrawerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightDrawerTableViewController.m; sourceTree = "<group>"; };
+		7885D8051FCD9A1300A4B59E /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
+		7885D8061FCD9A1300A4B59E /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
+		7885D8071FCD9A1300A4B59E /* MyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
 		78B76C331FC08BE6003DA58E /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		78B76C341FC08BE6003DA58E /* arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@3x.png"; sourceTree = "<group>"; };
 		78B76C351FC08BE6003DA58E /* gridCell_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gridCell_select@2x.png"; sourceTree = "<group>"; };
@@ -637,6 +651,15 @@
 		7885D7C51FCD468E00A4B59E /* root */ = {
 			isa = PBXGroup;
 			children = (
+				7885D8061FCD9A1300A4B59E /* MyTableViewCell.h */,
+				7885D8051FCD9A1300A4B59E /* MyTableViewCell.m */,
+				7885D8071FCD9A1300A4B59E /* MyTableViewCell.xib */,
+				7885D7FF1FCD98FF00A4B59E /* AboutViewController.h */,
+				7885D8011FCD990000A4B59E /* AboutViewController.m */,
+				7885D8001FCD98FF00A4B59E /* RightDrawerTableViewController.h */,
+				7885D8021FCD990000A4B59E /* RightDrawerTableViewController.m */,
+				7885D7FC1FCD974900A4B59E /* MyNavigationViewController.h */,
+				7885D7FD1FCD974900A4B59E /* MyNavigationViewController.m */,
 				7816B1A11FAD5F77007A6350 /* ViewController.h */,
 				7816B1A21FAD5F77007A6350 /* ViewController.m */,
 				7885D7C61FCD46B100A4B59E /* MenuButton.h */,
@@ -804,6 +827,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7885D7D71FCD89E400A4B59E /* AlipaySDK.bundle in Resources */,
+				7885D8091FCD9A1400A4B59E /* MyTableViewCell.xib in Resources */,
 				78B76C4D1FC08BE6003DA58E /* gridCell_select@2x.png in Resources */,
 				7885D7DF1FCD8A4900A4B59E /* README.txt in Resources */,
 				7816B1AB1FAD5F77007A6350 /* LaunchScreen.storyboard in Resources */,
@@ -889,19 +913,23 @@
 				7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */,
 				7816B2E41FAE1186007A6350 /* ffmpeg_filter.c in Sources */,
 				7816B1B71FAD61FD007A6350 /* EditViewController.m in Sources */,
+				7885D7FE1FCD974900A4B59E /* MyNavigationViewController.m in Sources */,
 				7885D7B71FCCFEE900A4B59E /* SelectedViewController.m in Sources */,
 				7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */,
 				7816B1BF1FADF224007A6350 /* MyFileManage.m in Sources */,
 				7816B2E71FAE1186007A6350 /* getopt.c in Sources */,
 				78B76C511FC08BE6003DA58E /* YZYAlbumListCell.m in Sources */,
 				78B76C581FC08BE6003DA58E /* YZYPhotoPicker.m in Sources */,
+				7885D8081FCD9A1400A4B59E /* MyTableViewCell.m in Sources */,
 				7816B3021FAE1BD4007A6350 /* KxMovieGLView.m in Sources */,
 				78B76C501FC08BE6003DA58E /* YZYAlbumDropView.m in Sources */,
 				7816B1A31FAD5F77007A6350 /* ViewController.m in Sources */,
 				7816B2E51FAE1186007A6350 /* ffmpeg_mod.c in Sources */,
 				7885D7C81FCD46B100A4B59E /* MenuButton.m in Sources */,
+				7885D8031FCD990000A4B59E /* AboutViewController.m in Sources */,
 				7816B2FF1FAE1BD4007A6350 /* KxAudioManager.m in Sources */,
 				78B76C531FC08BE6003DA58E /* YZYPhotoBrowserCell.m in Sources */,
+				7885D8041FCD990000A4B59E /* RightDrawerTableViewController.m in Sources */,
 				78B76C4F1FC08BE6003DA58E /* UIView+Addition.m in Sources */,
 				7816B1AE1FAD5F77007A6350 /* main.m in Sources */,
 				7816B3011FAE1BD4007A6350 /* KxMovieDecoder.m in Sources */,
