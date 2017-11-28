@@ -470,10 +470,14 @@ NSString *DefautlDir = @"defaultdir";
     }
 }
 
-+(void)getVideoPathFromPHAsset:(PHAsset *)asset fileName:(NSString *)fileName fileDir:(NSString *)fileDir rootDir:(NSString *)rootDir complete:(void (^)(NSString *, NSString *))result failure:(void (^)(NSString *))failure cancell:(void (^)(void))cancell{
++(void)getVideoPathFromPHAsset:(PHAsset *)asset fileName:(NSString *)fileName fileDir:(NSString *)fileDir rootDir:(NSString *)rootDir complete:(void (^)(NSString *, NSString *))result failure:(void (^)(NSString *))failure cancell:(void (^)(void))cancell progressblock:(void (^)(float progress))progressblock{
     PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
     options.version = PHImageRequestOptionsVersionCurrent;
     options.deliveryMode = PHVideoRequestOptionsDeliveryModeAutomatic;
+    options.progressHandler =  ^(double progress,NSError *error,BOOL* stop, NSDictionary* dict) {
+        progressblock(progress);
+    };
+    
     PHImageManager *manager = [PHImageManager defaultManager];
     [manager requestExportSessionForVideo:asset options:options exportPreset:AVAssetExportPresetMediumQuality resultHandler:^(AVAssetExportSession * _Nullable exportSession, NSDictionary * _Nullable info) {
         NSString *savePath = [self createPathWithFileName:fileName direName:fileDir rootDir:rootDir];

@@ -160,6 +160,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="104" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </view>
+                                <connections>
+                                    <segue destination="XRS-CO-SW9" kind="show" id="wVj-Z0-C5g"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -171,6 +174,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CBi-sd-Um4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="733.60000000000002" y="863.1184407796103"/>
+        </scene>
+        <!--Selected View Controller-->
+        <scene sceneID="W7U-Gr-ITo">
+            <objects>
+                <viewController storyboardIdentifier="SelectedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XRS-CO-SW9" customClass="SelectedViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1ox-67-ilQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="gvI-NU-8eA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j2k-5G-q8D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qCc-sV-JKa">
+                                <rect key="frame" x="26" y="84" width="323" height="503"/>
+                                <color key="backgroundColor" red="0.88476001630000001" green="0.94944196430000005" blue="0.88436893080000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEQ-VV-W1K">
+                                <rect key="frame" x="66" y="607" width="80" height="50"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.68627450980000004" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="HHf-gJ-mIl"/>
+                                    <constraint firstAttribute="height" constant="50" id="WTp-xx-Ym2"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="保存到相册"/>
+                                <connections>
+                                    <action selector="saveToAlbumPressed:" destination="XRS-CO-SW9" eventType="touchUpInside" id="MFP-27-bIb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXs-co-h1f">
+                                <rect key="frame" x="229" y="607" width="80" height="50"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.68627450980000004" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YUy-sd-eXZ"/>
+                                    <constraint firstAttribute="width" constant="80" id="yU8-0Q-0xd"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="删除视频"/>
+                                <connections>
+                                    <action selector="deleteVideoPressed:" destination="XRS-CO-SW9" eventType="touchUpInside" id="ih2-3p-qDC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gvI-NU-8eA" firstAttribute="top" secondItem="MEQ-VV-W1K" secondAttribute="bottom" constant="10" id="2rm-3m-Hja"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FXs-co-h1f" secondAttribute="trailing" constant="50" id="3Bv-PS-cEF"/>
+                            <constraint firstItem="MEQ-VV-W1K" firstAttribute="leading" secondItem="j2k-5G-q8D" secondAttribute="leadingMargin" constant="50" id="ORY-SO-A0w"/>
+                            <constraint firstItem="qCc-sV-JKa" firstAttribute="leading" secondItem="j2k-5G-q8D" secondAttribute="leadingMargin" constant="10" id="igJ-eY-6Dn"/>
+                            <constraint firstItem="gvI-NU-8eA" firstAttribute="top" secondItem="FXs-co-h1f" secondAttribute="bottom" constant="10" id="mvW-Je-C7F"/>
+                            <constraint firstItem="MEQ-VV-W1K" firstAttribute="top" secondItem="qCc-sV-JKa" secondAttribute="bottom" constant="20" id="rdm-3B-M3P"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qCc-sV-JKa" secondAttribute="trailing" constant="10" id="toZ-Wa-yIN"/>
+                            <constraint firstItem="qCc-sV-JKa" firstAttribute="top" secondItem="1ox-67-ilQ" secondAttribute="bottom" constant="20" id="zBI-Y6-hFx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="videoImage" destination="qCc-sV-JKa" id="Ihr-de-1HH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cJx-yz-ekO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2173.5999999999999" y="877.51124437781118"/>
         </scene>
         <!--编辑-->
         <scene sceneID="d7t-VW-YKs">

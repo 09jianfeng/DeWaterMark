@@ -11,6 +11,7 @@
 #import "Masonry.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "SelectedViewController.h"
 
 @interface MyVideosController ()
 @property(nonatomic, strong) NSArray *myVideosPath;
@@ -102,8 +103,9 @@ static NSString * const reuseIdentifier = @"MyVideosControllerCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSString *videoPath = [_myVideosPath objectAtIndex:indexPath.row];
-    MPMoviePlayerViewController *mpMoview = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:videoPath]];
-    [self presentMoviePlayerViewControllerAnimated:mpMoview];
+    SelectedViewController *selecVieCon = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SelectedViewController"];
+    selecVieCon.videoPath = videoPath;
+    [self.navigationController pushViewController:selecVieCon animated:YES];
 }
 
 #pragma mark - 工具

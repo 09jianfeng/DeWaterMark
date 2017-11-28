@@ -10,6 +10,7 @@
 #import "AlbumManager.h"
 #import "YZYPhotoPicker.h"
 #import "EditViewController.h"
+#import "MBProgressHUD.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewTopLay;
@@ -19,6 +20,8 @@
 
 @implementation ViewController{
     NSString *_videoPath;
+    MBProgressHUD *HUD;
+    UIView *_baseView;
 }
 
 - (void)viewDidLoad {
@@ -32,6 +35,26 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.backgroundColor = [UIColor redColor];
+    
+    [self addSubViews];
+}
+
+- (void)addSubViews{
+    
+    _baseView = [UIView new];
+    _baseView.frame = self.view.bounds;
+    _baseView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    _baseView.hidden = YES;
+    [self.view addSubview:_baseView];
+    
+    HUD = [[MBProgressHUD alloc] init];
+    [_baseView addSubview:HUD];
+    HUD.mode = MBProgressHUDModeIndeterminate;//进度条
+    HUD.square = YES;
+    //14,设置显示和隐藏动画类型  有三种动画效果，如下
+    HUD.animationType = MBProgressHUDAnimationZoomIn; //和上一个相反，前近，最后淡化消失
+    HUD.removeFromSuperViewOnHide = NO;
+    HUD.label.textColor = [UIColor blueColor];
 }
 
 - (void)viewDidLayoutSubviews{
@@ -73,16 +96,28 @@
             //                i ++;
             //            }
             
+            _baseView.hidden = NO;
+            [HUD showAnimated:YES];
+            HUD.label.text = @"正在从相册导入";
+            
             for (id asset in imageSources) {
                 [[YZYPhotoDataManager shareInstance] fetchVideoPathFromAsset:asset result:^(NSString *path) {
+                    
                     NSLog(@"____ videoPath:%@",path);
                     _videoPath = path;
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        _baseView.hidden = YES;
+                        [HUD hideAnimated:YES];
+                        
                         UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                         EditViewController *editCon = [main instantiateViewControllerWithIdentifier:@"EditViewController"];
                         editCon.videoPath = _videoPath;
                         [self.navigationController pushViewController:editCon animated:YES];
+                    });
+                } progressblock:^(float progress) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        HUD.label.text = [NSString stringWithFormat:@"正在从相册导入 %%%d",(int)(progress*100)];
                     });
                 }];
             }

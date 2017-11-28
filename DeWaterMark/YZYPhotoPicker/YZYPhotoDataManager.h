@@ -129,5 +129,5 @@ typedef void (^fetchResultBlock)(NSArray *);
 /**
  * 视频
  */
-- (void)fetchVideoPathFromAsset:(id)asset result:(void (^)(NSString *path))result;
+- (void)fetchVideoPathFromAsset:(id)asset result:(void (^)(NSString *path))result progressblock:(void (^)(float progress))progressblock;
 @end

@@ -41,6 +41,8 @@
 		7816B3021FAE1BD4007A6350 /* KxMovieGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FC1FAE1BD4007A6350 /* KxMovieGLView.m */; };
 		7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */; };
 		7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B3051FAF5622007A6350 /* ChoosingRectView.m */; };
+		7885D7A21FCC466900A4B59E /* MyVideoConfigView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D7A11FCC466900A4B59E /* MyVideoConfigView.m */; };
+		7885D7B71FCCFEE900A4B59E /* SelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D7B61FCCFEE900A4B59E /* SelectedViewController.m */; };
 		78B76C4B1FC08BE6003DA58E /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78B76C331FC08BE6003DA58E /* arrow@2x.png */; };
 		78B76C4C1FC08BE6003DA58E /* arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78B76C341FC08BE6003DA58E /* arrow@3x.png */; };
 		78B76C4D1FC08BE6003DA58E /* gridCell_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78B76C351FC08BE6003DA58E /* gridCell_select@2x.png */; };
@@ -221,6 +223,10 @@
 		7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMovieViewController.m; sourceTree = "<group>"; };
 		7816B3041FAF5622007A6350 /* ChoosingRectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChoosingRectView.h; sourceTree = "<group>"; };
 		7816B3051FAF5622007A6350 /* ChoosingRectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoosingRectView.m; sourceTree = "<group>"; };
+		7885D7A01FCC466900A4B59E /* MyVideoConfigView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyVideoConfigView.h; sourceTree = "<group>"; };
+		7885D7A11FCC466900A4B59E /* MyVideoConfigView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyVideoConfigView.m; sourceTree = "<group>"; };
+		7885D7B51FCCFEE900A4B59E /* SelectedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedViewController.h; sourceTree = "<group>"; };
+		7885D7B61FCCFEE900A4B59E /* SelectedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectedViewController.m; sourceTree = "<group>"; };
 		78B76C331FC08BE6003DA58E /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		78B76C341FC08BE6003DA58E /* arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@3x.png"; sourceTree = "<group>"; };
 		78B76C351FC08BE6003DA58E /* gridCell_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gridCell_select@2x.png"; sourceTree = "<group>"; };
@@ -634,6 +640,10 @@
 		78CE36C01FC9C72E00F84932 /* MyProducts */ = {
 			isa = PBXGroup;
 			children = (
+				7885D7B51FCCFEE900A4B59E /* SelectedViewController.h */,
+				7885D7B61FCCFEE900A4B59E /* SelectedViewController.m */,
+				7885D7A01FCC466900A4B59E /* MyVideoConfigView.h */,
+				7885D7A11FCC466900A4B59E /* MyVideoConfigView.m */,
 				78CE36C11FC9C81100F84932 /* MyVideosController.h */,
 				78CE36C21FC9C81100F84932 /* MyVideosController.m */,
 			);
@@ -802,9 +812,11 @@
 				78B76C551FC08BE6003DA58E /* YZYPhotoDataManager.m in Sources */,
 				7816B1BA1FAD66AA007A6350 /* EditSliderView.m in Sources */,
 				7816B2E31FAE1186007A6350 /* cmdutils.c in Sources */,
+				7885D7A21FCC466900A4B59E /* MyVideoConfigView.m in Sources */,
 				7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */,
 				7816B2E41FAE1186007A6350 /* ffmpeg_filter.c in Sources */,
 				7816B1B71FAD61FD007A6350 /* EditViewController.m in Sources */,
+				7885D7B71FCCFEE900A4B59E /* SelectedViewController.m in Sources */,
 				7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */,
 				7816B1BF1FADF224007A6350 /* MyFileManage.m in Sources */,
 				7816B2E71FAE1186007A6350 /* getopt.c in Sources */,
