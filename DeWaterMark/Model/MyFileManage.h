@@ -25,4 +25,7 @@
 
 +(NSString *)getMyProductionsDirPath;
 +(NSArray *)getMyProductionsVideoPaths;
+
++(NSString *)memberId;
++(void)setMemberId:(NSString *)memberId;
 @end

@@ -9,10 +9,11 @@
 
 #import "MyFileManage.h"
 #import <Photos/Photos.h>
+#import "MyFileManage.h"
 
 NSString *RootFileCache = @"rootfilecache";
 NSString *DefautlDir = @"defaultdir";
-
+static NSString *MEMBERID = @"MEMBERID";
 
 @implementation MyFileManage
 
@@ -547,5 +548,15 @@ NSString *DefautlDir = @"defaultdir";
     return [MyFileManage filePathsWithDirPath:producDirPath];
 }
 
++(NSString *)memberId{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *memberid = [userDefault objectForKey:MEMBERID];
+    return memberid;
+}
+
++(void)setMemberId:(NSString *)memberId{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:memberId forKey:MEMBERID];
+}
 
 @end

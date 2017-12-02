@@ -41,6 +41,9 @@
 		7816B3021FAE1BD4007A6350 /* KxMovieGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FC1FAE1BD4007A6350 /* KxMovieGLView.m */; };
 		7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */; };
 		7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B3051FAF5622007A6350 /* ChoosingRectView.m */; };
+		783B459C1FCFEA56003770C9 /* CommonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 783B459B1FCFEA56003770C9 /* CommonConfig.m */; };
+		783B459E1FCFEA6B003770C9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783B459D1FCFEA64003770C9 /* AdSupport.framework */; };
+		783B45AB1FCFED87003770C9 /* URLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 783B45AA1FCFED87003770C9 /* URLManager.m */; };
 		7885D7A21FCC466900A4B59E /* MyVideoConfigView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D7A11FCC466900A4B59E /* MyVideoConfigView.m */; };
 		7885D7B71FCCFEE900A4B59E /* SelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D7B61FCCFEE900A4B59E /* SelectedViewController.m */; };
 		7885D7C81FCD46B100A4B59E /* MenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D7C71FCD46B100A4B59E /* MenuButton.m */; };
@@ -238,6 +241,11 @@
 		7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMovieViewController.m; sourceTree = "<group>"; };
 		7816B3041FAF5622007A6350 /* ChoosingRectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChoosingRectView.h; sourceTree = "<group>"; };
 		7816B3051FAF5622007A6350 /* ChoosingRectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoosingRectView.m; sourceTree = "<group>"; };
+		783B459A1FCFEA56003770C9 /* CommonConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonConfig.h; sourceTree = "<group>"; };
+		783B459B1FCFEA56003770C9 /* CommonConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonConfig.m; sourceTree = "<group>"; };
+		783B459D1FCFEA64003770C9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		783B45A91FCFED87003770C9 /* URLManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLManager.h; sourceTree = "<group>"; };
+		783B45AA1FCFED87003770C9 /* URLManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLManager.m; sourceTree = "<group>"; };
 		7885D7A01FCC466900A4B59E /* MyVideoConfigView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyVideoConfigView.h; sourceTree = "<group>"; };
 		7885D7A11FCC466900A4B59E /* MyVideoConfigView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyVideoConfigView.m; sourceTree = "<group>"; };
 		7885D7B51FCCFEE900A4B59E /* SelectedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedViewController.h; sourceTree = "<group>"; };
@@ -309,6 +317,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				783B459E1FCFEA6B003770C9 /* AdSupport.framework in Frameworks */,
 				7885D7EF1FCD8D2600A4B59E /* CoreTelephony.framework in Frameworks */,
 				7885D7EE1FCD8D2000A4B59E /* CoreMotion.framework in Frameworks */,
 				7885D7E51FCD8A8F00A4B59E /* SystemConfiguration.framework in Frameworks */,
@@ -402,6 +411,8 @@
 		7816B1BC1FADF1ED007A6350 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				783B459F1FCFEBBD003770C9 /* web */,
+				783B45991FCFE9DE003770C9 /* utility */,
 				78B76C671FC17E0F003DA58E /* AlbumManager.h */,
 				78B76C681FC17E0F003DA58E /* AlbumManager.m */,
 				7816B1BD1FADF224007A6350 /* MyFileManage.h */,
@@ -648,6 +659,24 @@
 			path = kxmovie;
 			sourceTree = "<group>";
 		};
+		783B45991FCFE9DE003770C9 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				783B459A1FCFEA56003770C9 /* CommonConfig.h */,
+				783B459B1FCFEA56003770C9 /* CommonConfig.m */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+		783B459F1FCFEBBD003770C9 /* web */ = {
+			isa = PBXGroup;
+			children = (
+				783B45A91FCFED87003770C9 /* URLManager.h */,
+				783B45AA1FCFED87003770C9 /* URLManager.m */,
+			);
+			path = web;
+			sourceTree = "<group>";
+		};
 		7885D7C51FCD468E00A4B59E /* root */ = {
 			isa = PBXGroup;
 			children = (
@@ -737,6 +766,7 @@
 		AD5B086707C6767EB09DF68C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				783B459D1FCFEA64003770C9 /* AdSupport.framework */,
 				7885D7ED1FCD8D1600A4B59E /* CoreMotion.framework */,
 				7885D7EB1FCD8CFF00A4B59E /* libsqlite3.tbd */,
 				7885D7EA1FCD8AD600A4B59E /* CFNetwork.framework */,
@@ -918,9 +948,11 @@
 				7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */,
 				7816B1BF1FADF224007A6350 /* MyFileManage.m in Sources */,
 				7816B2E71FAE1186007A6350 /* getopt.c in Sources */,
+				783B459C1FCFEA56003770C9 /* CommonConfig.m in Sources */,
 				78B76C511FC08BE6003DA58E /* YZYAlbumListCell.m in Sources */,
 				78B76C581FC08BE6003DA58E /* YZYPhotoPicker.m in Sources */,
 				7885D8081FCD9A1400A4B59E /* MyTableViewCell.m in Sources */,
+				783B45AB1FCFED87003770C9 /* URLManager.m in Sources */,
 				7816B3021FAE1BD4007A6350 /* KxMovieGLView.m in Sources */,
 				78B76C501FC08BE6003DA58E /* YZYAlbumDropView.m in Sources */,
 				7816B1A31FAD5F77007A6350 /* ViewController.m in Sources */,
