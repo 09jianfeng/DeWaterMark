@@ -9,16 +9,21 @@
 #import "RightDrawerTableViewController.h"
 #import "MyTableViewCell.h"
 #import <AVFoundation/AVFoundation.h>
-//#import "QRCodeGenerateVC.h"
-//#import "SGQRCodeScanningVC.h"
+#import "QRCodeGenerateVC.h"
+#import "SGQRCodeScanningVC.h"
 #import "MMDrawerController.h"
 #import "AboutViewController.h"
+#import "WebRequestHandler.h"
+#import "Masonry.h"
+#import "PayViewAndLogic.h"
 
 @interface RightDrawerTableViewController ()
 
 @end
 
-@implementation RightDrawerTableViewController
+@implementation RightDrawerTableViewController{
+    UIView *_baseView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,7 +49,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -67,6 +72,13 @@
         {
             cell.imageView.image = [UIImage imageNamed:@"db_14a"];
             cell.textLabel.text = @"扫一扫";
+            cell.textLabel.textColor = [UIColor blackColor];
+        }
+            break;
+        case 2:
+        {
+            cell.imageView.image = [UIImage imageNamed:@"db_14a"];
+            cell.textLabel.text = @"购买会员";
             cell.textLabel.textColor = [UIColor blackColor];
         }
             break;
@@ -94,6 +106,11 @@
         case 1:
         {
             [self scanningQRCode];
+        }
+            break;
+        case 2:
+        {
+            [self getVIP];
         }
             break;
             
@@ -129,8 +146,8 @@
             [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
                 if (granted) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-//                        SGQRCodeScanningVC *vc = [[SGQRCodeScanningVC alloc] init];
-//                        [self.navigationController pushViewController:vc animated:YES];
+                        SGQRCodeScanningVC *vc = [[SGQRCodeScanningVC alloc] init];
+                        [self.navigationController pushViewController:vc animated:YES];
                     });
                     
                     NSLog(@"当前线程 - - %@", [NSThread currentThread]);
@@ -144,10 +161,10 @@
                 }
             }];
         } else if (status == AVAuthorizationStatusAuthorized) { // 用户允许当前应用访问相机
-//            SGQRCodeScanningVC *vc = [[SGQRCodeScanningVC alloc] init];
+            SGQRCodeScanningVC *vc = [[SGQRCodeScanningVC alloc] init];
             MMDrawerController *mmdrawer = (MMDrawerController*)[UIApplication sharedApplication].keyWindow.rootViewController;
             [mmdrawer closeDrawerAnimated:YES completion:nil];
-//            [(UINavigationController *)mmdrawer.centerViewController pushViewController:vc animated:YES];
+            [(UINavigationController *)mmdrawer.centerViewController pushViewController:vc animated:YES];
         } else if (status == AVAuthorizationStatusDenied) { // 用户拒绝当前应用访问相机
             UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请去-> [设置 - 隐私 - 相机 - SGQRCodeExample] 打开访问开关" preferredStyle:(UIAlertControllerStyleAlert)];
             UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
@@ -170,6 +187,17 @@
         [self presentViewController:alertC animated:YES completion:nil];
     }
     
+}
+
+- (void)getVIP{
+    PayViewAndLogic *payView = [PayViewAndLogic shareInstance];
+    payView.frame = CGRectMake(0, -self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [payView getVIP];
+    
+    [self.view addSubview:payView];
+    [UIView animateWithDuration:0.2 animations:^{
+        payView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }];
 }
 
 @end

@@ -58,7 +58,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     
     float progress = currentFrame / totalCount;
     if (EDITCon) {
-        [EDITCon setFFMPEGProgress:progress];
+        [EDITCon setFFMPEGProgress:progress*2];
     }
 }
 

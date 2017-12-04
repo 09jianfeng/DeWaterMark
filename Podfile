@@ -13,6 +13,7 @@ pod 'KVOController', '1.2.0'
 pod 'NSLogger', '1.8.3'
 pod 'MBProgressHUD', '1.1.0'
 pod 'MMDrawerController', '~> 0.5.7'
+pod 'AFNetworking', '3.1.0'
 end
 
 post_install do |installer|
