@@ -195,6 +195,7 @@
     [payView getVIP];
     
     [self.view addSubview:payView];
+    
     [UIView animateWithDuration:0.2 animations:^{
         payView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     }];

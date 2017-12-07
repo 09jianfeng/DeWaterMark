@@ -14,6 +14,7 @@
 #include "ChoosingRectView.h"
 #import "MyFileManage.h"
 #import "MBProgressHUD.h"
+#import "PayViewAndLogic.h"
 
 int ffmpegmain(int argc, char **argv);
 
@@ -165,8 +166,8 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 }
 
 - (IBAction)clickRunButton:(id)sender {
-    
-    [_vc playDidTouch:nil];
+    [self getVIP];
+//    [_vc playDidTouch:nil];
 }
 
 - (void)dealVideoWithDelogoWithChoosingRect:(CGRect)choosingRect{
@@ -318,5 +319,18 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     }
 }
 
+#pragma mark - vip
+
 //http://www.btsoso.info/search/%E4%BC%8A%E4%B8%9C%E9%81%A5_ctime_1.html
+- (void)getVIP{
+    PayViewAndLogic *payView = [PayViewAndLogic shareInstance];
+    payView.frame = CGRectMake(0, -self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [payView getVIP];
+    
+    [self.view addSubview:payView];
+    [UIView animateWithDuration:0.2 animations:^{
+        payView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }];
+}
+
 @end
