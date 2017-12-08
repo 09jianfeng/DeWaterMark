@@ -19,4 +19,9 @@
 
 + (NSString *)getMemberId;
 + (void)setMemberId:(NSString *)memberid;
++ (void)decreaseOneChance;
++ (int)restChance;
++ (void)setVIP:(BOOL)isvip day:(int)day;
++ (BOOL)isVIP;
+
 @end

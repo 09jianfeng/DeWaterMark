@@ -41,10 +41,14 @@ static NSString * const reuseIdentifier = @"MyVideosControllerCell";
     [self.collectionView setCollectionViewLayout:layout];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated{
     _myVideosPath = [MyFileManage getMyProductionsVideoPaths];
     [self.collectionView reloadData];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {

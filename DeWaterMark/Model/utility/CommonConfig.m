@@ -20,6 +20,8 @@
 
 static NSString *NEIBUVERCODE = @"1";
 static NSString *memberID = @"memberID";
+static NSString *RESTTIME = @"RESTTIME";
+static NSString *GETISVIP = @"GETISVIP";
 
 @implementation CommonConfig
 
@@ -39,6 +41,40 @@ static NSString *memberID = @"memberID";
 + (void)setMemberId:(NSString *)memberid{
     NSUserDefaults *useDef = [NSUserDefaults standardUserDefaults];
     [useDef setObject:memberid forKey:memberID];
+}
+
++ (void)decreaseOneChance{
+    NSUserDefaults *useDef = [NSUserDefaults standardUserDefaults];
+    NSNumber *restTime = [useDef objectForKey:RESTTIME];
+    if (!restTime) {
+        [useDef setObject:@(2) forKey:RESTTIME];
+        return;
+    }
+    
+    int rest = [restTime intValue];
+    rest--;
+    [useDef setObject:@(rest) forKey:RESTTIME];
+}
+
++ (int)restChance{
+    NSUserDefaults *useDef = [NSUserDefaults standardUserDefaults];
+    NSNumber *restTime = [useDef objectForKey:RESTTIME];
+    if (!restTime) {
+        [useDef setObject:@(3) forKey:RESTTIME];
+    }
+    
+    return [restTime intValue];
+}
+
++ (void)setVIP:(BOOL)isvip{
+    NSUserDefaults *useDef = [NSUserDefaults standardUserDefaults];
+    [useDef setObject:@(1) forKey:GETISVIP];
+}
+
++ (BOOL)isVIP{
+    NSUserDefaults *useDef = [NSUserDefaults standardUserDefaults];
+    BOOL isVIP = [useDef objectForKey:GETISVIP];
+    return isVIP;
 }
 
 + (NSString *)versionName{

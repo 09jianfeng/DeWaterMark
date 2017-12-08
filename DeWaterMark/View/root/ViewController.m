@@ -14,6 +14,7 @@
 #import "MyFileManage.h"
 #import "MMDrawerBarButtonItem.h"
 #import "UIViewController+MMDrawerController.h"
+#import "PayViewAndLogic.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewTopLay;
@@ -47,6 +48,7 @@
 //    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_goback"] style:UIBarButtonItemStyleDone target:self action:@selector(buttonPressedDown:)];
 //    [left setTintColor:[UIColor whiteColor]];
 //    self.navigationItem.leftBarButtonItem = left;
+    [[PayViewAndLogic shareInstance] requestWebData];
 
 }
 

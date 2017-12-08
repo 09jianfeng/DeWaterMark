@@ -16,5 +16,5 @@
 
 //先设置frame后再调用getVIP
 - (void)getVIP;
-
+- (void)requestWebData;
 @end

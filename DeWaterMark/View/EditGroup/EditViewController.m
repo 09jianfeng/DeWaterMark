@@ -16,6 +16,7 @@
 #import "MBProgressHUD.h"
 #import "PayViewAndLogic.h"
 #import "PreviewViewController.h"
+#import "CommonConfig.h"
 
 int ffmpegmain(int argc, char **argv);
 
@@ -27,7 +28,7 @@ int ffmpegmain(int argc, char **argv);
 
 static float totalCount = 1;
 static float currentFrame = 0;
-EditViewController *EDITCon;
+static EditViewController *EDITCon;
 
 static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list vl)
 {
@@ -110,6 +111,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    EDITCon = self;
     [super viewDidAppear:animated];
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -170,7 +172,17 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     });
 }
 
+
+#pragma mark - btnPress
 - (IBAction)delogoPressed:(id)sender {
+    
+    BOOL isVIP = [CommonConfig isVIP];
+    int rest = [CommonConfig restChance];
+    if (rest <= 0 && !isVIP) {
+        [self getVIP];
+        return;
+    }
+    
     _baseView.hidden = NO;
     [HUD showAnimated:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -183,13 +195,14 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
             PreviewViewController *preview = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PreviewViewController"];
             preview.videoPath = _outputVideoPath;
             [self.navigationController pushViewController:preview animated:YES];
+            
+            [CommonConfig decreaseOneChance];
         });
     });
 }
 
 - (IBAction)clickRunButton:(id)sender {
-//    [self getVIP];
-//    [_vc playDidTouch:nil];
+    [_vc playDidTouch:nil];
 }
 
 - (void)dealVideoWithDelogoWithChoosingRect:(CGRect)choosingRect{
