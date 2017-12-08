@@ -89,6 +89,7 @@
 		78B76C691FC17E0F003DA58E /* AlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B76C681FC17E0F003DA58E /* AlbumManager.m */; };
 		78CE36C31FC9C81100F84932 /* MyVideosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CE36C21FC9C81100F84932 /* MyVideosController.m */; };
 		78CE36C51FCA7AAA00F84932 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CE36C41FCA7AA400F84932 /* MediaPlayer.framework */; };
+		78E41F511FDA0322001A938A /* StringsFile.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78E41F501FDA0322001A938A /* StringsFile.strings */; };
 		B0054FD734633A011F74A7FA /* libPods-DeWaterMark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD91559F3BC1914E85766A2 /* libPods-DeWaterMark.a */; };
 /* End PBXBuildFile section */
 
@@ -339,6 +340,7 @@
 		78CE36C11FC9C81100F84932 /* MyVideosController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyVideosController.h; sourceTree = "<group>"; };
 		78CE36C21FC9C81100F84932 /* MyVideosController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyVideosController.m; sourceTree = "<group>"; };
 		78CE36C41FCA7AA400F84932 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		78E41F501FDA0322001A938A /* StringsFile.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = StringsFile.strings; sourceTree = "<group>"; };
 		D5A7B4A3F9CD70FB2B85E626 /* Pods-DeWaterMark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeWaterMark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -443,6 +445,7 @@
 		7816B1BC1FADF1ED007A6350 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				78E41F501FDA0322001A938A /* StringsFile.strings */,
 				783B459F1FCFEBBD003770C9 /* web */,
 				783B45991FCFE9DE003770C9 /* utility */,
 				78B76C671FC17E0F003DA58E /* AlbumManager.h */,
@@ -951,6 +954,7 @@
 				7816B1A61FAD5F77007A6350 /* Main.storyboard in Resources */,
 				7816B24D1FAE0E09007A6350 /* resource.bundle in Resources */,
 				78B76C4E1FC08BE6003DA58E /* gridCell_unSelect@2x.png in Resources */,
+				78E41F511FDA0322001A938A /* StringsFile.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

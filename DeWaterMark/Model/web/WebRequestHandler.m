@@ -19,21 +19,23 @@
 }
 
 +(void)requestWxPayWithUseTime:(NSString *)priceId completeBlock:(void(^)(NSDictionary *dicData))completeBlock{
-    NSString *urlString = [URLManager getInitURL:[NSString stringWithFormat:@"%@",priceId]];
+    NSString *urlString = [URLManager getWeXPaURL:[NSString stringWithFormat:@"%@",priceId]];
     [self baseRequest:urlString completeBlock:completeBlock];
 }
 
 +(void)requestAliPayWithUseTime:(NSString *)priceId completeBlock:(void(^)(NSDictionary *dicData))completeBlock{
-    NSString *urlString = [URLManager getInitURL:[NSString stringWithFormat:@"%@",priceId]];
+    NSString *urlString = [URLManager getAliPURL:[NSString stringWithFormat:@"%@",priceId]];
     [self baseRequest:urlString completeBlock:completeBlock];
 }
 
 +(void)requestOrderId:(NSString *)orderId completeBlock:(void(^)(NSDictionary *dicData))completeBlock{
-    NSString *urlString = [URLManager getInitURL:[NSString stringWithFormat:@"%@",orderId]];
+    NSString *urlString = [URLManager getQueryOrderURL:[NSString stringWithFormat:@"%@",orderId]];
     [self baseRequest:urlString completeBlock:completeBlock];
 }
 
 + (void)baseRequest:(NSString *)urlString completeBlock:(void(^)(NSDictionary *dicData))completeBlock{
+    NSLog(@"<url> %@",urlString);
+    
     NSURLSessionConfiguration *conf = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:conf];
     

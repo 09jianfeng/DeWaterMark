@@ -14,7 +14,7 @@
 
 + (NSString *)getCommondString{
     NSString *imei = [CommonConfig getIMEIorIDFA];
-    NSString *memberId = [CommonConfig memberId];
+    NSString *memberId = [CommonConfig getMemberId];
     NSString *verName = [CommonConfig versionName];
     NSString *verCode = [CommonConfig versionCode];
     NSString *sv = [CommonConfig sv];
@@ -71,7 +71,7 @@
  }
  */
 + (NSString *)getWeXPaURL:(NSString *)priceId{
-    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/remove_ios/wechat_pay?%@&%@",priceId,[self getCommondString]];
+    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/remove_ios/wechat_pay?priceId=%@&%@",priceId,[self getCommondString]];
     return path;
 }
 
@@ -93,7 +93,7 @@
  }
  */
 + (NSString *)getAliPURL:(NSString *)priceId{
-    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/remove_ios/ali_pay?%@&%@",priceId,[self getCommondString]];
+    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/remove_ios/ali_pay?priceId=%@&%@",priceId,[self getCommondString]];
     return path;
 }
 

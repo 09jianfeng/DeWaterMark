@@ -17,22 +17,36 @@
 #import <sys/sysctl.h>
 #import <UIKit/UIKit.h>
 
+
+static NSString *NEIBUVERCODE = @"1";
+static NSString *memberID = @"memberID";
+
 @implementation CommonConfig
 
 + (NSString *)getIMEIorIDFA{
     return [self getIDFA];
 }
 
-+ (NSString *)memberId{
-    return [self getIDFA];
++ (NSString *)getMemberId{
+    NSUserDefaults *useDef = [NSUserDefaults standardUserDefaults];
+    NSString *userMember = [useDef objectForKey:memberID];
+    if (!userMember) {
+        return @"";
+    }
+    return userMember;
+}
+
++ (void)setMemberId:(NSString *)memberid{
+    NSUserDefaults *useDef = [NSUserDefaults standardUserDefaults];
+    [useDef setObject:memberid forKey:memberID];
 }
 
 + (NSString *)versionName{
-    return [self bundleID];
+    return [self appVersion];
 }
 
 + (NSString *)versionCode{
-    return [self appVersion];
+    return NEIBUVERCODE;
 }
 
 + (NSString *)sv{
@@ -107,7 +121,6 @@ static NSUInteger GetSysInfo(uint typeSpecifier) {
     sysctl(mib, 2, &results, &size, NULL, 0);
     return (NSUInteger) results;
 }
-
 
 + (NSUInteger)cpuFrequency{
     return GetSysInfo(HW_CPU_FREQ);

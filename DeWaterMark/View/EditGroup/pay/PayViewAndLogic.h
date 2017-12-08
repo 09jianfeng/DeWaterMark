@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXApi.h"
 
-@interface PayViewAndLogic : UIView
+@interface PayViewAndLogic : UIView<WXApiDelegate>
 
 //全屏大小
 + (instancetype)shareInstance;

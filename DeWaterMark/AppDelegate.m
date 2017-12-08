@@ -6,11 +6,13 @@
 //  Copyright © 2017年 JFChen. All rights reserved.
 //
 
+
 #import "AppDelegate.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
 #import "MMDrawerController.h"
 #import "RightDrawerTableViewController.h"
+#import "PayViewAndLogic.h"
 
 @interface AppDelegate ()
 
@@ -23,7 +25,7 @@
     // Override point for customization after application launch.
     
     //向微信注册wxd930ea5d5a258f4f
-    [WXApi registerApp:@"wxb4ba3c02aa476ea1"];
+    [WXApi registerApp:@"wx2949e151b02d46de"];
 
     RightDrawerTableViewController *rightCon = [RightDrawerTableViewController new];
     
@@ -45,6 +47,10 @@
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
         }];
+        
+        return YES;
+    }else{
+        return  [WXApi handleOpenURL:url delegate:[PayViewAndLogic shareInstance]];
     }
     return YES;
 }
@@ -57,10 +63,18 @@
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
         }];
+        
+        return YES;
+    }else{
+        return  [WXApi handleOpenURL:url delegate:[PayViewAndLogic shareInstance]];
     }
+    
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return  [WXApi handleOpenURL:url delegate:[PayViewAndLogic shareInstance]];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -11,12 +11,12 @@
 @interface CommonConfig : NSObject
 
 + (NSString *)getIMEIorIDFA;
-+ (NSString *)memberId;
 + (NSString *)versionName;
 + (NSString *)versionCode;
 + (NSString *)sv;
 + (NSString *)phoneModel;
 + (NSString *)mobileType;
 
-
++ (NSString *)getMemberId;
++ (void)setMemberId:(NSString *)memberid;
 @end
