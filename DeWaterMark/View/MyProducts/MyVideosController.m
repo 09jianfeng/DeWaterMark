@@ -39,8 +39,12 @@ static NSString * const reuseIdentifier = @"MyVideosControllerCell";
     layout.minimumInteritemSpacing = 10;
     layout.sectionInset = UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0);
     [self.collectionView setCollectionViewLayout:layout];
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     _myVideosPath = [MyFileManage getMyProductionsVideoPaths];
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

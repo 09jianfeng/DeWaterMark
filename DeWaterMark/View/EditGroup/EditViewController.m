@@ -15,6 +15,7 @@
 #import "MyFileManage.h"
 #import "MBProgressHUD.h"
 #import "PayViewAndLogic.h"
+#import "PreviewViewController.h"
 
 int ffmpegmain(int argc, char **argv);
 
@@ -39,6 +40,17 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
         int count = [countStr intValue];
         if (count > totalCount) {
             totalCount = count;
+            NSLog(@"____ totalCount:%f",totalCount);
+        }
+    }
+    
+    range = [input rangeOfString:@"sample_count = "];
+    if (range.location != NSNotFound) {
+        NSString *countStr = [input substringFromIndex:range.location+range.length];
+        int count = [countStr intValue];
+        if (count > totalCount) {
+            totalCount = count;
+            NSLog(@"____ totalCount:%f",totalCount);
         }
     }
     
@@ -49,6 +61,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
             NSString *countStr = [input substringWithRange:NSMakeRange(range.location + range.length, range2.location - range.location - range.length)];
             int frame_count = [countStr intValue];
             currentFrame = frame_count;
+            NSLog(@"____ currentFrame:%f",currentFrame);
         }
     }
     
@@ -59,7 +72,10 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     
     float progress = currentFrame / totalCount;
     if (EDITCon) {
-        [EDITCon setFFMPEGProgress:progress*2];
+        if (progress >= 1.0) {
+            progress = 0.9;
+        }
+        [EDITCon setFFMPEGProgress:progress];
     }
 }
 
@@ -77,6 +93,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     CGFloat _drafPosition;
     CGFloat _drafFrameDuration;
     UIView *_baseView;
+    NSString *_outputVideoPath;
 }
 
 - (void)viewDidLoad {
@@ -148,6 +165,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 
 - (void)setFFMPEGProgress:(float)progress{
     dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"____ progress:%f",progress);
         HUD.label.text = [NSString stringWithFormat:@"%%%d",(int)(progress*100)];
     });
 }
@@ -161,12 +179,16 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
         dispatch_async(dispatch_get_main_queue(), ^{
             _baseView.hidden = YES;
             [HUD showAnimated:NO];
+            
+            PreviewViewController *preview = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PreviewViewController"];
+            preview.videoPath = _outputVideoPath;
+            [self.navigationController pushViewController:preview animated:YES];
         });
     });
 }
 
 - (IBAction)clickRunButton:(id)sender {
-    [self getVIP];
+//    [self getVIP];
 //    [_vc playDidTouch:nil];
 }
 
@@ -182,6 +204,8 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     NSString *targetPath = [root stringByAppendingString:[NSString stringWithFormat:@"/%@%@",dayTime,[resourcePath lastPathComponent]]];
     
     NSString *command = [NSString stringWithFormat:@"ffmpeg -i %@ -vf delogo=x=%d:y=%d:w=%d:h=%d:band=10 %@",resourcePath,(int)choosingRect.origin.x,(int)choosingRect.origin.y,(int)choosingRect.size.width,(int)choosingRect.size.height,targetPath];
+    _outputVideoPath = targetPath;
+    
     NSString *command_str= [NSString stringWithFormat:@"%@",command];
     NSArray *argv_array=[command_str componentsSeparatedByString:(@" ")];
     int argc=(int)argv_array.count;

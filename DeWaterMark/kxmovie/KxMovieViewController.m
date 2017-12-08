@@ -1094,6 +1094,7 @@ _messageLabel.hidden = YES;
             if (_decoder.isEOF) {
                 
                 [self pause];
+                [self setMoviePosition:0.0];
                 [self updateHUD];
                 return;
             }

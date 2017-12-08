@@ -90,6 +90,7 @@
 		78CE36C31FC9C81100F84932 /* MyVideosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CE36C21FC9C81100F84932 /* MyVideosController.m */; };
 		78CE36C51FCA7AAA00F84932 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CE36C41FCA7AA400F84932 /* MediaPlayer.framework */; };
 		78E41F511FDA0322001A938A /* StringsFile.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78E41F501FDA0322001A938A /* StringsFile.strings */; };
+		78E41F761FDA8249001A938A /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E41F751FDA8249001A938A /* PreviewViewController.m */; };
 		B0054FD734633A011F74A7FA /* libPods-DeWaterMark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD91559F3BC1914E85766A2 /* libPods-DeWaterMark.a */; };
 /* End PBXBuildFile section */
 
@@ -341,6 +342,8 @@
 		78CE36C21FC9C81100F84932 /* MyVideosController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyVideosController.m; sourceTree = "<group>"; };
 		78CE36C41FCA7AA400F84932 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		78E41F501FDA0322001A938A /* StringsFile.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = StringsFile.strings; sourceTree = "<group>"; };
+		78E41F741FDA8249001A938A /* PreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
+		78E41F751FDA8249001A938A /* PreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
 		D5A7B4A3F9CD70FB2B85E626 /* Pods-DeWaterMark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeWaterMark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -428,6 +431,8 @@
 				7816B1B91FAD66AA007A6350 /* EditSliderView.m */,
 				7816B3041FAF5622007A6350 /* ChoosingRectView.h */,
 				7816B3051FAF5622007A6350 /* ChoosingRectView.m */,
+				78E41F741FDA8249001A938A /* PreviewViewController.h */,
+				78E41F751FDA8249001A938A /* PreviewViewController.m */,
 			);
 			path = EditGroup;
 			sourceTree = "<group>";
@@ -1051,6 +1056,7 @@
 				78B76C501FC08BE6003DA58E /* YZYAlbumDropView.m in Sources */,
 				7816B1A31FAD5F77007A6350 /* ViewController.m in Sources */,
 				7816B2E51FAE1186007A6350 /* ffmpeg_mod.c in Sources */,
+				78E41F761FDA8249001A938A /* PreviewViewController.m in Sources */,
 				7885D7C81FCD46B100A4B59E /* MenuButton.m in Sources */,
 				7885D8031FCD990000A4B59E /* AboutViewController.m in Sources */,
 				7816B2FF1FAE1BD4007A6350 /* KxAudioManager.m in Sources */,

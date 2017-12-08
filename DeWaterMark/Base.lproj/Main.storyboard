@@ -426,6 +426,43 @@
             </objects>
             <point key="canvasLocation" x="965.60000000000002" y="125.4872563718141"/>
         </scene>
+        <!--预览-->
+        <scene sceneID="DGA-hz-nGR">
+            <objects>
+                <viewController storyboardIdentifier="PreviewViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NpF-yM-wGL" customClass="PreviewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7xJ-NO-uc0"/>
+                        <viewControllerLayoutGuide type="bottom" id="jHA-UF-JRK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dJS-vq-vLK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bt7-DP-eIP">
+                                <rect key="frame" x="26" y="70" width="323" height="397"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bt7-DP-eIP" firstAttribute="top" secondItem="7xJ-NO-uc0" secondAttribute="bottom" constant="50" id="3lO-dg-V8b"/>
+                            <constraint firstItem="bt7-DP-eIP" firstAttribute="top" secondItem="7xJ-NO-uc0" secondAttribute="bottom" constant="50" id="BGY-SI-KKI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bt7-DP-eIP" secondAttribute="trailing" constant="10" id="a83-lm-KCg"/>
+                            <constraint firstItem="bt7-DP-eIP" firstAttribute="leading" secondItem="dJS-vq-vLK" secondAttribute="leadingMargin" constant="10" id="kcH-V8-ioS"/>
+                            <constraint firstItem="jHA-UF-JRK" firstAttribute="top" secondItem="bt7-DP-eIP" secondAttribute="bottom" constant="200" id="n26-hV-OO1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="预览" id="40J-YX-rha">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="8ca-iu-6fg"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="preBaseView" destination="bt7-DP-eIP" id="QWp-fn-57V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fWb-cs-VRQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1980" y="124.58770614692655"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Icon-513" width="1024" height="1024"/>

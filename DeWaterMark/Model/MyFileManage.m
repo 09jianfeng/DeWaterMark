@@ -251,6 +251,11 @@ static NSString *MEMBERID = @"MEMBERID";
     }
 }
 
++(void)deleteAllCacheFile{
+    NSString *originalPath = [self getOriginVideoDirPath];
+    [self clearCacheWithDirPath:originalPath];
+}
+
 +(void)clearCacheWithDirPath:(NSString*)dirPath{
     NSFileManager *defaultManager = [NSFileManager defaultManager];
     BOOL isDir = false;

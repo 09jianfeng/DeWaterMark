@@ -16,6 +16,7 @@
 #import "WebRequestHandler.h"
 #import "Masonry.h"
 #import "PayViewAndLogic.h"
+#import "MyFileManage.h"
 
 @interface RightDrawerTableViewController ()
 
@@ -71,14 +72,14 @@
         case 1:
         {
             cell.imageView.image = [UIImage imageNamed:@"db_14a"];
-            cell.textLabel.text = @"扫一扫";
+            cell.textLabel.text = @"清空所有缓存";
             cell.textLabel.textColor = [UIColor blackColor];
         }
             break;
         case 2:
         {
             cell.imageView.image = [UIImage imageNamed:@"db_14a"];
-            cell.textLabel.text = @"购买会员";
+//            cell.textLabel.text = @"购买会员";
             cell.textLabel.textColor = [UIColor blackColor];
         }
             break;
@@ -105,12 +106,15 @@
             break;
         case 1:
         {
-            [self scanningQRCode];
+//            [self scanningQRCode];
+            [MyFileManage deleteAllCacheFile];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"成功清除所有缓存" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alertView show];
         }
             break;
         case 2:
         {
-            [self getVIP];
+//            [self getVIP];
         }
             break;
             
