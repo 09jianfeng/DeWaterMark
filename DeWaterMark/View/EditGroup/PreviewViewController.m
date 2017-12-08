@@ -25,9 +25,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UIBarButtonItem *right1 = [[UIBarButtonItem alloc] initWithTitle:@"SH" style:UIBarButtonItemStylePlain target:self action:@selector(btnSharePressed:)];
-    UIBarButtonItem *right2 = [[UIBarButtonItem alloc] initWithTitle:@"DE" style:UIBarButtonItemStylePlain target:self action:@selector(btnDeletePressed:)];
-    self.navigationItem.rightBarButtonItems = @[right1,right2];
+    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn1 setImage:[UIImage imageNamed:@"btn_share"]    forState:UIControlStateNormal];
+    [btn1 setFrame:CGRectMake(0, 0, 30, 30)];
+    UIBarButtonItem *right1 = [[UIBarButtonItem alloc] initWithCustomView:btn1];
+    [right1 setTarget:self];
+    [right1 setAction:@selector(btnSharePressed:)];
+    
+    UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn2 setImage:[UIImage imageNamed:@"btn_delete"] forState:UIControlStateNormal];
+    [btn2 setFrame:CGRectMake(0, 0, 30, 30)];
+    UIBarButtonItem *right2 = [[UIBarButtonItem alloc] initWithCustomView:btn1];
+    [right2 setTarget:self];
+    [right2 setAction:@selector(btnDeletePressed:)];
+    self.navigationItem.rightBarButtonItems = @[right2,right1];
     
     _mpMoview = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:_videoPath]];
     _mpMoview.moviePlayer.shouldAutoplay = NO;
