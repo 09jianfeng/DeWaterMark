@@ -92,10 +92,15 @@
     CGFloat heigh = self.frame.size.height;
     
     payView = [[UIView alloc] initWithFrame:CGRectMake(10, heigh/2.0 - width/3, width - 20, width*2/3)];
-    payView.backgroundColor = [UIColor grayColor];
+    payView.backgroundColor = [UIColor whiteColor];
+    payView.layer.cornerRadius = 10.0;
+//    payView.layer.borderColor = [UIColor grayColor].CGColor;
+//    payView.layer.borderWidth = 2.0;
+    payView.layer.masksToBounds = YES;
     payView.tag = 10001;
-    UIButton *closeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    [closeBtn setTitle:@"关闭" forState:UIControlStateNormal];
+    UIButton *closeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+//    [closeBtn setTitle:@"关闭" forState:UIControlStateNormal];
+    [closeBtn setImage:[UIImage imageNamed:@"btn_close"] forState:UIControlStateNormal];
     [payView addSubview:closeBtn];
     [closeBtn addTarget:self action:@selector(buttonClosePrssed:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -111,17 +116,19 @@
     }];
     
     UIButton *buyBtn = [[UIButton alloc] init];
-    [buyBtn setTitle:@"立即开通" forState:UIControlStateNormal];
+//    [buyBtn setTitle:@"立即开通" forState:UIControlStateNormal];
+    [buyBtn setImage:[UIImage imageNamed:@"btn_buy"] forState:UIControlStateNormal];
     [buyBtn addTarget:self action:@selector(buttonBuyPresed:) forControlEvents:UIControlEventTouchUpInside];
     [payView addSubview:buyBtn];
     [buyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(payView.mas_left).offset(50);
         make.right.equalTo(payView.mas_right).offset(-50);
-        make.bottom.equalTo(payView.mas_bottom);
+        make.bottom.equalTo(payView.mas_bottom).offset(-10);
         make.height.mas_equalTo(50);
     }];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     flowLayout.minimumLineSpacing = 0;
     flowLayout.minimumInteritemSpacing = 0;
     _collectionView = [[UICollectionView alloc] initWithFrame:payView.bounds collectionViewLayout:flowLayout];
@@ -129,19 +136,19 @@
     _collectionView.dataSource = self;
     _collectionView.pagingEnabled = YES;
     _collectionView.showsHorizontalScrollIndicator = NO;
-    _collectionView.backgroundColor = [UIColor grayColor];
+    _collectionView.backgroundColor = [UIColor whiteColor];
     _collectionView.showsVerticalScrollIndicator = NO;
     
     [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"paycollecviewcell"];
     [payView addSubview:_collectionView];
     [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(titleLable.mas_bottom);
-        make.bottom.equalTo(buyBtn.mas_top);
+        make.bottom.equalTo(buyBtn.mas_top).offset(-10);
         make.left.equalTo(payView.mas_left);
         make.right.equalTo(payView.mas_right);
     }];
     
-    self.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.5];
+    self.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:0.5];
     [self addSubview:payView];
 }
 
@@ -169,13 +176,16 @@
         label.numberOfLines = 3;
         label.textAlignment = NSTextAlignmentCenter;
         label.tag = 10003;
-        label.textColor = [UIColor blackColor];
+        cell.layer.borderWidth = 1.0;
         [cell addSubview:label];
     }
+    label.textColor = [UIColor blackColor];
+    cell.layer.borderColor = [UIColor grayColor].CGColor;
     
     if (self.vipDic) {
         NSDictionary *priceText = self.payData.price[indexPath.row];
         label.text = priceText[@"appDesc"];
+        label.textColor = [UIColor grayColor];
     }
 
     return cell;
@@ -187,16 +197,6 @@
 {
     CGFloat width = CGRectGetWidth(self.frame)-60;
     return CGSizeMake((width -6)/3, (width - 6)/3);
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
-{
-    return CGSizeMake(collectionView.frame.size.width, 20);
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-    return CGSizeMake(collectionView.frame.size.width,30);
 }
 
 //设置每个item的UIEdgeInsets
@@ -215,7 +215,7 @@
 //设置每个item垂直间距
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 0;
+    return 10;
 }
 
 /*
@@ -232,14 +232,19 @@
     NSLog(@"select item is :%td",indexPath.row);
     
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor blueColor];
+    UILabel *label = [cell viewWithTag:10003];
+    
+    cell.layer.borderColor = [UIColor redColor].CGColor;
+    label.textColor = [UIColor redColor];
     cell.selected = YES;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"deselect item is :%td",indexPath.row);
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor whiteColor];
+    UILabel *label = [cell viewWithTag:10003];
+    cell.layer.borderColor = [UIColor grayColor].CGColor;
+    label.textColor = [UIColor grayColor];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
@@ -258,39 +263,65 @@
     UIView *thirdPart = [[UIView alloc] initWithFrame:CGRectMake( payView.frame.origin.x, -CGRectGetHeight(payView.bounds), CGRectGetWidth(payView.bounds), CGRectGetHeight(payView.bounds))];
     thirdPart.tag = 10004;
     thirdPart.backgroundColor = [UIColor whiteColor];
+    thirdPart.layer.cornerRadius = 10;
     
-    UIButton *closeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    closeBtn.backgroundColor = [UIColor colorWithRed:0.3 green:0.5 blue:0.2 alpha:1.0];
-    [closeBtn setTitle:@"关闭" forState:UIControlStateNormal];
+    UILabel *titleLable = [UILabel new];
+    titleLable.text = @"选择支付方式";
+    titleLable.font = [UIFont boldSystemFontOfSize:22];
+    titleLable.textAlignment = NSTextAlignmentCenter;
+    [thirdPart addSubview:titleLable];
+    [titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(thirdPart.mas_left).offset(50);
+        make.right.equalTo(thirdPart.mas_right).offset(-50);
+        make.top.equalTo(thirdPart.mas_top).offset(0);
+        make.height.mas_equalTo(50);
+    }];
+    
+    UIButton *closeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+//    [closeBtn setTitle:@"关闭" forState:UIControlStateNormal];
+    [closeBtn setImage:[UIImage imageNamed:@"btn_close"] forState:UIControlStateNormal];
     [thirdPart addSubview:closeBtn];
     [closeBtn addTarget:self action:@selector(buttonZhifuClosePrssed:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *weixinBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    weixinBtn.backgroundColor = [UIColor colorWithRed:0.3 green:0.5 blue:0.2 alpha:1.0];
-    [weixinBtn setTitle:@"微信支付" forState:UIControlStateNormal];
-    [thirdPart addSubview:weixinBtn];
-    [weixinBtn addTarget:self action:@selector(buttonWxZhifuPrssed:) forControlEvents:UIControlEventTouchUpInside];
-    [weixinBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(thirdPart.mas_left).mas_offset(50);
-        make.right.equalTo(thirdPart.mas_right).mas_offset(-50);
-        make.height.equalTo(thirdPart.mas_height).multipliedBy(0.25);
-        make.top.equalTo(thirdPart.mas_top).mas_offset(CGRectGetHeight(thirdPart.bounds)*0.2);
-    }];
-    
     UIButton *aliBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    aliBtn.backgroundColor = [UIColor colorWithRed:0.3 green:0.5 blue:0.2 alpha:1.0];
-    [aliBtn setTitle:@"支付宝支付" forState:UIControlStateNormal];
+    //    [aliBtn setTitle:@"支付宝支付" forState:UIControlStateNormal];
+    [aliBtn setImage:[UIImage imageNamed:@"btn_ali"] forState:UIControlStateNormal];
     [thirdPart addSubview:aliBtn];
     [aliBtn addTarget:self action:@selector(buttonAliZhifuPrssed:) forControlEvents:UIControlEventTouchUpInside];
     [aliBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(thirdPart.mas_left).mas_offset(50);
-        make.right.equalTo(thirdPart.mas_right).mas_offset(-50);
-        make.height.equalTo(thirdPart.mas_height).multipliedBy(0.25);
-        make.bottom.equalTo(thirdPart.mas_bottom).mas_offset(-CGRectGetHeight(thirdPart.bounds)*0.2);
+        make.width.mas_equalTo(250);
+        make.height.mas_equalTo(50);
+        make.centerX.equalTo(thirdPart.mas_centerX);
+        make.top.equalTo(titleLable.mas_bottom).offset(10);
+    }];
+    
+    UILabel *descText = [UILabel new];
+    descText.numberOfLines = 2;
+    descText.text = @"支付遇到问题请咨询QQ：613665319 \n 或联系微信公众号：wsjtw8";
+    descText.textColor = [UIColor grayColor];
+    descText.font = [UIFont boldSystemFontOfSize:15];
+    descText.textAlignment = NSTextAlignmentCenter;
+    [thirdPart addSubview:descText];
+    [descText mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(thirdPart.mas_left).offset(0);
+        make.right.equalTo(thirdPart.mas_right).offset(0);
+        make.bottom.equalTo(thirdPart.mas_bottom).offset(0);
+        make.height.mas_equalTo(50);
+    }];
+
+    UIButton *weixinBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    //    [weixinBtn setTitle:@"微信支付" forState:UIControlStateNormal];
+    [weixinBtn setImage:[UIImage imageNamed:@"btn_weixin"] forState:UIControlStateNormal];
+    [thirdPart addSubview:weixinBtn];
+    [weixinBtn addTarget:self action:@selector(buttonWxZhifuPrssed:) forControlEvents:UIControlEventTouchUpInside];
+    [weixinBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(250);
+        make.height.mas_equalTo(50);
+        make.centerX.equalTo(thirdPart.mas_centerX);
+        make.bottom.equalTo(descText.mas_top).offset(-10);
     }];
     
     [self addSubview:thirdPart];
-    
     [UIView animateWithDuration:0.2 animations:^{
         thirdPart.frame = CGRectMake( payView.frame.origin.x, payView.frame.origin.y, CGRectGetWidth(payView.bounds), CGRectGetHeight(payView.bounds));
     }];
