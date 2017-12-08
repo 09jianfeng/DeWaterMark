@@ -197,6 +197,8 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
             [self.navigationController pushViewController:preview animated:YES];
             
             [CommonConfig decreaseOneChance];
+            totalCount = 1;
+            currentFrame = 0;
         });
     });
 }

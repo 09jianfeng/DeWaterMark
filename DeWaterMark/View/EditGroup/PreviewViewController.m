@@ -12,7 +12,7 @@
 #import "Masonry.h"
 #import "MyFileManage.h"
 
-@interface PreviewViewController ()
+@interface PreviewViewController ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *preBaseView;
 
 @end
@@ -28,6 +28,7 @@
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn1 setImage:[UIImage imageNamed:@"btn_share"]    forState:UIControlStateNormal];
     [btn1 setFrame:CGRectMake(0, 0, 30, 30)];
+    [btn1 addTarget:self action:@selector(btnSharePressed:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *right1 = [[UIBarButtonItem alloc] initWithCustomView:btn1];
     [right1 setTarget:self];
     [right1 setAction:@selector(btnSharePressed:)];
@@ -35,7 +36,8 @@
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn2 setImage:[UIImage imageNamed:@"btn_delete"] forState:UIControlStateNormal];
     [btn2 setFrame:CGRectMake(0, 0, 30, 30)];
-    UIBarButtonItem *right2 = [[UIBarButtonItem alloc] initWithCustomView:btn1];
+    [btn2 addTarget:self action:@selector(btnDeletePressed:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *right2 = [[UIBarButtonItem alloc] initWithCustomView:btn2];
     [right2 setTarget:self];
     [right2 setAction:@selector(btnDeletePressed:)];
     self.navigationItem.rightBarButtonItems = @[right2,right1];
@@ -63,13 +65,23 @@
 
 - (void)btnSharePressed:(id)sender{
     NSLog(@"___ share");
+    
 }
 
 - (void)btnDeletePressed:(id)sender{
     NSLog(@"___ delete");
-    [MyFileManage deleteWithFilePath:_videoPath];
-    [self.navigationController popViewControllerAnimated:YES];
+    UIAlertView *alerVi = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确定文件吗" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    [alerVi show];
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        
+        [MyFileManage deleteWithFilePath:_videoPath];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 
 /*
 #pragma mark - Navigation

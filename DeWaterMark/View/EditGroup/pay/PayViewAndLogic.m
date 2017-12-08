@@ -106,6 +106,7 @@
     
     UILabel *titleLable = [UILabel new];
     titleLable.text = @"选择套餐";
+    titleLable.font = [UIFont boldSystemFontOfSize:22];
     titleLable.textAlignment = NSTextAlignmentCenter;
     [payView addSubview:titleLable];
     [titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -380,14 +381,16 @@ static float linespace = 10;
     
     NSDictionary *payInfo = _payData.price[indexPath.row];
     NSString *priceId = payInfo[@"id"];
+    int month = [payInfo[@"name"] intValue];
+    
     [WebRequestHandler requestAliPayWithUseTime:priceId completeBlock:^(NSDictionary *dicData) {
         NSLog(@"alipay __ %@",dicData);
         if (dicData) {
             NSString *order_info = dicData[@"data"][@"order_info"];
 //            NSString *order_no = dicData[@"data"][@"order_no"];
             // NOTE: 调用支付结果开始支付
-            [[AlipaySDK defaultService] payOrder:order_info fromScheme:@"DeWaterMark" callback:^(NSDictionary *resultDic) {
-                NSLog(@"reslut = %@",resultDic);
+            [[AlipaySDK defaultService] payOrder:order_info fromScheme:@"com.dewatermark" callback:^(NSDictionary *resultDic) {
+                NSLog(@"==== reslut = %@",resultDic);
             }];
         }
     }];
@@ -400,11 +403,11 @@ static float linespace = 10;
             case WXSuccess:
             {
                 //服务器端查询支付通知或查询API返回的结果再提示成功
-                NSLog(@"支付成功");
+                NSLog(@"==== 支付成功");
                 break;
             }
             default:
-                NSLog(@"支付失败，retcode=%d",resp.errCode);
+                NSLog(@"==== 支付失败，retcode=%d",resp.errCode);
                 break;
         }
     }

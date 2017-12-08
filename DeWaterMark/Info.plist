@@ -23,9 +23,21 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>ali</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.dewatermark</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>weixin</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wx2949e151b02d46de</string>
 			</array>
 		</dict>
 	</array>

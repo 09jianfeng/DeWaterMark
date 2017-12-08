@@ -16,10 +16,11 @@
 #import <sys/utsname.h>
 #import <sys/sysctl.h>
 #import <UIKit/UIKit.h>
+#import "DeWaterKeyChain.h"
 
 
 static NSString *NEIBUVERCODE = @"1";
-static NSString *memberID = @"memberID";
+static NSString *MEMBERID = @"memberID";
 static NSString *RESTTIME = @"RESTTIME";
 static NSString *GETISVIP = @"GETISVIP";
 
@@ -30,8 +31,7 @@ static NSString *GETISVIP = @"GETISVIP";
 }
 
 + (NSString *)getMemberId{
-    NSUserDefaults *useDef = [NSUserDefaults standardUserDefaults];
-    NSString *userMember = [useDef objectForKey:memberID];
+    NSString *userMember = [DeWaterKeyChain getValueForKey:MEMBERID];
     if (!userMember) {
         return @"";
     }
@@ -39,41 +39,36 @@ static NSString *GETISVIP = @"GETISVIP";
 }
 
 + (void)setMemberId:(NSString *)memberid{
-    NSUserDefaults *useDef = [NSUserDefaults standardUserDefaults];
-    [useDef setObject:memberid forKey:memberID];
+    [DeWaterKeyChain setValue:memberid forKey:MEMBERID];
 }
 
 + (void)decreaseOneChance{
-    NSUserDefaults *useDef = [NSUserDefaults standardUserDefaults];
-    NSNumber *restTime = [useDef objectForKey:RESTTIME];
+    NSString *restTime = [DeWaterKeyChain getValueForKey:RESTTIME];
     if (!restTime) {
-        [useDef setObject:@(2) forKey:RESTTIME];
+        [DeWaterKeyChain setValue:@"2" forKey:RESTTIME];
         return;
     }
     
     int rest = [restTime intValue];
     rest--;
-    [useDef setObject:@(rest) forKey:RESTTIME];
+    [DeWaterKeyChain setValue:[NSString stringWithFormat:@"%d",rest] forKey:RESTTIME];
 }
 
 + (int)restChance{
-    NSUserDefaults *useDef = [NSUserDefaults standardUserDefaults];
-    NSNumber *restTime = [useDef objectForKey:RESTTIME];
+    NSString *restTime = [DeWaterKeyChain getValueForKey:RESTTIME];
     if (!restTime) {
-        [useDef setObject:@(3) forKey:RESTTIME];
+        [DeWaterKeyChain setValue:@"3" forKey:RESTTIME];
     }
     
     return [restTime intValue];
 }
 
 + (void)setVIP:(BOOL)isvip{
-    NSUserDefaults *useDef = [NSUserDefaults standardUserDefaults];
-    [useDef setObject:@(1) forKey:GETISVIP];
+    [DeWaterKeyChain setValue:@"1" forKey:GETISVIP];
 }
 
 + (BOOL)isVIP{
-    NSUserDefaults *useDef = [NSUserDefaults standardUserDefaults];
-    BOOL isVIP = [useDef objectForKey:GETISVIP];
+    BOOL isVIP = [DeWaterKeyChain getValueForKey:GETISVIP];
     return isVIP;
 }
 
@@ -109,7 +104,11 @@ static NSString *GETISVIP = @"GETISVIP";
 }
 
 + (NSString *)getIDFA{
-    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    NSString *idfa = [DeWaterKeyChain getValueForKey:@"IDFA"];
+    if (!idfa) {
+        idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+        [DeWaterKeyChain setValue:idfa forKey:@"IDFA"];
+    }
     return idfa;
 }
 

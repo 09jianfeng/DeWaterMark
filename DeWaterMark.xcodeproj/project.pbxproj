@@ -41,6 +41,7 @@
 		7816B3021FAE1BD4007A6350 /* KxMovieGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FC1FAE1BD4007A6350 /* KxMovieGLView.m */; };
 		7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */; };
 		7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B3051FAF5622007A6350 /* ChoosingRectView.m */; };
+		782A0BB81FDADDBB0041E76F /* DeWaterKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 782A0BB71FDADDBB0041E76F /* DeWaterKeyChain.m */; };
 		783B459C1FCFEA56003770C9 /* CommonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 783B459B1FCFEA56003770C9 /* CommonConfig.m */; };
 		783B459E1FCFEA6B003770C9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783B459D1FCFEA64003770C9 /* AdSupport.framework */; };
 		783B45AB1FCFED87003770C9 /* URLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 783B45AA1FCFED87003770C9 /* URLManager.m */; };
@@ -253,6 +254,8 @@
 		7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMovieViewController.m; sourceTree = "<group>"; };
 		7816B3041FAF5622007A6350 /* ChoosingRectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChoosingRectView.h; sourceTree = "<group>"; };
 		7816B3051FAF5622007A6350 /* ChoosingRectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoosingRectView.m; sourceTree = "<group>"; };
+		782A0BB61FDADDBB0041E76F /* DeWaterKeyChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeWaterKeyChain.h; sourceTree = "<group>"; };
+		782A0BB71FDADDBB0041E76F /* DeWaterKeyChain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeWaterKeyChain.m; sourceTree = "<group>"; };
 		783B459A1FCFEA56003770C9 /* CommonConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonConfig.h; sourceTree = "<group>"; };
 		783B459B1FCFEA56003770C9 /* CommonConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonConfig.m; sourceTree = "<group>"; };
 		783B459D1FCFEA64003770C9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -704,6 +707,8 @@
 			children = (
 				783B459A1FCFEA56003770C9 /* CommonConfig.h */,
 				783B459B1FCFEA56003770C9 /* CommonConfig.m */,
+				782A0BB61FDADDBB0041E76F /* DeWaterKeyChain.h */,
+				782A0BB71FDADDBB0041E76F /* DeWaterKeyChain.m */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -1058,6 +1063,7 @@
 				7816B2E51FAE1186007A6350 /* ffmpeg_mod.c in Sources */,
 				78E41F761FDA8249001A938A /* PreviewViewController.m in Sources */,
 				7885D7C81FCD46B100A4B59E /* MenuButton.m in Sources */,
+				782A0BB81FDADDBB0041E76F /* DeWaterKeyChain.m in Sources */,
 				7885D8031FCD990000A4B59E /* AboutViewController.m in Sources */,
 				7816B2FF1FAE1BD4007A6350 /* KxAudioManager.m in Sources */,
 				785E0D3E1FD4481200ADF46D /* SGQRCodeManager.m in Sources */,

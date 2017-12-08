@@ -21,7 +21,7 @@
 + (void)setMemberId:(NSString *)memberid;
 + (void)decreaseOneChance;
 + (int)restChance;
-+ (void)setVIP:(BOOL)isvip day:(int)day;
++ (void)setVIP:(BOOL)isvip;
 + (BOOL)isVIP;
 
 @end
