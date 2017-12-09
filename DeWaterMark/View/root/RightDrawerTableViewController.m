@@ -17,6 +17,7 @@
 #import "Masonry.h"
 #import "PayViewAndLogic.h"
 #import "MyFileManage.h"
+#import "DeWaterKeyChain.h"
 
 @interface RightDrawerTableViewController ()
 
@@ -108,6 +109,7 @@
         {
 //            [self scanningQRCode];
             [MyFileManage deleteAllCacheFile];
+            [DeWaterKeyChain removeall];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"成功清除所有缓存" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alertView show];
         }

@@ -13,8 +13,15 @@ static NSString * const kPDKeyChainKey = @"com.watermark.keychainKey";
 
 @implementation DeWaterKeyChain
 
++ (void)removeall{
+    [DeWaterKeyChain keyChainDelete];
+}
+
 + (void)setValue:(NSString *)value forKey:(NSString *)key{
     NSMutableDictionary *tempDic = [[DeWaterKeyChain keyChainLoad] mutableCopy];
+    if (!tempDic) {
+        tempDic = [NSMutableDictionary new];
+    }
     [tempDic setObject:value forKey:key];
     [DeWaterKeyChain keyChainSave:tempDic];
 }

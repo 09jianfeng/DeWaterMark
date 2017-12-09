@@ -58,6 +58,7 @@ static NSString *GETISVIP = @"GETISVIP";
     NSString *restTime = [DeWaterKeyChain getValueForKey:RESTTIME];
     if (!restTime) {
         [DeWaterKeyChain setValue:@"3" forKey:RESTTIME];
+        restTime = @"3";
     }
     
     return [restTime intValue];
