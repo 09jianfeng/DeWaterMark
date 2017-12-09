@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
             endingLineNumber = "27"
-            landmarkName = "-getVideosFromAlbum"
+            landmarkName = "-writePhotoToAlbum:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

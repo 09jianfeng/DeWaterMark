@@ -23,8 +23,11 @@ static NSString *NEIBUVERCODE = @"1";
 static NSString *MEMBERID = @"memberID";
 static NSString *RESTTIME = @"RESTTIME";
 static NSString *GETISVIP = @"GETISVIP";
+static NSString *VIPDAYS = @"VIPDAYS";
+static NSString *SETVIPDAYINTER = @"SETVIPDAYINTER";
 
-@implementation CommonConfig
+@implementation CommonConfig{
+}
 
 + (NSString *)getIMEIorIDFA{
     return [self getIDFA];
@@ -68,8 +71,24 @@ static NSString *GETISVIP = @"GETISVIP";
     [DeWaterKeyChain setValue:@"1" forKey:GETISVIP];
 }
 
++ (void)setVIPInterval:(long long)vipinterval{
+    [DeWaterKeyChain setValue:[NSString stringWithFormat:@"%lld",vipinterval] forKey:SETVIPDAYINTER];
+    [CommonConfig setVIP:1];
+}
+
 + (BOOL)isVIP{
-    BOOL isVIP = [DeWaterKeyChain getValueForKey:GETISVIP];
+    BOOL isVIP = [[DeWaterKeyChain getValueForKey:GETISVIP] boolValue];
+    if (!isVIP) {
+        return NO;
+    }
+    
+    long long now = [NSDate date].timeIntervalSince1970;
+    long long vipInterval = [[DeWaterKeyChain getValueForKey:SETVIPDAYINTER] longLongValue];
+    
+    if (now > vipInterval) {
+        return NO;
+    }
+    
     return isVIP;
 }
 
@@ -161,5 +180,7 @@ static NSUInteger GetSysInfo(uint typeSpecifier) {
 + (NSUInteger)cpuFrequency{
     return GetSysInfo(HW_CPU_FREQ);
 }
+
+
 
 @end

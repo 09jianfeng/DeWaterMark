@@ -347,13 +347,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rvw-8b-QeC">
                                 <rect key="frame" x="16" y="547" width="343" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J52-tb-ycd">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J52-tb-ycd">
                                         <rect key="frame" x="0.0" y="9.5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="4P2-C6-9nu"/>
                                             <constraint firstAttribute="width" constant="30" id="Xbc-2m-Igl"/>
                                         </constraints>
-                                        <state key="normal" title="play"/>
+                                        <state key="normal" image="btn_play"/>
                                         <connections>
                                             <action selector="clickRunButton:" destination="Flf-Un-4yG" eventType="touchUpInside" id="EPn-PV-9nE"/>
                                         </connections>
@@ -466,5 +466,6 @@
     </scenes>
     <resources>
         <image name="Icon-513" width="1024" height="1024"/>
+        <image name="btn_play" width="60" height="60"/>
     </resources>
 </document>

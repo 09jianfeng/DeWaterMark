@@ -12,6 +12,8 @@
 #import "CommonConfig.h"
 #import <AlipaySDK/AlipaySDK.h>
 
+static NSString *VIPORDER_ID = @"VIPORDER_ID";
+
 @interface PayDataStruct:NSObject
 @property(nonatomic, strong) NSString *memberId;
 @property(nonatomic, strong) NSString *f_t;
@@ -26,7 +28,9 @@
 @property(nonatomic, strong) NSArray *price;
 @end
 
-@implementation PayDataStruct
+@implementation PayDataStruct{
+    NSString *_orderID;
+}
 
 @end
 
@@ -37,6 +41,7 @@
 
 @implementation PayViewAndLogic{
     UICollectionView *_collectionView;
+    NSString *_orderID;
 }
 
 + (instancetype)shareInstance{
@@ -54,6 +59,9 @@
     if (self) {
         self.frame = [UIScreen mainScreen].bounds;
         _payData = [PayDataStruct new];
+        
+        _orderID = [[NSUserDefaults standardUserDefaults] objectForKey:VIPORDER_ID];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didActiveFromBackground:) name:UIApplicationDidBecomeActiveNotification object:nil];
     }
     
     return self;
@@ -329,7 +337,6 @@ static float linespace = 10;
     [UIView animateWithDuration:0.2 animations:^{
         thirdPart.frame = CGRectMake( payView.frame.origin.x, payView.frame.origin.y, CGRectGetWidth(payView.bounds), CGRectGetHeight(payView.bounds));
     }];
-    
 }
 
 
@@ -352,6 +359,9 @@ static float linespace = 10;
         NSLog(@"wxPay __ %@",dicData);
         if (dicData) {
 //            NSString *order_no = dicData[@"data"][@"order_no"];
+            _orderID = dicData[@"data"][@"order_no"];
+            [[NSUserDefaults standardUserDefaults] setObject:_orderID forKey:VIPORDER_ID];
+            
             NSDictionary *order_info = dicData[@"data"][@"order_info"];
             NSString *sign = order_info[@"sign"];
             NSString *timestamp = order_info[@"timestamp"];
@@ -381,16 +391,20 @@ static float linespace = 10;
     
     NSDictionary *payInfo = _payData.price[indexPath.row];
     NSString *priceId = payInfo[@"id"];
-    int month = [payInfo[@"name"] intValue];
     
     [WebRequestHandler requestAliPayWithUseTime:priceId completeBlock:^(NSDictionary *dicData) {
         NSLog(@"alipay __ %@",dicData);
         if (dicData) {
             NSString *order_info = dicData[@"data"][@"order_info"];
+            _orderID = dicData[@"data"][@"order_no"];
+            [[NSUserDefaults standardUserDefaults] setObject:_orderID forKey:VIPORDER_ID];
+            
 //            NSString *order_no = dicData[@"data"][@"order_no"];
             // NOTE: 调用支付结果开始支付
             [[AlipaySDK defaultService] payOrder:order_info fromScheme:@"com.dewatermark" callback:^(NSDictionary *resultDic) {
                 NSLog(@"==== reslut = %@",resultDic);
+                
+                [self checkOrder];
             }];
         }
     }];
@@ -411,6 +425,38 @@ static float linespace = 10;
                 break;
         }
     }
+}
+
+#pragma makr - check
+
+- (void)checkOrder{
+    if ([CommonConfig isVIP]) {
+        return;
+    }
+    
+    [WebRequestHandler requestOrderId:_orderID completeBlock:^(NSDictionary *dicData) {
+        NSLog(@"____ order dicData:%@",dicData);
+        
+        if (dicData) {
+            int code = [dicData[@"code"] intValue];
+            if (code == 0) {
+                NSDictionary *data = dicData[@"data"];
+                long long v_t = [data[@"v_t"] longLongValue];
+                [CommonConfig setVIPInterval:v_t/1000];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:@"充值成功" message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                    [alerView show];
+                    
+                    [self removeFromSuperview];
+                });
+            }
+        }
+    }];
+}
+
+- (void)didActiveFromBackground:(id)notifica{
+    [self checkOrder];
 }
 
 @end

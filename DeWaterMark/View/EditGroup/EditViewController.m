@@ -204,7 +204,13 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 }
 
 - (IBAction)clickRunButton:(id)sender {
+    UIButton *btn = (UIButton *)sender;
     [_vc playDidTouch:nil];
+    if (!_vc.playing) {
+        [btn setImage:[UIImage imageNamed:@"btn_play"] forState:UIControlStateNormal];
+    }else{
+        [btn setImage:[UIImage imageNamed:@"btn_stop"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)dealVideoWithDelogoWithChoosingRect:(CGRect)choosingRect{

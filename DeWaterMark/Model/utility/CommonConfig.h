@@ -24,4 +24,6 @@
 + (void)setVIP:(BOOL)isvip;
 + (BOOL)isVIP;
 
++ (void)setVIPInterval:(long long)vipinterval;
+
 @end

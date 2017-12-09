@@ -105,7 +105,7 @@
  }
  */
 + (NSString *)getQueryOrderURL:(NSString *)orderNo{
-    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/remove_ios/queryOrder?%@&%@",orderNo,[self getCommondString]];
+    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/remove_ios/queryOrder?orderNo=%@&%@",orderNo,[self getCommondString]];
     return path;
 }
 

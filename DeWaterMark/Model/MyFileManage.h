@@ -29,4 +29,6 @@
 
 +(NSString *)memberId;
 +(void)setMemberId:(NSString *)memberId;
+
++(void)setVIPDays:(int)vipDays;
 @end
