@@ -54,6 +54,13 @@
     _mpMoview.view.frame = self.preBaseView.bounds;
     [self.preBaseView addSubview:_mpMoview.view];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:_mpMoview
+                                                    name:UIApplicationDidEnterBackgroundNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:_mpMoview
+                                                    name:MPMoviePlayerPlaybackDidFinishNotification
+                                                  object:nil];
 }
 
 - (void)viewDidLayoutSubviews{
@@ -99,6 +106,7 @@
 - (void)btnSharePressed:(id)sender{
     if (!_assetURL) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请先保存到相册才能分享" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
         return;
     }
     

@@ -32,6 +32,14 @@
     [self.videoImage addSubview:_mpMoview.view];
     
     self.title = [NSString stringWithFormat:@"%@",[_videoPath lastPathComponent]];
+    
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:_mpMoview
+                                                    name:UIApplicationDidEnterBackgroundNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:_mpMoview
+                                                    name:MPMoviePlayerPlaybackDidFinishNotification
+                                                  object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
