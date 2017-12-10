@@ -43,6 +43,7 @@
 		7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B3051FAF5622007A6350 /* ChoosingRectView.m */; };
 		782A0BB81FDADDBB0041E76F /* DeWaterKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 782A0BB71FDADDBB0041E76F /* DeWaterKeyChain.m */; };
 		782EBBAB1FDCD31D005D3DEC /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782EBBA81FDCD31C005D3DEC /* libMobClickLibrary.a */; };
+		782EBBAD1FDD095F005D3DEC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782EBBAC1FDD0958005D3DEC /* AssetsLibrary.framework */; };
 		783B459C1FCFEA56003770C9 /* CommonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 783B459B1FCFEA56003770C9 /* CommonConfig.m */; };
 		783B459E1FCFEA6B003770C9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783B459D1FCFEA64003770C9 /* AdSupport.framework */; };
 		783B45AB1FCFED87003770C9 /* URLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 783B45AA1FCFED87003770C9 /* URLManager.m */; };
@@ -259,6 +260,7 @@
 		782EBBA81FDCD31C005D3DEC /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		782EBBA91FDCD31D005D3DEC /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		782EBBAA1FDCD31D005D3DEC /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
+		782EBBAC1FDD0958005D3DEC /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		783B459A1FCFEA56003770C9 /* CommonConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonConfig.h; sourceTree = "<group>"; };
 		783B459B1FCFEA56003770C9 /* CommonConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonConfig.m; sourceTree = "<group>"; };
 		783B459D1FCFEA64003770C9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -354,6 +356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				782EBBAD1FDD095F005D3DEC /* AssetsLibrary.framework in Frameworks */,
 				783B459E1FCFEA6B003770C9 /* AdSupport.framework in Frameworks */,
 				7885D7EF1FCD8D2600A4B59E /* CoreTelephony.framework in Frameworks */,
 				7885D7EE1FCD8D2000A4B59E /* CoreMotion.framework in Frameworks */,
@@ -867,6 +870,7 @@
 		AD5B086707C6767EB09DF68C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				782EBBAC1FDD0958005D3DEC /* AssetsLibrary.framework */,
 				783B459D1FCFEA64003770C9 /* AdSupport.framework */,
 				7885D7ED1FCD8D1600A4B59E /* CoreMotion.framework */,
 				7885D7EB1FCD8CFF00A4B59E /* libsqlite3.tbd */,
