@@ -166,18 +166,17 @@
     [self saveVideo:_videoPath];
 }
 
-- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error
-  contextInfo:(void *)contextInfo {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alertView show];
-}
-
 //videoPath为视频下载到本地之后的本地路径
 - (void)saveVideo:(NSString *)videoPath{
     __block ALAssetsLibrary *lib = [[ALAssetsLibrary alloc] init];
     [lib writeVideoAtPathToSavedPhotosAlbum:[NSURL fileURLWithPath:_videoPath] completionBlock:^(NSURL *assetURL, NSError *error) {
         if (!error) {
             _assetURL = assetURL;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                [alertView show];
+            });
         }
     }];
 }
