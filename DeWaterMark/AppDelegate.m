@@ -14,6 +14,14 @@
 #import "RightDrawerTableViewController.h"
 #import "PayViewAndLogic.h"
 
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+//腾讯开放平台（对应QQ和QQ空间）SDK头文件
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+
+#import "MobClick.h"
+
 @interface AppDelegate ()
 
 @end
@@ -25,7 +33,7 @@
     // Override point for customization after application launch.
     
     //向微信注册wxd930ea5d5a258f4f
-    [WXApi registerApp:@"wx2949e151b02d46de"];
+//    [WXApi registerApp:@"wx2949e151b02d46de"];
 
     RightDrawerTableViewController *rightCon = [RightDrawerTableViewController new];
     
@@ -34,6 +42,53 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = draw;
     
+    /**初始化ShareSDK应用
+     
+     @param activePlatforms
+     使用的分享平台集合
+     @param importHandler (onImport)
+     导入回调处理，当某个平台的功能需要依赖原平台提供的SDK支持时，需要在此方法中对原平台SDK进行导入操作
+     @param configurationHandler (onConfiguration)
+     配置回调处理，在此方法中根据设置的platformType来填充应用配置信息
+     */
+    [ShareSDK registerActivePlatforms:@[
+                                        @(SSDKPlatformTypeWechat),
+                                        @(SSDKPlatformTypeQQ),
+                                        ]
+                             onImport:^(SSDKPlatformType platformType)
+     {
+         switch (platformType)
+         {
+             case SSDKPlatformTypeWechat:
+                 [ShareSDKConnector connectWeChat:[WXApi class]];
+                 break;
+             case SSDKPlatformTypeQQ:
+                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                 break;
+             default:
+                 break;
+         }
+     }
+                      onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo)
+     {
+         
+         switch (platformType)
+         {
+             case SSDKPlatformTypeWechat:
+                 [appInfo SSDKSetupWeChatByAppId:@"wx2949e151b02d46de"
+                                       appSecret:@"62d1f607fffd24daf8778a6e2e67c506"];
+                 break;
+             case SSDKPlatformTypeQQ:
+                 [appInfo SSDKSetupQQByAppId:@"1106157159"
+                                      appKey:@"Hvzp79TrDD5Yb9Gz"
+                                    authType:SSDKAuthTypeBoth];
+                 break;
+            }
+    }];
+    
+    
+    [MobClick setLogEnabled:YES];
+    [MobClick startWithAppkey:@"5a24eb86a40fa30c3400006c"];
     return YES;
 }
 

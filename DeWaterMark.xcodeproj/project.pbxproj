@@ -42,6 +42,7 @@
 		7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */; };
 		7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B3051FAF5622007A6350 /* ChoosingRectView.m */; };
 		782A0BB81FDADDBB0041E76F /* DeWaterKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 782A0BB71FDADDBB0041E76F /* DeWaterKeyChain.m */; };
+		782EBBAB1FDCD31D005D3DEC /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782EBBA81FDCD31C005D3DEC /* libMobClickLibrary.a */; };
 		783B459C1FCFEA56003770C9 /* CommonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 783B459B1FCFEA56003770C9 /* CommonConfig.m */; };
 		783B459E1FCFEA6B003770C9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783B459D1FCFEA64003770C9 /* AdSupport.framework */; };
 		783B45AB1FCFED87003770C9 /* URLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 783B45AA1FCFED87003770C9 /* URLManager.m */; };
@@ -60,7 +61,6 @@
 		7885D7C81FCD46B100A4B59E /* MenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D7C71FCD46B100A4B59E /* MenuButton.m */; };
 		7885D7D71FCD89E400A4B59E /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7885D7D51FCD89E400A4B59E /* AlipaySDK.bundle */; };
 		7885D7D81FCD89E400A4B59E /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7885D7D61FCD89E400A4B59E /* AlipaySDK.framework */; };
-		7885D7DE1FCD8A4800A4B59E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7885D7DA1FCD8A4800A4B59E /* libWeChatSDK.a */; };
 		7885D7DF1FCD8A4900A4B59E /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7885D7DD1FCD8A4800A4B59E /* README.txt */; };
 		7885D7E31FCD8A7700A4B59E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7885D7E21FCD8A7700A4B59E /* libc++.tbd */; };
 		7885D7E51FCD8A8F00A4B59E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7885D7E41FCD8A8800A4B59E /* SystemConfiguration.framework */; };
@@ -256,6 +256,9 @@
 		7816B3051FAF5622007A6350 /* ChoosingRectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoosingRectView.m; sourceTree = "<group>"; };
 		782A0BB61FDADDBB0041E76F /* DeWaterKeyChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeWaterKeyChain.h; sourceTree = "<group>"; };
 		782A0BB71FDADDBB0041E76F /* DeWaterKeyChain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeWaterKeyChain.m; sourceTree = "<group>"; };
+		782EBBA81FDCD31C005D3DEC /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		782EBBA91FDCD31D005D3DEC /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		782EBBAA1FDCD31D005D3DEC /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
 		783B459A1FCFEA56003770C9 /* CommonConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonConfig.h; sourceTree = "<group>"; };
 		783B459B1FCFEA56003770C9 /* CommonConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonConfig.m; sourceTree = "<group>"; };
 		783B459D1FCFEA64003770C9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -289,10 +292,6 @@
 		7885D7C71FCD46B100A4B59E /* MenuButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuButton.m; sourceTree = "<group>"; };
 		7885D7D51FCD89E400A4B59E /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		7885D7D61FCD89E400A4B59E /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
-		7885D7D91FCD8A4800A4B59E /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		7885D7DA1FCD8A4800A4B59E /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		7885D7DB1FCD8A4800A4B59E /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
-		7885D7DC1FCD8A4800A4B59E /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		7885D7DD1FCD8A4800A4B59E /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		7885D7E01FCD8A6A00A4B59E /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
 		7885D7E21FCD8A7700A4B59E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -358,9 +357,9 @@
 				783B459E1FCFEA6B003770C9 /* AdSupport.framework in Frameworks */,
 				7885D7EF1FCD8D2600A4B59E /* CoreTelephony.framework in Frameworks */,
 				7885D7EE1FCD8D2000A4B59E /* CoreMotion.framework in Frameworks */,
+				782EBBAB1FDCD31D005D3DEC /* libMobClickLibrary.a in Frameworks */,
 				7885D7E51FCD8A8F00A4B59E /* SystemConfiguration.framework in Frameworks */,
 				78CE36C51FCA7AAA00F84932 /* MediaPlayer.framework in Frameworks */,
-				7885D7DE1FCD8A4800A4B59E /* libWeChatSDK.a in Frameworks */,
 				7885D7D81FCD89E400A4B59E /* AlipaySDK.framework in Frameworks */,
 				78B76C661FC179F4003DA58E /* Photos.framework in Frameworks */,
 				7816B2F11FAE1186007A6350 /* libswscale.a in Frameworks */,
@@ -702,6 +701,16 @@
 			path = kxmovie;
 			sourceTree = "<group>";
 		};
+		782EBBA71FDCD31C005D3DEC /* UMAnalytics_Sdk_3.5.10 */ = {
+			isa = PBXGroup;
+			children = (
+				782EBBA81FDCD31C005D3DEC /* libMobClickLibrary.a */,
+				782EBBA91FDCD31D005D3DEC /* MobClick.h */,
+				782EBBAA1FDCD31D005D3DEC /* MobClickSocialAnalytics.h */,
+			);
+			path = UMAnalytics_Sdk_3.5.10;
+			sourceTree = "<group>";
+		};
 		783B45991FCFE9DE003770C9 /* utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -795,11 +804,8 @@
 		7885D7D41FCD89E400A4B59E /* thirdPart */ = {
 			isa = PBXGroup;
 			children = (
-				7885D7DA1FCD8A4800A4B59E /* libWeChatSDK.a */,
+				782EBBA71FDCD31C005D3DEC /* UMAnalytics_Sdk_3.5.10 */,
 				7885D7DD1FCD8A4800A4B59E /* README.txt */,
-				7885D7DC1FCD8A4800A4B59E /* WechatAuthSDK.h */,
-				7885D7D91FCD8A4800A4B59E /* WXApi.h */,
-				7885D7DB1FCD8A4800A4B59E /* WXApiObject.h */,
 				7885D7D51FCD89E400A4B59E /* AlipaySDK.bundle */,
 				7885D7D61FCD89E400A4B59E /* AlipaySDK.framework */,
 			);
@@ -995,9 +1001,13 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark-resources.sh",
+				"${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/Required/ShareSDK.bundle",
+				"${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/Optional/ShareSDKUI.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1235,6 +1245,7 @@
 					"$(PROJECT_DIR)/DeWaterMark/ffmpeg",
 					"$(PROJECT_DIR)/DeWaterMark/ffmpeg/include",
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart",
+					"$(PROJECT_DIR)/DeWaterMark/thirdPart/UMAnalytics_Sdk_3.5.10",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianlong.DeWaterMark;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1275,6 +1286,7 @@
 					"$(PROJECT_DIR)/DeWaterMark/ffmpeg",
 					"$(PROJECT_DIR)/DeWaterMark/ffmpeg/include",
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart",
+					"$(PROJECT_DIR)/DeWaterMark/thirdPart/UMAnalytics_Sdk_3.5.10",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianlong.DeWaterMark;
 				PRODUCT_NAME = "$(TARGET_NAME)";
