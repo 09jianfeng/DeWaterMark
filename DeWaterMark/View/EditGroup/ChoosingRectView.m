@@ -7,6 +7,7 @@
 //
 
 #import "ChoosingRectView.h"
+#import "Masonry.h"
 
 @implementation ChoosingRectView{
     UIView *_choosingView;
@@ -35,12 +36,95 @@
 - (void)layoutSubviews{
     if (!_choosingView) {
         _choosingView = [[UIView alloc] initWithFrame:self.bounds];
-        _choosingView.backgroundColor = [UIColor whiteColor];
-        _choosingView.alpha = 0.5;
+        _choosingView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
         [self addSubview:_choosingView];
 
         _choosingView.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds)/2.0, CGRectGetHeight(self.bounds)/2.0);
         _choosingView.center = CGPointMake( CGRectGetWidth(self.bounds)/2.0, CGRectGetHeight(self.bounds)/2.0);
+        
+        float heigh = 5;
+        float width = 20;
+        UIView *borderViewT1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, heigh)];
+        borderViewT1.backgroundColor = [UIColor whiteColor];
+        UIView *borderViewT2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, heigh)];
+        borderViewT2.backgroundColor = [UIColor whiteColor];
+        UIView *borderViewB1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, heigh)];
+        borderViewB1.backgroundColor = [UIColor whiteColor];
+        UIView *borderViewB2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, heigh)];
+        borderViewB2.backgroundColor = [UIColor whiteColor];
+        
+        [_choosingView addSubview:borderViewT1];
+        [_choosingView addSubview:borderViewT2];
+        [_choosingView addSubview:borderViewB1];
+        [_choosingView addSubview:borderViewB2];
+        [borderViewT1 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_choosingView.mas_left);
+            make.width.mas_equalTo(width);
+            make.height.mas_equalTo(heigh);
+            make.bottom.equalTo(_choosingView.mas_top);
+        }];
+        [borderViewT2 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(_choosingView.mas_right);
+            make.width.mas_equalTo(width);
+            make.height.mas_equalTo(heigh);
+            make.bottom.equalTo(_choosingView.mas_top);
+        }];
+        [borderViewB1 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_choosingView.mas_left);
+            make.width.mas_equalTo(width);
+            make.height.mas_equalTo(heigh);
+            make.top.equalTo(_choosingView.mas_bottom);
+        }];
+        [borderViewB2 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(_choosingView.mas_right);
+            make.width.mas_equalTo(width);
+            make.height.mas_equalTo(heigh);
+            make.top.equalTo(_choosingView.mas_bottom);
+        }];
+
+        
+        float sideHeigh = 25;
+        float sideWidth = 5;
+        UIView *borderViewR1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, sideWidth, sideHeigh)];
+        borderViewR1.backgroundColor = [UIColor whiteColor];
+        UIView *borderViewR2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, sideWidth, sideHeigh)];
+        borderViewR2.backgroundColor = [UIColor whiteColor];
+        UIView *borderViewL1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, sideWidth, sideHeigh)];
+        borderViewL1.backgroundColor = [UIColor whiteColor];
+        UIView *borderViewL2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, sideWidth, sideHeigh)];
+        borderViewL2.backgroundColor = [UIColor whiteColor];
+        [_choosingView addSubview:borderViewR1];
+        [_choosingView addSubview:borderViewR2];
+        [_choosingView addSubview:borderViewL1];
+        [_choosingView addSubview:borderViewL2];
+        [borderViewR1 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(sideWidth);
+            make.height.mas_equalTo(sideHeigh);
+            make.right.equalTo(_choosingView.mas_left);
+            make.top.equalTo(_choosingView.mas_top).offset(-heigh);
+        }];
+        
+        [borderViewR2 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(sideWidth);
+            make.height.mas_equalTo(sideHeigh);
+            make.right.equalTo(_choosingView.mas_left);
+            make.bottom.equalTo(_choosingView.mas_bottom).offset(heigh);
+        }];
+
+        [borderViewL1 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(sideWidth);
+            make.height.mas_equalTo(sideHeigh);
+            make.left.equalTo(_choosingView.mas_right);
+            make.top.equalTo(_choosingView.mas_top).offset(-heigh);
+        }];
+
+        [borderViewL2 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(sideWidth);
+            make.height.mas_equalTo(sideHeigh);
+            make.left.equalTo(_choosingView.mas_right);
+            make.bottom.equalTo(_choosingView.mas_bottom).offset(heigh);
+        }];
+
     }
     [super layoutSubviews];
 }
