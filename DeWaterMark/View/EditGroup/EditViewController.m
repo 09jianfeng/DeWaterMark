@@ -168,7 +168,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 - (void)setFFMPEGProgress:(float)progress{
     dispatch_async(dispatch_get_main_queue(), ^{
         NSLog(@"____ progress:%f",progress);
-        HUD.label.text = [NSString stringWithFormat:@"%%%d",(int)(progress*100)];
+        HUD.label.text = [NSString stringWithFormat:@"%d%%",(int)(progress*100)];
     });
 }
 
