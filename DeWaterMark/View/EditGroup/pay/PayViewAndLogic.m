@@ -309,7 +309,7 @@ static float linespace = 10;
     
     UILabel *descText = [UILabel new];
     descText.numberOfLines = 2;
-    descText.text = @"支付遇到问题请咨询QQ：613665319 \n 或联系微信公众号：wsjtw8";
+    descText.text = @"支付遇到问题请咨询QQ：2301438796";
     descText.textColor = [UIColor grayColor];
     descText.font = [UIFont boldSystemFontOfSize:15];
     descText.textAlignment = NSTextAlignmentCenter;

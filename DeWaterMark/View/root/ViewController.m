@@ -59,7 +59,7 @@
         hud.mode = MBProgressHUDModeText;
         hud.label.text = vipDateFinish;
         hud.offset = CGPointMake(0.f, CGRectGetHeight(self.view.frame)/4.0);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
     }

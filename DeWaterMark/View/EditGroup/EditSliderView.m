@@ -87,7 +87,7 @@
         if (_selectedLineX > CGRectGetWidth(self.bounds)) {
             _selectedLineX = CGRectGetWidth(self.bounds);
         }
-    }else if(fabs(_selectedLineLastX - location.x)<50){
+    }else if(fabs(_selectedLineLastX - location.x)<30){
         _selectedLineLastX = location.x < CGRectGetWidth(self.bounds) ? location.x:CGRectGetWidth(self.bounds);
         if (_selectedLineLastX < 0) {
             _selectedLineLastX = 0;
@@ -140,19 +140,27 @@
     
     //矩形，并填弃颜色
     CGContextSetLineWidth(context, 0.0);//线的宽度
-    aColor = [UIColor blueColor];//blue蓝色
+    aColor = [UIColor colorWithRed:74.0/255.0 green:175/255.0 blue:247.0/255.0 alpha:1.0];//blue蓝色
     CGContextSetFillColorWithColor(context, aColor.CGColor);//填充颜色
     if (_selectedLineLastX == 0) {
         _selectedLineLastX = width;
     }
-    CGContextAddRect(context,CGRectMake(_selectedLineX, heigh/2.0- 5, _selectedLineLastX - _selectedLineX, 10));//画方框
+    
+    float falSelectedLineX = _selectedLineX+10  < width -10 ?_selectedLineX+10 : width -10;
+    CGContextAddRect(context,CGRectMake(falSelectedLineX, heigh/2.0- 5, _selectedLineLastX - falSelectedLineX, 10));//画方框
     CGContextDrawPath(context, kCGPathFillStroke);//绘画路径
     
     //画圆
     aColor = [UIColor whiteColor];
     CGContextSetFillColorWithColor(context, aColor.CGColor);//填充颜色
-    CGContextAddArc(context, _progressX, heigh/2.0, 10, 0, 2*PI, 0); //添加一个圆
+    CGContextAddArc(context, _progressX+10 < width -10 ? _progressX+10 : width -10, heigh/2.0, 10, 0, 2*PI, 0); //添加一个圆
     CGContextDrawPath(context, kCGPathFillStroke);//绘画路径
+    
+//    /*图片*/
+//    UIImage *image = [UIImage imageNamed:@"btn_progress_or"];
+////    [image drawInRect:CGRectMake(_progressX-20, heigh/2.0-10, 20, 20)];//在坐标中画出图片
+//    //    [image drawAtPoint:CGPointMake(100, 340)];//保持图片大小在point点开始画图片，可以把注释去掉看看
+//    CGContextDrawImage(context, CGRectMake(_progressX - 10, heigh/2.0-10, 20, 20), image.CGImage);
 }
 
 #pragma mark - 画图参考
