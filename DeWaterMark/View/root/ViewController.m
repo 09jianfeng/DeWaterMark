@@ -15,6 +15,8 @@
 #import "MMDrawerBarButtonItem.h"
 #import "UIViewController+MMDrawerController.h"
 #import "PayViewAndLogic.h"
+#import "MBProgressHUD.h"
+#import "CommonConfig.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewTopLay;
@@ -50,6 +52,17 @@
 //    self.navigationItem.leftBarButtonItem = left;
     [[PayViewAndLogic shareInstance] requestWebData];
 
+    NSString *vipFinishDa = [CommonConfig getVIPFinishDate];
+    if (vipFinishDa) {
+        NSString *vipDateFinish = [NSString stringWithFormat:@"会员到期时间 %@",vipFinishDa];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = vipDateFinish;
+        hud.offset = CGPointMake(0.f, CGRectGetHeight(self.view.frame)/4.0);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    }
 }
 
 - (void)buttonPressed:(id)sender{

@@ -76,6 +76,19 @@ static NSString *SETVIPDAYINTER = @"SETVIPDAYINTER";
     [CommonConfig setVIP:1];
 }
 
++ (NSString *)getVIPFinishDate{
+    long long vipInterval = [[DeWaterKeyChain getValueForKey:SETVIPDAYINTER] longLongValue];
+    if (vipInterval < 100) {
+        return nil;
+    }
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:vipInterval];
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    format.dateFormat = @"YYYY-MM-dd HH:mm:ss";
+    NSString *stringDate = [format stringFromDate:date];
+    return stringDate;
+}
+
 + (BOOL)isVIP{
     BOOL isVIP = [[DeWaterKeyChain getValueForKey:GETISVIP] boolValue];
     if (!isVIP) {

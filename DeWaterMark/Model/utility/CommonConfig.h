@@ -25,5 +25,6 @@
 + (BOOL)isVIP;
 
 + (void)setVIPInterval:(long long)vipinterval;
++ (NSString *)getVIPFinishDate;
 
 @end
