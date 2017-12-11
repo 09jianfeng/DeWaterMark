@@ -42,6 +42,7 @@
 		7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */; };
 		7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B3051FAF5622007A6350 /* ChoosingRectView.m */; };
 		782A0BB81FDADDBB0041E76F /* DeWaterKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 782A0BB71FDADDBB0041E76F /* DeWaterKeyChain.m */; };
+		782CC25C1FDEAD71004211B5 /* QAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 782CC25B1FDEAD71004211B5 /* QAViewController.m */; };
 		782EBBAB1FDCD31D005D3DEC /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782EBBA81FDCD31C005D3DEC /* libMobClickLibrary.a */; };
 		782EBBAD1FDD095F005D3DEC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782EBBAC1FDD0958005D3DEC /* AssetsLibrary.framework */; };
 		783B459C1FCFEA56003770C9 /* CommonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 783B459B1FCFEA56003770C9 /* CommonConfig.m */; };
@@ -257,6 +258,8 @@
 		7816B3051FAF5622007A6350 /* ChoosingRectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoosingRectView.m; sourceTree = "<group>"; };
 		782A0BB61FDADDBB0041E76F /* DeWaterKeyChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeWaterKeyChain.h; sourceTree = "<group>"; };
 		782A0BB71FDADDBB0041E76F /* DeWaterKeyChain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeWaterKeyChain.m; sourceTree = "<group>"; };
+		782CC25A1FDEAD71004211B5 /* QAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QAViewController.h; sourceTree = "<group>"; };
+		782CC25B1FDEAD71004211B5 /* QAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QAViewController.m; sourceTree = "<group>"; };
 		782EBBA81FDCD31C005D3DEC /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		782EBBA91FDCD31D005D3DEC /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		782EBBAA1FDCD31D005D3DEC /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
@@ -800,6 +803,8 @@
 				7816B1A21FAD5F77007A6350 /* ViewController.m */,
 				7885D7C61FCD46B100A4B59E /* MenuButton.h */,
 				7885D7C71FCD46B100A4B59E /* MenuButton.m */,
+				782CC25A1FDEAD71004211B5 /* QAViewController.h */,
+				782CC25B1FDEAD71004211B5 /* QAViewController.m */,
 			);
 			path = root;
 			sourceTree = "<group>";
@@ -1052,6 +1057,7 @@
 				785E0D3C1FD4481200ADF46D /* ScanSuccessJumpVC.m in Sources */,
 				7816B1BA1FAD66AA007A6350 /* EditSliderView.m in Sources */,
 				7816B2E31FAE1186007A6350 /* cmdutils.c in Sources */,
+				782CC25C1FDEAD71004211B5 /* QAViewController.m in Sources */,
 				7885D7A21FCC466900A4B59E /* MyVideoConfigView.m in Sources */,
 				785E0D3B1FD4481200ADF46D /* QRCodeGenerateVC.m in Sources */,
 				7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */,
@@ -1251,7 +1257,7 @@
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart",
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart/UMAnalytics_Sdk_3.5.10",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tianlong.DeWaterMark;
+				PRODUCT_BUNDLE_IDENTIFIER = com.slothpg.removelogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1292,7 +1298,7 @@
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart",
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart/UMAnalytics_Sdk_3.5.10",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tianlong.DeWaterMark;
+				PRODUCT_BUNDLE_IDENTIFIER = com.slothpg.removelogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

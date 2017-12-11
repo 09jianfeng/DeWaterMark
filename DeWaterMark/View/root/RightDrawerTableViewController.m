@@ -18,6 +18,7 @@
 #import "PayViewAndLogic.h"
 #import "MyFileManage.h"
 #import "DeWaterKeyChain.h"
+#import "QAViewController.h"
 
 @interface RightDrawerTableViewController ()
 
@@ -80,7 +81,7 @@
         case 2:
         {
             cell.imageView.image = [UIImage imageNamed:@"db_14a"];
-//            cell.textLabel.text = @"购买会员";
+            cell.textLabel.text = @"常见问题";
             cell.textLabel.textColor = [UIColor blackColor];
         }
             break;
@@ -116,7 +117,10 @@
             break;
         case 2:
         {
-//            [self getVIP];
+            QAViewController *aboutCon = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"QAViewController"];
+            MMDrawerController *mmdrawer = (MMDrawerController*)[UIApplication sharedApplication].keyWindow.rootViewController;
+            [mmdrawer closeDrawerAnimated:YES completion:nil];
+            [(UINavigationController *)mmdrawer.centerViewController pushViewController:aboutCon animated:YES];
         }
             break;
             
