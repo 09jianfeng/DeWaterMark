@@ -61,7 +61,7 @@
     }else{
         x2 *= deltax2;
     }
-    [_delegate drafCallback:(_touchEndX<_touchBeginX) endPosi:deltax2];
+//    [_delegate drafCallback:(_touchEndX<_touchBeginX) endPosi:deltax2];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -69,8 +69,8 @@
     UITouch *toucher = enumerator.nextObject;
     CGPoint location = [toucher locationInView:self];
     
-    /* //进度条的进度
-    if (fabs(_progressX - location.x) < 20) {
+    //进度条的进度
+    if (fabs(_progressX - location.x) < 50) {
         _progressX = location.x > 0 ? location.x:0;
         if (_progressX > CGRectGetWidth(self.bounds)) {
             _progressX = CGRectGetWidth(self.bounds);
@@ -79,9 +79,9 @@
         _progressChange = YES;
         return;
     }
-     */
+     
     
-    
+    /*不更新前后的x位置
     if (fabs(_selectedLineX - location.x) < 30) {
         _selectedLineX = location.x > 0? location.x:0;
         if (_selectedLineX > CGRectGetWidth(self.bounds)) {
@@ -111,6 +111,7 @@
     }
     
     [_delegate valuehangeing:_duration x1Posi:x1 x2Posi:x2];
+     */
 //    _selectedLineX = feedBackPosition * CGRectGetWidth(self.bounds);
 }
 

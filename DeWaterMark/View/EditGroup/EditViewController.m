@@ -355,6 +355,7 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 }
 
 - (void)positionValueChangeing:(CGFloat)position{
+    [_vc pause];
     [_vc setMoviePosition:position];
 }
 
