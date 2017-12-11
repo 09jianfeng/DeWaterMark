@@ -104,12 +104,6 @@
  */
 
 - (void)btnSharePressed:(id)sender{
-    if (!_assetURL) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请先保存到相册才能分享" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    
     //1、创建分享参数
     NSArray* imageArray = @[[UIImage imageNamed:@"Icon-513"]];
 //    （注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
@@ -199,7 +193,7 @@
                            case SSDKResponseStateFail:
                            {
                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                               message:[NSString stringWithFormat:@"%@",error]
+                                                                               message:[NSString stringWithFormat:@"QQ空间分享需要先保存到相册"]
                                                                               delegate:nil
                                                                      cancelButtonTitle:@"OK"
                                                                      otherButtonTitles:nil, nil];
