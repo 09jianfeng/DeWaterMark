@@ -52,8 +52,8 @@
      配置回调处理，在此方法中根据设置的platformType来填充应用配置信息
      */
     [ShareSDK registerActivePlatforms:@[
-                                        @(SSDKPlatformTypeWechat),
-                                        @(SSDKPlatformTypeQQ),
+                                        @(SSDKPlatformSubTypeWechatSession),
+                                        @(SSDKPlatformSubTypeQZone),
                                         ]
                              onImport:^(SSDKPlatformType platformType)
      {
