@@ -352,6 +352,9 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     _slidView.progress = position/duration;
     _drafFrameDuration = position;
     _slidView.selectedLineX = position*CGRectGetWidth(_slidView.bounds)/duration;
+    
+    _leftLabel.text = [self formatTimeInterval:_slidView.selectedLineX isleft:NO];
+    _rightLabel.text = [self formatTimeInterval:_slidView.selectedLineLastX isleft:NO];
 }
 
 - (void)positionValueChangeing:(CGFloat)position{

@@ -20,4 +20,5 @@
 @property(nonatomic, weak)   id<EditSliderViewDelegate> delegate;
 @property(nonatomic, assign)  float progress;
 @property(nonatomic, assign)  CGFloat selectedLineX;
+@property(nonatomic, assign)  CGFloat selectedLineLastX;
 @end

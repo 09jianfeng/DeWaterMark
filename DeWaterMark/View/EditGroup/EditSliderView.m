@@ -10,7 +10,6 @@
 #define PI M_PI
 
 @implementation EditSliderView{
-    CGFloat _selectedLineLastX;
     CGFloat _progressX;
     BOOL _progressChange;
     
@@ -77,6 +76,8 @@
         }
         [self setNeedsDisplay];
         _progressChange = YES;
+        
+        [_delegate valuehangeing:_duration x1Posi:_selectedLineX x2Posi:_selectedLineLastX];
         return;
     }
      
