@@ -476,7 +476,7 @@ static NSString *MEMBERID = @"MEMBERID";
     }
 }
 
-+(void)getVideoPathFromPHAsset:(PHAsset *)asset fileName:(NSString *)fileName fileDir:(NSString *)fileDir rootDir:(NSString *)rootDir complete:(void (^)(NSString *, NSString *))result failure:(void (^)(NSString *))failure cancell:(void (^)(void))cancell progressblock:(void (^)(float progress))progressblock{
++(void)getVideoPathFromPHAsset:(PHAsset *)asset fileName:(NSString *)fileName fileDir:(NSString *)fileDir rootDir:(NSString *)rootDir complete:(void (^)(NSString *, NSString *))result failure:(void (^)(NSString *failInfo, NSError *error))failure cancell:(void (^)(void))cancell progressblock:(void (^)(float progress))progressblock{
     PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
     options.version = PHImageRequestOptionsVersionCurrent;
     options.deliveryMode = PHVideoRequestOptionsDeliveryModeAutomatic;
@@ -498,7 +498,7 @@ static NSString *MEMBERID = @"MEMBERID";
                     if (failure) {
                         NSError *e = [exportSession error];
                         NSLog(@"%@",e);
-                        failure([[exportSession error] localizedDescription]);
+                        failure([[exportSession error] localizedDescription],e);
                         if (e.code == -11823) {
                             result(savePath,[savePath lastPathComponent]);
                         }

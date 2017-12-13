@@ -301,17 +301,17 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 
 #pragma mark - callback
 - (void)valuehangeing:(float)duration x1Posi:(float)x1Posi x2Posi:(float)x2Posi{
-    NSLog(@"selecDura:%f pos1:%f posi2:%f",duration, x1Posi, x2Posi);
-    _leftLabel.text = [self formatTimeInterval:x1Posi isleft:NO];
-    _rightLabel.text = [self formatTimeInterval:x2Posi isleft:NO];
-    
-    CGFloat frameDuration;
-    if (x1Posi > _drafPosition) {
-        while (x1Posi - _drafFrameDuration > _drafPosition && _drafPosition > 0.00000f) {
-            _drafPosition = [_vc decodeFrameAndPresent:&frameDuration];
-            _drafFrameDuration = frameDuration;
-        }
-    }
+//    NSLog(@"selecDura:%f pos1:%f posi2:%f",duration, x1Posi, x2Posi);
+//    _leftLabel.text = [self formatTimeInterval:x1Posi isleft:NO];
+//    _rightLabel.text = [self formatTimeInterval:x2Posi isleft:NO];
+//
+//    CGFloat frameDuration;
+//    if (x1Posi > _drafPosition) {
+//        while (x1Posi - _drafFrameDuration > _drafPosition && _drafPosition > 0.00000f) {
+//            _drafPosition = [_vc decodeFrameAndPresent:&frameDuration];
+//            _drafFrameDuration = frameDuration;
+//        }
+//    }
 }
 
 - (void)choosingRect:(CGRect)rect{
@@ -353,8 +353,8 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
     _drafFrameDuration = position;
     _slidView.selectedLineX = position*CGRectGetWidth(_slidView.bounds)/duration;
     
-    _leftLabel.text = [self formatTimeInterval:_slidView.selectedLineX isleft:NO];
-    _rightLabel.text = [self formatTimeInterval:_slidView.selectedLineLastX isleft:NO];
+    _leftLabel.text = [self formatTimeInterval:position isleft:NO];
+    _rightLabel.text = [self formatTimeInterval:duration isleft:NO];
 }
 
 - (void)positionValueChangeing:(CGFloat)position{

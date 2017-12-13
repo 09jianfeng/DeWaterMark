@@ -637,16 +637,16 @@ NSString *  const kPDMAlbumInfoCountKey = @"PDMAlbumInfoCountKey";
     return _photosArray[nIndex];
 }
 
-- (void)fetchVideoPathFromAsset:(id)asset result:(void (^)(NSString *path))result progressblock:(void (^)(float progress))progressblock{
+- (void)fetchVideoPathFromAsset:(id)asset result:(void (^)(NSString *path, NSError *error))result progressblock:(void (^)(float progress))progressblock{
     NSString *rootDir = [MyFileManage rootDirDoc];
     PHAsset *phasset = (PHAsset*)asset;
     NSString *fileName = [phasset valueForKey:@"filename"];
     fileName = [[fileName stringByDeletingPathExtension] stringByAppendingString:@".mp4"];
     
     [MyFileManage getVideoPathFromPHAsset:phasset fileName:fileName fileDir:@"originvideo" rootDir:rootDir complete:^(NSString *path, NSString *filename){
-        result(path);
-    } failure:^(NSString *path) {
-        NSLog(@"____ failure");
+        result(path,nil);
+    } failure:^(NSString *path,NSError *error) {
+        result(path,error);
     } cancell:^{
         NSLog(@"____ cancell");
     } progressblock:progressblock];

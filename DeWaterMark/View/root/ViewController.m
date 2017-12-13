@@ -139,20 +139,31 @@
             HUD.label.text = @"正在从相册导入";
             
             for (id asset in imageSources) {
-                [[YZYPhotoDataManager shareInstance] fetchVideoPathFromAsset:asset result:^(NSString *path) {
+                [[YZYPhotoDataManager shareInstance] fetchVideoPathFromAsset:asset result:^(NSString *path , NSError *error) {
                     
-                    NSLog(@"____ videoPath:%@",path);
-                    _videoPath = path;
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        _baseView.hidden = YES;
-                        [HUD hideAnimated:YES];
+                    if (!error) {
+                        NSLog(@"____ videoPath:%@",path);
+                        _videoPath = path;
                         
-                        UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                        EditViewController *editCon = [main instantiateViewControllerWithIdentifier:@"EditViewController"];
-                        editCon.videoPath = _videoPath;
-                        [self.navigationController pushViewController:editCon animated:YES];
-                    });
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            _baseView.hidden = YES;
+                            [HUD hideAnimated:YES];
+                            
+                            UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                            EditViewController *editCon = [main instantiateViewControllerWithIdentifier:@"EditViewController"];
+                            editCon.videoPath = _videoPath;
+                            [self.navigationController pushViewController:editCon animated:YES];
+                        });
+                    }else{
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            _baseView.hidden = YES;
+                            [HUD hideAnimated:YES];
+                            
+                            UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提醒" message:path delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                            [aler show];
+                        });
+                    }
+                    
                 } progressblock:^(float progress) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         HUD.label.text = [NSString stringWithFormat:@"正在从相册导入 %%%d",(int)(progress*100)];
