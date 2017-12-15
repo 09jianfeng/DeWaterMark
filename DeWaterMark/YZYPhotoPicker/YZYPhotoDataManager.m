@@ -646,7 +646,7 @@ NSString *  const kPDMAlbumInfoCountKey = @"PDMAlbumInfoCountKey";
     [MyFileManage getVideoPathFromPHAsset:phasset fileName:fileName fileDir:@"originvideo" rootDir:rootDir complete:^(NSString *path, NSString *filename){
         result(path,nil);
     } failure:^(NSString *path,NSError *error) {
-        result(path,error);
+        NSLog(@"____ fail");
     } cancell:^{
         NSLog(@"____ cancell");
     } progressblock:progressblock];

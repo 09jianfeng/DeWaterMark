@@ -156,16 +156,16 @@
     CGFloat chosViewRighBottomX = _choosingView.frame.origin.x + CGRectGetWidth(_choosingView.bounds);
     CGFloat chosViewRighBottomY = _choosingView.frame.origin.y + CGRectGetHeight(_choosingView.bounds);
     
-    if ((chosViewLeftTopX - location.x) < 10 && fabs(chosViewLeftTopY - location.y) < 10 ) {
+    if (fabs(chosViewLeftTopX - location.x) < 20 && fabs(chosViewLeftTopY - location.y) < 20 ) {
         _choosingView.frame = CGRectMake(location.x, location.y, choViewWidth + chosViewLeftTopX - location.x, choViewHeigh + chosViewLeftTopY - location.y);
         
-    }else if (fabs(chosViewRighTopX - location.x) < 10 && fabs(chosViewRighTopY - location.y) < 10){
+    }else if (fabs(chosViewRighTopX - location.x) < 20 && fabs(chosViewRighTopY - location.y) < 20){
         _choosingView.frame = CGRectMake(chosViewLeftTopX, location.y, location.x - chosViewLeftTopX, choViewHeigh + chosViewLeftTopY - location.y);
         
-    }else if (fabs(chosViewLeftBottomX - location.x) < 10 && fabs(chosViewLeftBottomY - location.y) < 10){
+    }else if (fabs(chosViewLeftBottomX - location.x) < 20 && fabs(chosViewLeftBottomY - location.y) < 20){
         _choosingView.frame = CGRectMake(location.x, chosViewLeftTopY, choViewWidth + chosViewLeftTopX - location.x, location.y - chosViewLeftTopY);
         
-    }else if (fabs(chosViewRighBottomX - location.x) < 10 && fabs(chosViewRighBottomY - location.y) < 10){
+    }else if (fabs(chosViewRighBottomX - location.x) < 20 && fabs(chosViewRighBottomY - location.y) < 20){
         _choosingView.frame = CGRectMake(chosViewLeftTopX, chosViewLeftTopY, location.x -chosViewLeftTopX, location.y - chosViewLeftTopY);
     }else{
         CGPoint _choosingPoint = [_choosingView convertPoint:location fromView:self];
