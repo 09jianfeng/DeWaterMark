@@ -176,11 +176,15 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 #pragma mark - btnPress
 - (IBAction)delogoPressed:(id)sender {
     
-    BOOL isVIP = [CommonConfig isVIP];
-    int rest = [CommonConfig restChance];
-    if (rest <= 0 && !isVIP) {
-        [self getVIP];
-        return;
+    NSString *switchPrice = [CommonConfig getSwitchPrice];
+    int isswitch = [switchPrice intValue];
+    if (isswitch == 1) {
+        BOOL isVIP = [CommonConfig isVIP];
+        int rest = [CommonConfig restChance];
+        if (rest <= 0 && !isVIP) {
+            [self getVIP];
+            return;
+        }
     }
     
     _baseView.hidden = NO;

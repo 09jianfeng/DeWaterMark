@@ -17,6 +17,9 @@
 + (NSString *)phoneModel;
 + (NSString *)mobileType;
 
++ (void)setSwitchPrice:(NSString *)switchPrice;
++ (NSString *)getSwitchPrice;
+
 + (NSString *)getMemberId;
 + (void)setMemberId:(NSString *)memberid;
 + (void)decreaseOneChance;

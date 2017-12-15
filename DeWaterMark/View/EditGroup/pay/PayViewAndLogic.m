@@ -84,6 +84,7 @@ static NSString *VIPORDER_ID = @"VIPORDER_ID";
             _payData.v_t = dicData[@"data"][@"v_t"];
             _payData.price = dicData[@"data"][@"price"];
             [CommonConfig setMemberId:_payData.memberId];
+            [CommonConfig setSwitchPrice:_payData.price_switch];
         }
     }];
 }
