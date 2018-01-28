@@ -97,6 +97,7 @@
 		78E41F511FDA0322001A938A /* StringsFile.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78E41F501FDA0322001A938A /* StringsFile.strings */; };
 		78E41F761FDA8249001A938A /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E41F751FDA8249001A938A /* PreviewViewController.m */; };
 		78F8A3D5201D668800981B79 /* QAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F8A3D3201D668800981B79 /* QAViewController.m */; };
+		78F8A3D8201D67B600981B79 /* SelfCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F8A3D7201D67B600981B79 /* SelfCenterViewController.m */; };
 		B0054FD734633A011F74A7FA /* libPods-DeWaterMark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD91559F3BC1914E85766A2 /* libPods-DeWaterMark.a */; };
 /* End PBXBuildFile section */
 
@@ -359,6 +360,8 @@
 		78E41F751FDA8249001A938A /* PreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
 		78F8A3D3201D668800981B79 /* QAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAViewController.m; sourceTree = "<group>"; };
 		78F8A3D4201D668800981B79 /* QAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAViewController.h; sourceTree = "<group>"; };
+		78F8A3D6201D67B600981B79 /* SelfCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelfCenterViewController.h; sourceTree = "<group>"; };
+		78F8A3D7201D67B600981B79 /* SelfCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfCenterViewController.m; sourceTree = "<group>"; };
 		D5A7B4A3F9CD70FB2B85E626 /* Pods-DeWaterMark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeWaterMark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -905,6 +908,8 @@
 		78F8A3D2201D658700981B79 /* Self */ = {
 			isa = PBXGroup;
 			children = (
+				78F8A3D6201D67B600981B79 /* SelfCenterViewController.h */,
+				78F8A3D7201D67B600981B79 /* SelfCenterViewController.m */,
 			);
 			path = Self;
 			sourceTree = "<group>";
@@ -1128,6 +1133,7 @@
 				78CD7B031FFF69D5004F63AF /* DialogView.m in Sources */,
 				78B76C531FC08BE6003DA58E /* YZYPhotoBrowserCell.m in Sources */,
 				7885D8041FCD990000A4B59E /* RightDrawerTableViewController.m in Sources */,
+				78F8A3D8201D67B600981B79 /* SelfCenterViewController.m in Sources */,
 				78B76C4F1FC08BE6003DA58E /* UIView+Addition.m in Sources */,
 				785E0D3F1FD4481200ADF46D /* SGQRCodeScanningVC.m in Sources */,
 				7816B1AE1FAD5F77007A6350 /* main.m in Sources */,

@@ -519,6 +519,9 @@ DQ
                                         <state key="normal" title="个人中心">
                                             <color key="titleColor" red="0.88476001630000001" green="0.94944196430000005" blue="0.88436893080000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="b5R-Vo-Ci4" kind="show" id="Jlz-63-nOy"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -547,6 +550,105 @@ DQ
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="85.599999999999994" y="124.58770614692655"/>
+        </scene>
+        <!--Self Center View Controller-->
+        <scene sceneID="MHT-sa-ulb">
+            <objects>
+                <viewController storyboardIdentifier="SelfCenterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b5R-Vo-Ci4" customClass="SelfCenterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S2K-qs-zNo"/>
+                        <viewControllerLayoutGuide type="bottom" id="anA-Jq-fw8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="73y-ot-PD6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIV-fG-GQn">
+                                <rect key="frame" x="0.0" y="316" width="375" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="6zx-WV-xW0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yx-aT-Gn2">
+                                <rect key="frame" x="49" y="306" width="276" height="54"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.68627450980000004" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="AL8-5k-U53"/>
+                                    <constraint firstAttribute="width" constant="276" id="IdC-jj-vYQ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="f2k-Hf-cSN"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="276" id="vE6-5k-G9y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="升级到VIP">
+                                    <color key="titleColor" red="0.88476001630000001" green="0.94944196430000005" blue="0.88436893080000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnBuyVIP:" destination="b5R-Vo-Ci4" eventType="touchUpInside" id="6Ws-m2-4ag"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8e-Rn-BE4">
+                                <rect key="frame" x="49" y="306.5" width="276" height="54"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.68627450980000004" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="276" id="cHN-DR-vZ2"/>
+                                    <constraint firstAttribute="height" constant="54" id="hvg-zv-CkO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="微信免注册登陆">
+                                    <color key="titleColor" red="0.88476001630000001" green="0.94944196430000005" blue="0.88436893080000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnWeixinLogin:" destination="b5R-Vo-Ci4" eventType="touchUpInside" id="uov-UK-47s"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="self_ctl" translatesAutoresizingMaskIntoConstraints="NO" id="fAF-9p-GCz">
+                                <rect key="frame" x="133" y="125" width="109" height="112"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="112" id="SsI-mv-LET"/>
+                                    <constraint firstAttribute="width" constant="109" id="unR-fm-1WT"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未登陆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bh-9O-epU">
+                                <rect key="frame" x="0.0" y="261" width="375" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="l1W-mY-czu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="j8e-Rn-BE4" firstAttribute="top" secondItem="fAF-9p-GCz" secondAttribute="bottom" constant="69.5" id="3mi-3T-q24"/>
+                            <constraint firstItem="OIV-fG-GQn" firstAttribute="leading" secondItem="73y-ot-PD6" secondAttribute="leading" id="7ac-CW-09s"/>
+                            <constraint firstItem="9Bh-9O-epU" firstAttribute="leading" secondItem="73y-ot-PD6" secondAttribute="leading" id="HP5-1D-Ypz"/>
+                            <constraint firstItem="2yx-aT-Gn2" firstAttribute="centerY" secondItem="73y-ot-PD6" secondAttribute="centerY" id="MgC-zq-bXD"/>
+                            <constraint firstItem="j8e-Rn-BE4" firstAttribute="centerY" secondItem="73y-ot-PD6" secondAttribute="centerY" id="W9x-8s-Hlm"/>
+                            <constraint firstAttribute="trailing" secondItem="OIV-fG-GQn" secondAttribute="trailing" id="XKz-yV-qUV"/>
+                            <constraint firstAttribute="trailing" secondItem="9Bh-9O-epU" secondAttribute="trailing" id="XSL-zX-FBJ"/>
+                            <constraint firstItem="9Bh-9O-epU" firstAttribute="top" secondItem="fAF-9p-GCz" secondAttribute="bottom" constant="24" id="bg0-cR-ohg"/>
+                            <constraint firstItem="OIV-fG-GQn" firstAttribute="centerY" secondItem="73y-ot-PD6" secondAttribute="centerY" id="ftM-Gu-bij"/>
+                            <constraint firstItem="fAF-9p-GCz" firstAttribute="centerX" secondItem="73y-ot-PD6" secondAttribute="centerX" id="qrc-ov-8vJ"/>
+                            <constraint firstItem="j8e-Rn-BE4" firstAttribute="centerX" secondItem="73y-ot-PD6" secondAttribute="centerX" id="tIl-vS-KBb"/>
+                            <constraint firstItem="OIV-fG-GQn" firstAttribute="centerX" secondItem="73y-ot-PD6" secondAttribute="centerX" id="uZd-Rc-7Ne"/>
+                            <constraint firstItem="2yx-aT-Gn2" firstAttribute="centerX" secondItem="73y-ot-PD6" secondAttribute="centerX" id="yfz-Jb-mkN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnBuyVIP" destination="2yx-aT-Gn2" id="tgR-HA-ShB"/>
+                        <outlet property="btnWeixinLogin" destination="j8e-Rn-BE4" id="KUM-HU-1q2"/>
+                        <outlet property="imageIcon" destination="fAF-9p-GCz" id="Zc6-7P-v7H"/>
+                        <outlet property="labelLoginDetail" destination="9Bh-9O-epU" id="1GG-ag-WsS"/>
+                        <outlet property="labelVIPDetail" destination="OIV-fG-GQn" id="gYl-O3-oRf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7rf-9a-r41" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="45.600000000000001" y="939.58020989505258"/>
         </scene>
         <!--我的视频-->
         <scene sceneID="UcV-kY-o40">
@@ -583,7 +685,7 @@ DQ
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CBi-sd-Um4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="733.60000000000002" y="863.1184407796103"/>
+            <point key="canvasLocation" x="966" y="861"/>
         </scene>
         <!--Selected View Controller-->
         <scene sceneID="W7U-Gr-ITo">
@@ -827,5 +929,6 @@ DQ
     <resources>
         <image name="Icon-513" width="1024" height="1024"/>
         <image name="btn_play" width="200" height="200"/>
+        <image name="self_ctl" width="200" height="200"/>
     </resources>
 </document>
