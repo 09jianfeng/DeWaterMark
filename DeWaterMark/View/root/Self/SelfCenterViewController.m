@@ -10,6 +10,8 @@
 #import "WXApi.h"
 #import <ShareSDK/ShareSDK.h>
 #import "CommonConfig.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "PayViewAndLogic.h"
 
 @interface SelfCenterViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
@@ -28,6 +30,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _loginStat = [[CommonConfig shareInstance] loginState];
+    
+    NSString *nickNam = [CommonConfig getNickName];
+    NSString *icon = [CommonConfig getHeadImageURL];
+    [self loginSuccess:nickNam iconPath:icon uid:@""];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,6 +45,9 @@
             iconPath:(NSString *)iconPath
                  uid:(NSString *)uid
 {
+    if(!nickName) return;
+    if(!iconPath) return;
+    
     BOOL isVIP = [CommonConfig isVIP];
     if(isVIP){
         NSString *vipFinishDa = [CommonConfig getVIPFinishDate];
@@ -47,9 +56,14 @@
             _btnBuyVIP.hidden = YES;
             _btnWeixinLogin.hidden = YES;
             _labelVIPDetail.text = vipDateFinish;
+            
+            [_imageIcon sd_setImageWithURL:[NSURL URLWithString:iconPath] placeholderImage:[UIImage imageNamed:@"self_ctl"]];
+            _labelLoginDetail.text = nickName;
         }
     }else{
         _btnWeixinLogin.hidden = YES;
+        [_imageIcon sd_setImageWithURL:[NSURL URLWithString:iconPath] placeholderImage:[UIImage imageNamed:@"self_ctl"]];
+        _labelLoginDetail.text = nickName;
     }
 }
 
@@ -92,7 +106,14 @@
 }
 
 - (IBAction)btnBuyVIP:(id)sender {
+    PayViewAndLogic *payView = [PayViewAndLogic shareInstance];
+    payView.frame = CGRectMake(0, -self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [payView getVIP];
     
+    [self.view addSubview:payView];
+    [UIView animateWithDuration:0.2 animations:^{
+        payView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }];
 }
 
 @end

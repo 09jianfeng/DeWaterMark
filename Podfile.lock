@@ -66,7 +66,7 @@ DEPENDENCIES:
   - mob_sharesdk/ShareSDKPlatforms/WeChatFull
   - mob_sharesdk/ShareSDKUI
   - NSLogger (= 1.8.3)
-  - SDWebImage
+  - SDWebImage (= 4.2.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
