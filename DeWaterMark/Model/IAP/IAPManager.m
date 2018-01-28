@@ -14,12 +14,16 @@
 #import <StoreKit/SKError.h>
 #import "ActivityIndicator.h"
 
-#define ProductID  @"com.slothpg.removelogo"
+NSString *KIAPSuccessNotification = @"KIAPSuccessNotification";
 
 @interface IAPManager()
 @end
 
-@implementation IAPManager
+@implementation IAPManager{
+    ProductID _productid;
+}
+
+
 +(IAPManager *)shareInstance{
     static IAPManager *iapMana = nil;
     static dispatch_once_t onceToken;
@@ -37,11 +41,13 @@
     return self;
 }
 
--(void)buy
+-(void)buy:(ProductID)productid
 {
+    
+    _productid = productid;
     if ([SKPaymentQueue canMakePayments]) {
         //[[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
-        [self requestProductData];
+        [self requestProductData:productid];
         NSLog(@"允许程序内付费购买");
         [[ActivityIndicator shareInstance] showActivityIndicator];
 //        [ActivityIndicator shareInstance].labelStatue.text = @"正在请求AppStore服务器";
@@ -63,12 +69,12 @@
 //    [ActivityIndicator shareInstance].labelStatue.text = @"正在请求恢复内购";
 }
 
--(void)requestProductData
+-(void)requestProductData:(ProductID)productid
 {
     NSLog(@"---------请求对应的产品信息------------");
 //    [ActivityIndicator shareInstance].labelStatue.text = @"正在请求购买";
     NSArray *product = nil;
-    product=[[NSArray alloc] initWithObjects:ProductID,nil];
+    product=[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"%d",productid],nil];
     NSSet *nsset = [NSSet setWithArray:product];
     SKProductsRequest *request=[[SKProductsRequest alloc] initWithProductIdentifiers: nsset];
     request.delegate=self;
@@ -150,8 +156,10 @@
                                                                    delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];
                 [alerView show];
                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"com.book.wulinchuanqivip" object:nil];
                 [[ActivityIndicator shareInstance] closeActivityIndicator];
+                
+                NSString *productid = [NSString stringWithFormat:@"%d",_productid];
+                [[NSNotificationCenter defaultCenter] postNotificationName:KIAPSuccessNotification object:productid];
                 break;
             }
             case SKPaymentTransactionStateFailed://交易失败

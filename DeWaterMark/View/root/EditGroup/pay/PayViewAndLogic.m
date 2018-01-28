@@ -11,6 +11,7 @@
 #import "WebRequestHandler.h"
 #import "CommonConfig.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "IAPManager.h"
 
 static NSString *VIPORDER_ID = @"VIPORDER_ID";
 
@@ -62,6 +63,7 @@ static NSString *VIPORDER_ID = @"VIPORDER_ID";
         
         _orderID = [[NSUserDefaults standardUserDefaults] objectForKey:VIPORDER_ID];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didActiveFromBackground:) name:UIApplicationDidBecomeActiveNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(IAPPaySuccess:) name:KIAPSuccessNotification object:nil];
     }
     
     return self;
@@ -272,6 +274,44 @@ static float linespace = 10;
 }
 
 - (void)buttonBuyPresed:(id)sender{
+    
+    NSString *switchPrice = [CommonConfig getSwitchPrice];
+    int isswitch = [switchPrice intValue];
+    
+    if (isswitch == 0) {
+        NSIndexPath *indexPath = [[_collectionView indexPathsForSelectedItems] objectAtIndex:0];
+        ProductID productid = 1005;
+        switch (indexPath.row) {
+                case 0:
+            {
+                productid = 1000;
+            }
+                break;
+                case 1:
+            {
+                productid = 1001;
+            }
+                break;
+                case 2:
+            {
+                productid = 1004;
+            }
+                break;
+                case 3:
+            {
+                productid = 1005;
+            }
+                break;
+                
+            default:{
+                productid = 1005;
+            }
+                break;
+        }
+        [[IAPManager shareInstance] buy:productid];
+        return;
+    }
+    
     UIView *payView = [self viewWithTag:10001];
     UIView *thirdPart = [[UIView alloc] initWithFrame:CGRectMake( payView.frame.origin.x, -CGRectGetHeight(payView.bounds), CGRectGetWidth(payView.bounds), CGRectGetHeight(payView.bounds))];
     thirdPart.tag = 10004;
@@ -441,6 +481,35 @@ static float linespace = 10;
 
 - (void)didActiveFromBackground:(id)notifica{
     [self checkOrder];
+}
+
+- (void)IAPPaySuccess:(id)notifica{
+    NSString *productid = [notifica userInfo];
+    int productid_int = [productid intValue];
+    switch (productid_int) {
+            case 1000:{
+                productid_int = 0;
+            }
+            break;
+            case 1001:{
+                productid_int = 1;
+            }
+            break;
+
+            case 1004:{
+                productid_int = 2;
+            }
+            break;
+
+            case 1005:{
+                productid_int = 3;
+            }
+            break;
+
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - share

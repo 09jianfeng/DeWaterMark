@@ -9,12 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <StoreKit/SKProductsRequest.h>
 #import <StoreKit/SKPaymentQueue.h>
-//#import "UserCenterController.h"
+
+extern NSString *KIAPSuccessNotification;
+
+typedef NS_ENUM(int,ProductID){
+    ProductIDMonth = 1000,
+    ProductIDThreeMonth = 1001,
+    ProductIDYear = 1004,
+    ProductIDTest = 1005
+};
 
 @interface IAPManager : NSObject<SKProductsRequestDelegate,SKPaymentTransactionObserver>
-//@property(nonatomic, strong) UserCenterController *seconView;
 
 +(IAPManager *)shareInstance;
--(void)buy;
+-(void)buy:(ProductID)productid;
 -(void)restore;
 @end
