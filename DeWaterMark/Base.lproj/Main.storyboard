@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="22H-lc-XUh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="22H-lc-XUh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -481,10 +481,10 @@ DQ
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eH6-dI-jDR">
-                                <rect key="frame" x="34" y="464" width="307" height="185"/>
+                                <rect key="frame" x="56" y="464" width="263" height="185"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abn-Rt-6yh">
-                                        <rect key="frame" x="0.0" y="0.0" width="307" height="55"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="263" height="55"/>
                                         <color key="backgroundColor" red="0.29019607843137252" green="0.68627450980392157" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="PjT-2r-kMH"/>
@@ -498,7 +498,7 @@ DQ
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIq-Nl-mX8">
-                                        <rect key="frame" x="0.0" y="65" width="307" height="55"/>
+                                        <rect key="frame" x="0.0" y="65" width="263" height="55"/>
                                         <color key="backgroundColor" red="0.2901960784" green="0.68627450980000004" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="OuR-Yq-qQ8"/>
@@ -513,7 +513,7 @@ DQ
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY3-cN-EKc">
-                                        <rect key="frame" x="0.0" y="130" width="307" height="55"/>
+                                        <rect key="frame" x="0.0" y="130" width="263" height="55"/>
                                         <color key="backgroundColor" red="0.2901960784" green="0.68627450980000004" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                         <state key="normal" title="个人中心">
@@ -532,12 +532,12 @@ DQ
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vRi-SV-bI5" firstAttribute="top" secondItem="eH6-dI-jDR" secondAttribute="bottom" constant="18" id="75B-Pf-W8u"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="eH6-dI-jDR" secondAttribute="trailing" constant="18" id="Aow-zE-fFp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eH6-dI-jDR" secondAttribute="trailing" constant="40" id="Aow-zE-fFp"/>
                             <constraint firstItem="BgY-4D-FaU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Bh2-H8-qFG"/>
                             <constraint firstAttribute="trailing" secondItem="BgY-4D-FaU" secondAttribute="trailing" id="Hhq-dp-F6N"/>
                             <constraint firstItem="eH6-dI-jDR" firstAttribute="top" secondItem="BgY-4D-FaU" secondAttribute="bottom" id="Tz4-Tk-lDY"/>
                             <constraint firstItem="BgY-4D-FaU" firstAttribute="top" secondItem="lkA-wr-2a7" secondAttribute="bottom" id="g2N-ys-iWo"/>
-                            <constraint firstItem="eH6-dI-jDR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="18" id="hPg-Ys-13N"/>
+                            <constraint firstItem="eH6-dI-jDR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="40" id="hPg-Ys-13N"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="视频去水印" largeTitleDisplayMode="always" id="IlQ-Wj-QGd">

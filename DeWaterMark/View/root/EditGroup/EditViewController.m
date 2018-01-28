@@ -175,16 +175,11 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 
 #pragma mark - btnPress
 - (IBAction)delogoPressed:(id)sender {
-    
-    NSString *switchPrice = [CommonConfig getSwitchPrice];
-    int isswitch = [switchPrice intValue];
-    if (isswitch == 1) {
-        BOOL isVIP = [CommonConfig isVIP];
-        int rest = [CommonConfig restChance];
-        if (rest <= 0 && !isVIP) {
-            [self getVIP];
-            return;
-        }
+    BOOL isVIP = [CommonConfig isVIP];
+    int rest = [CommonConfig restChance];
+    if (rest <= 0 && !isVIP) {
+        [self getVIP];
+        return;
     }
     
     _baseView.hidden = NO;
@@ -376,6 +371,18 @@ static void ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list v
 
 //http://www.btsoso.info/search/%E4%BC%8A%E4%B8%9C%E9%81%A5_ctime_1.html
 - (void)getVIP{
+    NSString *uid = [CommonConfig getUID];
+    if(!uid || [uid isEqualToString:@""]){
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请返回个人中心登录,购买VIP会员" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alertC addAction:alertA];
+        [self presentViewController:alertC animated:YES completion:nil];
+        return;
+    }
+    
     PayViewAndLogic *payView = [PayViewAndLogic shareInstance];
     payView.frame = CGRectMake(0, -self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [payView getVIP];
