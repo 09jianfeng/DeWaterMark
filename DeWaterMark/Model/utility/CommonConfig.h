@@ -8,7 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(char,LoginState){
+    LoginStateSuccess,
+    LoginStateFail,
+    LoginStateDoNotLogin,
+    LoginStateVIP
+};
+
 @interface CommonConfig : NSObject
+@property(nonatomic, assign) LoginState loginState;
+
++ (instancetype)shareInstance;
 
 + (NSString *)getIMEIorIDFA;
 + (NSString *)versionName;
@@ -29,5 +39,14 @@
 
 + (void)setVIPInterval:(long long)vipinterval;
 + (NSString *)getVIPFinishDate;
+
++ (void)setHeadImageURL:(NSString *)headImageURL;
++ (NSString *)getHeadImageURL;
+
++ (void)setNickName:(NSString *)nickName;
++ (NSString *)getNickName;
+
++ (void)setUID:(NSString *)uid;
++ (NSString *)getUID;
 
 @end

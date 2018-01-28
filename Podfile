@@ -18,6 +18,7 @@ pod 'mob_sharesdk/ShareSDKPlatforms/QQ'
 pod 'mob_sharesdk/ShareSDKPlatforms/WeChatFull'
 # UI模块(非必须，需要用到ShareSDK提供的分享菜单栏和分享编辑页面需要以下1行)
 pod 'mob_sharesdk/ShareSDKUI'
+pod 'SDWebImage', '4.2.2'
 end
 
 post_install do |installer|

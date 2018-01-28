@@ -50,6 +50,9 @@ PODS:
   - NSLogger (1.8.3):
     - NSLogger/ObjC (= 1.8.3)
   - NSLogger/ObjC (1.8.3)
+  - SDWebImage (4.2.2):
+    - SDWebImage/Core (= 4.2.2)
+  - SDWebImage/Core (4.2.2)
 
 DEPENDENCIES:
   - AFNetworking (= 3.1.0)
@@ -63,6 +66,7 @@ DEPENDENCIES:
   - mob_sharesdk/ShareSDKPlatforms/WeChatFull
   - mob_sharesdk/ShareSDKUI
   - NSLogger (= 1.8.3)
+  - SDWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -75,7 +79,8 @@ SPEC CHECKSUMS:
   mob_sharesdk: b3ac49261b0e56d9e305d473c70bcde2e3a6e8ff
   MOBFoundation: 6f6ec1c2513278551f1a808b5692e983d99e5069
   NSLogger: c9b80dbeee1d65eb553647a1f6f1f72171b04808
+  SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
 
-PODFILE CHECKSUM: 195079bae7c3671337c3026e21c57cca573bb0f1
+PODFILE CHECKSUM: 471871e845af55077471fe5dfef8d58f46ce0386
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.2.0

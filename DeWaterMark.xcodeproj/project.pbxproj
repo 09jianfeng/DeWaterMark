@@ -466,13 +466,13 @@
 			isa = PBXGroup;
 			children = (
 				78CD7AF71FFF682B004F63AF /* IAP */,
-				78E41F501FDA0322001A938A /* StringsFile.strings */,
 				783B459F1FCFEBBD003770C9 /* web */,
 				783B45991FCFE9DE003770C9 /* utility */,
 				78B76C671FC17E0F003DA58E /* AlbumManager.h */,
 				78B76C681FC17E0F003DA58E /* AlbumManager.m */,
 				7816B1BD1FADF224007A6350 /* MyFileManage.h */,
 				7816B1BE1FADF224007A6350 /* MyFileManage.m */,
+				78E41F501FDA0322001A938A /* StringsFile.strings */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1044,7 +1044,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4B523D80C64980C6546B3844 /* [CP] Copy Pods Resources */ = {

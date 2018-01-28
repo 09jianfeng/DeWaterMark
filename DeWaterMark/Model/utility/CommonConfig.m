@@ -30,6 +30,50 @@ static NSString *SWITCHPRICE = @"SWITCHPRICE";
 @implementation CommonConfig{
 }
 
++ (instancetype)shareInstance{
+    static CommonConfig *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [CommonConfig new];
+    });
+    return instance;
+}
+
++ (void)setUID:(NSString *)uid{
+    if(!uid || [uid isEqualToString:@""]){
+        return;
+    }
+    
+    [DeWaterKeyChain setValue:uid forKey:@"UID"];
+}
++ (NSString *)getUID{
+    NSString *uid = [DeWaterKeyChain getValueForKey:@"UID"];
+    return uid;
+}
+
++ (void)setHeadImageURL:(NSString *)headImageURL{
+    if(!headImageURL || [headImageURL isEqualToString:@""]){
+        return;
+    }
+    [DeWaterKeyChain setValue:headImageURL forKey:@"headImageURL"];
+}
++ (NSString *)getHeadImageURL{
+    NSString *headImageURL = [DeWaterKeyChain getValueForKey:@"headImageURL"];
+    return headImageURL;
+}
+
++ (void)setNickName:(NSString *)nickName{
+    if(!nickName || [nickName isEqualToString:@""]){
+        return;
+    }
+    [DeWaterKeyChain setValue:nickName forKey:@"nickName"];
+
+}
++ (NSString *)getNickName{
+    NSString *nickName = [DeWaterKeyChain getValueForKey:@"nickName"];
+    return nickName;
+}
+
 + (NSString *)getIMEIorIDFA{
     return [self getIDFA];
 }
