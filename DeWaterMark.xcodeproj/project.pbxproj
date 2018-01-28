@@ -90,6 +90,10 @@
 		78B76C581FC08BE6003DA58E /* YZYPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B76C4A1FC08BE6003DA58E /* YZYPhotoPicker.m */; };
 		78B76C661FC179F4003DA58E /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B76C651FC179EA003DA58E /* Photos.framework */; };
 		78B76C691FC17E0F003DA58E /* AlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B76C681FC17E0F003DA58E /* AlbumManager.m */; };
+		78CD7AFA1FFF684A004F63AF /* IAPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD7AF81FFF684A004F63AF /* IAPManager.m */; };
+		78CD7AFC1FFF6872004F63AF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CD7AFB1FFF686B004F63AF /* StoreKit.framework */; };
+		78CD7B001FFF6998004F63AF /* ActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD7AFF1FFF6998004F63AF /* ActivityIndicator.m */; };
+		78CD7B031FFF69D5004F63AF /* DialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD7B021FFF69D5004F63AF /* DialogView.m */; };
 		78CE36C31FC9C81100F84932 /* MyVideosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CE36C21FC9C81100F84932 /* MyVideosController.m */; };
 		78CE36C51FCA7AAA00F84932 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CE36C41FCA7AA400F84932 /* MediaPlayer.framework */; };
 		78E41F511FDA0322001A938A /* StringsFile.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78E41F501FDA0322001A938A /* StringsFile.strings */; };
@@ -344,6 +348,13 @@
 		78B76C651FC179EA003DA58E /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		78B76C671FC17E0F003DA58E /* AlbumManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumManager.h; sourceTree = "<group>"; };
 		78B76C681FC17E0F003DA58E /* AlbumManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumManager.m; sourceTree = "<group>"; };
+		78CD7AF81FFF684A004F63AF /* IAPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPManager.m; sourceTree = "<group>"; };
+		78CD7AF91FFF684A004F63AF /* IAPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPManager.h; sourceTree = "<group>"; };
+		78CD7AFB1FFF686B004F63AF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		78CD7AFE1FFF6998004F63AF /* ActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicator.h; sourceTree = "<group>"; };
+		78CD7AFF1FFF6998004F63AF /* ActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicator.m; sourceTree = "<group>"; };
+		78CD7B011FFF69D5004F63AF /* DialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogView.h; sourceTree = "<group>"; };
+		78CD7B021FFF69D5004F63AF /* DialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogView.m; sourceTree = "<group>"; };
 		78CE36BF1FC7142300F84932 /* CSMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSMath.h; sourceTree = "<group>"; };
 		78CE36C11FC9C81100F84932 /* MyVideosController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyVideosController.h; sourceTree = "<group>"; };
 		78CE36C21FC9C81100F84932 /* MyVideosController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyVideosController.m; sourceTree = "<group>"; };
@@ -359,6 +370,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78CD7AFC1FFF6872004F63AF /* StoreKit.framework in Frameworks */,
 				782EBBAD1FDD095F005D3DEC /* AssetsLibrary.framework in Frameworks */,
 				783B459E1FCFEA6B003770C9 /* AdSupport.framework in Frameworks */,
 				7885D7EF1FCD8D2600A4B59E /* CoreTelephony.framework in Frameworks */,
@@ -448,6 +460,7 @@
 		7816B1BB1FADF1D3007A6350 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				78CD7AFD1FFF6989004F63AF /* Utils */,
 				7885D7C51FCD468E00A4B59E /* root */,
 				78CE36C01FC9C72E00F84932 /* MyProducts */,
 				7816B1B41FAD61C8007A6350 /* EditGroup */,
@@ -458,6 +471,7 @@
 		7816B1BC1FADF1ED007A6350 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				78CD7AF71FFF682B004F63AF /* IAP */,
 				78E41F501FDA0322001A938A /* StringsFile.strings */,
 				783B459F1FCFEBBD003770C9 /* web */,
 				783B45991FCFE9DE003770C9 /* utility */,
@@ -859,6 +873,26 @@
 			path = ImageSource;
 			sourceTree = "<group>";
 		};
+		78CD7AF71FFF682B004F63AF /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				78CD7AF91FFF684A004F63AF /* IAPManager.h */,
+				78CD7AF81FFF684A004F63AF /* IAPManager.m */,
+			);
+			path = IAP;
+			sourceTree = "<group>";
+		};
+		78CD7AFD1FFF6989004F63AF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				78CD7B011FFF69D5004F63AF /* DialogView.h */,
+				78CD7B021FFF69D5004F63AF /* DialogView.m */,
+				78CD7AFE1FFF6998004F63AF /* ActivityIndicator.h */,
+				78CD7AFF1FFF6998004F63AF /* ActivityIndicator.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		78CE36C01FC9C72E00F84932 /* MyProducts */ = {
 			isa = PBXGroup;
 			children = (
@@ -875,6 +909,7 @@
 		AD5B086707C6767EB09DF68C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78CD7AFB1FFF686B004F63AF /* StoreKit.framework */,
 				782EBBAC1FDD0958005D3DEC /* AssetsLibrary.framework */,
 				783B459D1FCFEA64003770C9 /* AdSupport.framework */,
 				7885D7ED1FCD8D1600A4B59E /* CoreMotion.framework */,
@@ -1060,6 +1095,7 @@
 				782CC25C1FDEAD71004211B5 /* QAViewController.m in Sources */,
 				7885D7A21FCC466900A4B59E /* MyVideoConfigView.m in Sources */,
 				785E0D3B1FD4481200ADF46D /* QRCodeGenerateVC.m in Sources */,
+				78CD7AFA1FFF684A004F63AF /* IAPManager.m in Sources */,
 				7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */,
 				785E0D431FD4CFEC00ADF46D /* PayViewAndLogic.m in Sources */,
 				7816B2E41FAE1186007A6350 /* ffmpeg_filter.c in Sources */,
@@ -1087,11 +1123,13 @@
 				7885D8031FCD990000A4B59E /* AboutViewController.m in Sources */,
 				7816B2FF1FAE1BD4007A6350 /* KxAudioManager.m in Sources */,
 				785E0D3E1FD4481200ADF46D /* SGQRCodeManager.m in Sources */,
+				78CD7B031FFF69D5004F63AF /* DialogView.m in Sources */,
 				78B76C531FC08BE6003DA58E /* YZYPhotoBrowserCell.m in Sources */,
 				7885D8041FCD990000A4B59E /* RightDrawerTableViewController.m in Sources */,
 				78B76C4F1FC08BE6003DA58E /* UIView+Addition.m in Sources */,
 				785E0D3F1FD4481200ADF46D /* SGQRCodeScanningVC.m in Sources */,
 				7816B1AE1FAD5F77007A6350 /* main.m in Sources */,
+				78CD7B001FFF6998004F63AF /* ActivityIndicator.m in Sources */,
 				7816B3011FAE1BD4007A6350 /* KxMovieDecoder.m in Sources */,
 				7816B1A01FAD5F77007A6350 /* AppDelegate.m in Sources */,
 				78B76C521FC08BE6003DA58E /* YZYPhotoAsset.m in Sources */,
