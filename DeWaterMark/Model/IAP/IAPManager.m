@@ -7,7 +7,7 @@
 //
 
 #import "IAPManager.h"
-#import "GlobalInstanceClass.h"
+//#import "GlobalInstanceClass.h"
 #import <StoreKit/SKPayment.h>
 #import <StoreKit/SKPaymentTransaction.h>
 #import <StoreKit/SKProduct.h>

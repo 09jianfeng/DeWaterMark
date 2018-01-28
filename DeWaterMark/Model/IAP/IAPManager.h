@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <StoreKit/SKProductsRequest.h>
 #import <StoreKit/SKPaymentQueue.h>
-#import "UserCenterController.h"
+//#import "UserCenterController.h"
 
 @interface IAPManager : NSObject<SKProductsRequestDelegate,SKPaymentTransactionObserver>
-@property(nonatomic, strong) UserCenterController *seconView;
+//@property(nonatomic, strong) UserCenterController *seconView;
 
 +(IAPManager *)shareInstance;
 -(void)buy;

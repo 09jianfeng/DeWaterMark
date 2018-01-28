@@ -42,7 +42,6 @@
 		7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */; };
 		7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B3051FAF5622007A6350 /* ChoosingRectView.m */; };
 		782A0BB81FDADDBB0041E76F /* DeWaterKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 782A0BB71FDADDBB0041E76F /* DeWaterKeyChain.m */; };
-		782CC25C1FDEAD71004211B5 /* QAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 782CC25B1FDEAD71004211B5 /* QAViewController.m */; };
 		782EBBAB1FDCD31D005D3DEC /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782EBBA81FDCD31C005D3DEC /* libMobClickLibrary.a */; };
 		782EBBAD1FDD095F005D3DEC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782EBBAC1FDD0958005D3DEC /* AssetsLibrary.framework */; };
 		783B459C1FCFEA56003770C9 /* CommonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 783B459B1FCFEA56003770C9 /* CommonConfig.m */; };
@@ -60,7 +59,6 @@
 		785E0D431FD4CFEC00ADF46D /* PayViewAndLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 785E0D421FD4CFEC00ADF46D /* PayViewAndLogic.m */; };
 		7885D7A21FCC466900A4B59E /* MyVideoConfigView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D7A11FCC466900A4B59E /* MyVideoConfigView.m */; };
 		7885D7B71FCCFEE900A4B59E /* SelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D7B61FCCFEE900A4B59E /* SelectedViewController.m */; };
-		7885D7C81FCD46B100A4B59E /* MenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D7C71FCD46B100A4B59E /* MenuButton.m */; };
 		7885D7D71FCD89E400A4B59E /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7885D7D51FCD89E400A4B59E /* AlipaySDK.bundle */; };
 		7885D7D81FCD89E400A4B59E /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7885D7D61FCD89E400A4B59E /* AlipaySDK.framework */; };
 		7885D7DF1FCD8A4900A4B59E /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7885D7DD1FCD8A4800A4B59E /* README.txt */; };
@@ -98,6 +96,7 @@
 		78CE36C51FCA7AAA00F84932 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CE36C41FCA7AA400F84932 /* MediaPlayer.framework */; };
 		78E41F511FDA0322001A938A /* StringsFile.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78E41F501FDA0322001A938A /* StringsFile.strings */; };
 		78E41F761FDA8249001A938A /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E41F751FDA8249001A938A /* PreviewViewController.m */; };
+		78F8A3D5201D668800981B79 /* QAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F8A3D3201D668800981B79 /* QAViewController.m */; };
 		B0054FD734633A011F74A7FA /* libPods-DeWaterMark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD91559F3BC1914E85766A2 /* libPods-DeWaterMark.a */; };
 /* End PBXBuildFile section */
 
@@ -262,8 +261,6 @@
 		7816B3051FAF5622007A6350 /* ChoosingRectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoosingRectView.m; sourceTree = "<group>"; };
 		782A0BB61FDADDBB0041E76F /* DeWaterKeyChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeWaterKeyChain.h; sourceTree = "<group>"; };
 		782A0BB71FDADDBB0041E76F /* DeWaterKeyChain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeWaterKeyChain.m; sourceTree = "<group>"; };
-		782CC25A1FDEAD71004211B5 /* QAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QAViewController.h; sourceTree = "<group>"; };
-		782CC25B1FDEAD71004211B5 /* QAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QAViewController.m; sourceTree = "<group>"; };
 		782EBBA81FDCD31C005D3DEC /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		782EBBA91FDCD31D005D3DEC /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		782EBBAA1FDCD31D005D3DEC /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
@@ -297,8 +294,6 @@
 		7885D7A11FCC466900A4B59E /* MyVideoConfigView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyVideoConfigView.m; sourceTree = "<group>"; };
 		7885D7B51FCCFEE900A4B59E /* SelectedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedViewController.h; sourceTree = "<group>"; };
 		7885D7B61FCCFEE900A4B59E /* SelectedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectedViewController.m; sourceTree = "<group>"; };
-		7885D7C61FCD46B100A4B59E /* MenuButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuButton.h; sourceTree = "<group>"; };
-		7885D7C71FCD46B100A4B59E /* MenuButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuButton.m; sourceTree = "<group>"; };
 		7885D7D51FCD89E400A4B59E /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		7885D7D61FCD89E400A4B59E /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		7885D7DD1FCD8A4800A4B59E /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
@@ -362,6 +357,8 @@
 		78E41F501FDA0322001A938A /* StringsFile.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = StringsFile.strings; sourceTree = "<group>"; };
 		78E41F741FDA8249001A938A /* PreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
 		78E41F751FDA8249001A938A /* PreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
+		78F8A3D3201D668800981B79 /* QAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAViewController.m; sourceTree = "<group>"; };
+		78F8A3D4201D668800981B79 /* QAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAViewController.h; sourceTree = "<group>"; };
 		D5A7B4A3F9CD70FB2B85E626 /* Pods-DeWaterMark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeWaterMark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -423,10 +420,6 @@
 			isa = PBXGroup;
 			children = (
 				7885D7D41FCD89E400A4B59E /* thirdPart */,
-				785E0D251FD4481200ADF46D /* SGQRCode */,
-				78B76C311FC08BE6003DA58E /* YZYPhotoPicker */,
-				7816B2F31FAE1BD4007A6350 /* kxmovie */,
-				7816B25B1FAE1186007A6350 /* ffmpeg */,
 				7816B24C1FAE0E09007A6350 /* resource.bundle */,
 				7816B1BC1FADF1ED007A6350 /* Model */,
 				7816B1BB1FADF1D3007A6350 /* View */,
@@ -462,8 +455,6 @@
 			children = (
 				78CD7AFD1FFF6989004F63AF /* Utils */,
 				7885D7C51FCD468E00A4B59E /* root */,
-				78CE36C01FC9C72E00F84932 /* MyProducts */,
-				7816B1B41FAD61C8007A6350 /* EditGroup */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -804,6 +795,9 @@
 		7885D7C51FCD468E00A4B59E /* root */ = {
 			isa = PBXGroup;
 			children = (
+				7816B1B41FAD61C8007A6350 /* EditGroup */,
+				78CE36C01FC9C72E00F84932 /* MyProducts */,
+				78F8A3D2201D658700981B79 /* Self */,
 				7885D8061FCD9A1300A4B59E /* MyTableViewCell.h */,
 				7885D8051FCD9A1300A4B59E /* MyTableViewCell.m */,
 				7885D8071FCD9A1300A4B59E /* MyTableViewCell.xib */,
@@ -815,10 +809,8 @@
 				7885D7FD1FCD974900A4B59E /* MyNavigationViewController.m */,
 				7816B1A11FAD5F77007A6350 /* ViewController.h */,
 				7816B1A21FAD5F77007A6350 /* ViewController.m */,
-				7885D7C61FCD46B100A4B59E /* MenuButton.h */,
-				7885D7C71FCD46B100A4B59E /* MenuButton.m */,
-				782CC25A1FDEAD71004211B5 /* QAViewController.h */,
-				782CC25B1FDEAD71004211B5 /* QAViewController.m */,
+				78F8A3D4201D668800981B79 /* QAViewController.h */,
+				78F8A3D3201D668800981B79 /* QAViewController.m */,
 			);
 			path = root;
 			sourceTree = "<group>";
@@ -826,6 +818,10 @@
 		7885D7D41FCD89E400A4B59E /* thirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				785E0D251FD4481200ADF46D /* SGQRCode */,
+				78B76C311FC08BE6003DA58E /* YZYPhotoPicker */,
+				7816B2F31FAE1BD4007A6350 /* kxmovie */,
+				7816B25B1FAE1186007A6350 /* ffmpeg */,
 				782EBBA71FDCD31C005D3DEC /* UMAnalytics_Sdk_3.5.10 */,
 				7885D7DD1FCD8A4800A4B59E /* README.txt */,
 				7885D7D51FCD89E400A4B59E /* AlipaySDK.bundle */,
@@ -904,6 +900,13 @@
 				78CE36C21FC9C81100F84932 /* MyVideosController.m */,
 			);
 			path = MyProducts;
+			sourceTree = "<group>";
+		};
+		78F8A3D2201D658700981B79 /* Self */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Self;
 			sourceTree = "<group>";
 		};
 		AD5B086707C6767EB09DF68C /* Frameworks */ = {
@@ -1092,7 +1095,6 @@
 				785E0D3C1FD4481200ADF46D /* ScanSuccessJumpVC.m in Sources */,
 				7816B1BA1FAD66AA007A6350 /* EditSliderView.m in Sources */,
 				7816B2E31FAE1186007A6350 /* cmdutils.c in Sources */,
-				782CC25C1FDEAD71004211B5 /* QAViewController.m in Sources */,
 				7885D7A21FCC466900A4B59E /* MyVideoConfigView.m in Sources */,
 				785E0D3B1FD4481200ADF46D /* QRCodeGenerateVC.m in Sources */,
 				78CD7AFA1FFF684A004F63AF /* IAPManager.m in Sources */,
@@ -1111,6 +1113,7 @@
 				783B459C1FCFEA56003770C9 /* CommonConfig.m in Sources */,
 				78B76C511FC08BE6003DA58E /* YZYAlbumListCell.m in Sources */,
 				78B76C581FC08BE6003DA58E /* YZYPhotoPicker.m in Sources */,
+				78F8A3D5201D668800981B79 /* QAViewController.m in Sources */,
 				7885D8081FCD9A1400A4B59E /* MyTableViewCell.m in Sources */,
 				783B45AB1FCFED87003770C9 /* URLManager.m in Sources */,
 				7816B3021FAE1BD4007A6350 /* KxMovieGLView.m in Sources */,
@@ -1118,7 +1121,6 @@
 				7816B1A31FAD5F77007A6350 /* ViewController.m in Sources */,
 				7816B2E51FAE1186007A6350 /* ffmpeg_mod.c in Sources */,
 				78E41F761FDA8249001A938A /* PreviewViewController.m in Sources */,
-				7885D7C81FCD46B100A4B59E /* MenuButton.m in Sources */,
 				782A0BB81FDADDBB0041E76F /* DeWaterKeyChain.m in Sources */,
 				7885D8031FCD990000A4B59E /* AboutViewController.m in Sources */,
 				7816B2FF1FAE1BD4007A6350 /* KxAudioManager.m in Sources */,
@@ -1283,15 +1285,15 @@
 					"\"${PODS_ROOT}/Headers/Public/KVOController\"",
 					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
 					"\"${PODS_ROOT}/Headers/Public/NSLogger\"",
-					"\"$(PROJECT_DIR)/DeWaterMark/ffmpeg/include\"/**",
+					"\"$(PROJECT_DIR)/DeWaterMark/thirdPart/ffmpeg/include\"/**",
 				);
 				INFOPLIST_FILE = DeWaterMark/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/DeWaterMark/ffmpeg",
-					"$(PROJECT_DIR)/DeWaterMark/ffmpeg/include",
+					"$(PROJECT_DIR)/DeWaterMark/thirdPart/ffmpeg",
+					"$(PROJECT_DIR)/DeWaterMark/thirdPart/ffmpeg/include",
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart",
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart/UMAnalytics_Sdk_3.5.10",
 				);
@@ -1324,15 +1326,15 @@
 					"\"${PODS_ROOT}/Headers/Public/KVOController\"",
 					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
 					"\"${PODS_ROOT}/Headers/Public/NSLogger\"",
-					"\"$(PROJECT_DIR)/DeWaterMark/ffmpeg/include\"/**",
+					"\"$(PROJECT_DIR)/DeWaterMark/thirdPart/ffmpeg/include\"/**",
 				);
 				INFOPLIST_FILE = DeWaterMark/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/DeWaterMark/ffmpeg",
-					"$(PROJECT_DIR)/DeWaterMark/ffmpeg/include",
+					"$(PROJECT_DIR)/DeWaterMark/thirdPart/ffmpeg",
+					"$(PROJECT_DIR)/DeWaterMark/thirdPart/ffmpeg/include",
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart",
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart/UMAnalytics_Sdk_3.5.10",
 				);
