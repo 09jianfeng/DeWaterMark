@@ -194,6 +194,11 @@ static NSString *SWITCHPRICE = @"SWITCHPRICE";
 }
 
 + (NSString *)getIDFA{
+    NSString *uid = [CommonConfig getUID];
+    if(uid){
+        return uid;
+    }
+    
     NSString *idfa = [DeWaterKeyChain getValueForKey:@"IDFA"];
     if (!idfa) {
         idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
