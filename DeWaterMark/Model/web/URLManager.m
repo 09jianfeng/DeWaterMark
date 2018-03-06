@@ -111,7 +111,7 @@
 }
 
 + (NSString *)getCheckIAPURL:(NSString *)IAPData{
-    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/ios/remove/check_iap?data=%@",IAPData];
+    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/ios/remove/check_iap?data=%@&openid=%@",IAPData,[CommonConfig getUID]];
     return path;
 
 }

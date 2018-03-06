@@ -158,10 +158,11 @@ NSString *KIAPSuccessNotification = @"KIAPSuccessNotification";
                 
                 [[ActivityIndicator shareInstance] closeActivityIndicator];
                 
-                NSData *receiveData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]];
-                NSLog(@"receiveData %@",receiveData);
-                NSString *productid = [NSString stringWithFormat:@"%d",_productid];
-                [[NSNotificationCenter defaultCenter] postNotificationName:KIAPSuccessNotification object:productid];
+                NSURL *localReceiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+                NSData *data = [NSData dataWithContentsOfURL:localReceiptURL];
+                NSString *receiptStr = [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];                NSString *productid = [NSString stringWithFormat:@"%d",_productid];
+                NSDictionary *productDic = @{@"productid":productid,@"data":receiptStr};
+                [[NSNotificationCenter defaultCenter] postNotificationName:KIAPSuccessNotification object:productDic];
                 break;
             }
             case SKPaymentTransactionStateFailed://交易失败

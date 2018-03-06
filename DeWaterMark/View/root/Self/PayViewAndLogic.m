@@ -485,7 +485,16 @@ static float linespace = 10;
 }
 
 - (void)IAPPaySuccess:(id)notifica{
-    NSString *productid = [notifica userInfo];
+//    NSDictionary *productDic = @{@"productid":productid,@"data":receiveData};
+    
+    NSDictionary *productDic = [notifica object];
+//    int productid_int = [productDic[@"productid"] intValue];
+    NSString *data = productDic[@"data"];
+    [WebRequestHandler requestOrderInfos:data completeBlock:^(NSDictionary *dicData) {
+        NSLog(@"____ %@",dicData);
+    }];
+    
+    /*
     int productid_int = [productid intValue];
     switch (productid_int) {
             case 1000:{
@@ -511,6 +520,7 @@ static float linespace = 10;
         default:
             break;
     }
+     */
 }
 /*
 #pragma mark - share
