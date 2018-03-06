@@ -11,7 +11,11 @@
 @interface URLManager : NSObject
 
 + (NSString *)getInitURL:(NSString *)u_t;
-+ (NSString *)getWeXPaURL:(NSString *)priceId;
-+ (NSString *)getAliPURL:(NSString *)priceId;
-+ (NSString *)getQueryOrderURL:(NSString *)orderNo;
+//+ (NSString *)getWeXPaURL:(NSString *)priceId;
+//+ (NSString *)getAliPURL:(NSString *)priceId;
+//+ (NSString *)getQueryOrderURL:(NSString *)orderNo;
+
++ (NSString *)getWeixinLoginURL:(NSString *)code;
++ (NSString *)getCheckIAPURL:(NSString *)IAPData;
+
 @end

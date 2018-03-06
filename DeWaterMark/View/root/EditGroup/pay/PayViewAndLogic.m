@@ -80,13 +80,9 @@ static NSString *VIPORDER_ID = @"VIPORDER_ID";
         NSLog(@"__ DicData:%@",dicData);
         if (dicData) {
             self.vipDic = dicData;
-            _payData.memberId = dicData[@"data"][@"memberId"];
-            _payData.f_t = dicData[@"data"][@"f_t"];
-            _payData.price_switch = dicData[@"data"][@"price_switch"];
-            _payData.v_t = dicData[@"data"][@"v_t"];
-            _payData.price = dicData[@"data"][@"price"];
-            [CommonConfig setMemberId:_payData.memberId];
-            [CommonConfig setSwitchPrice:_payData.price_switch];
+            _payData.f_t = dicData[@"data"][@"config"][@"f_t"];
+            _payData.v_t = dicData[@"data"][@"config"][@"v_t"];
+            _payData.price = dicData[@"data"][@"config"][@"price"];
         }
     }];
 }
@@ -277,6 +273,7 @@ static float linespace = 10;
     
     NSString *switchPrice = [CommonConfig getSwitchPrice];
     int isswitch = [switchPrice intValue];
+    isswitch = 0;
     
     if (isswitch == 0) {
         NSIndexPath *indexPath = [[_collectionView indexPathsForSelectedItems] objectAtIndex:0];
@@ -312,6 +309,7 @@ static float linespace = 10;
         return;
     }
     
+    /*
     UIView *payView = [self viewWithTag:10001];
     UIView *thirdPart = [[UIView alloc] initWithFrame:CGRectMake( payView.frame.origin.x, -CGRectGetHeight(payView.bounds), CGRectGetWidth(payView.bounds), CGRectGetHeight(payView.bounds))];
     thirdPart.tag = 10004;
@@ -378,11 +376,12 @@ static float linespace = 10;
     [UIView animateWithDuration:0.2 animations:^{
         thirdPart.frame = CGRectMake( payView.frame.origin.x, payView.frame.origin.y, CGRectGetWidth(payView.bounds), CGRectGetHeight(payView.bounds));
     }];
+     */
 }
 
 
 #pragma mark - 支付调用
-
+/*
 - (void)buttonZhifuClosePrssed:(id)sender{
     UIView *zhifuView = [self viewWithTag:10004];
     [zhifuView removeFromSuperview];
@@ -479,8 +478,10 @@ static float linespace = 10;
     }];
 }
 
+*/
+ 
 - (void)didActiveFromBackground:(id)notifica{
-    [self checkOrder];
+//    [self checkOrder];
 }
 
 - (void)IAPPaySuccess:(id)notifica{

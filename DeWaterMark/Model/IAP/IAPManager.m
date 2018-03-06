@@ -158,6 +158,8 @@ NSString *KIAPSuccessNotification = @"KIAPSuccessNotification";
                 
                 [[ActivityIndicator shareInstance] closeActivityIndicator];
                 
+                NSData *receiveData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]];
+                NSLog(@"receiveData %@",receiveData);
                 NSString *productid = [NSString stringWithFormat:@"%d",_productid];
                 [[NSNotificationCenter defaultCenter] postNotificationName:KIAPSuccessNotification object:productid];
                 break;
