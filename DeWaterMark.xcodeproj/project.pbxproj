@@ -440,7 +440,6 @@
 		7816B1B41FAD61C8007A6350 /* EditGroup */ = {
 			isa = PBXGroup;
 			children = (
-				785E0D401FD4CFBC00ADF46D /* pay */,
 				7816B1B51FAD61FD007A6350 /* EditViewController.h */,
 				7816B1B61FAD61FD007A6350 /* EditViewController.m */,
 				7816B1B81FAD66AA007A6350 /* EditSliderView.h */,
@@ -786,15 +785,6 @@
 			path = CustomControls;
 			sourceTree = "<group>";
 		};
-		785E0D401FD4CFBC00ADF46D /* pay */ = {
-			isa = PBXGroup;
-			children = (
-				785E0D411FD4CFEC00ADF46D /* PayViewAndLogic.h */,
-				785E0D421FD4CFEC00ADF46D /* PayViewAndLogic.m */,
-			);
-			path = pay;
-			sourceTree = "<group>";
-		};
 		7885D7C51FCD468E00A4B59E /* root */ = {
 			isa = PBXGroup;
 			children = (
@@ -908,6 +898,8 @@
 		78F8A3D2201D658700981B79 /* Self */ = {
 			isa = PBXGroup;
 			children = (
+				785E0D411FD4CFEC00ADF46D /* PayViewAndLogic.h */,
+				785E0D421FD4CFEC00ADF46D /* PayViewAndLogic.m */,
 				78F8A3D6201D67B600981B79 /* SelfCenterViewController.h */,
 				78F8A3D7201D67B600981B79 /* SelfCenterViewController.m */,
 			);

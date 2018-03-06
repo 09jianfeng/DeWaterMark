@@ -512,7 +512,7 @@ static float linespace = 10;
             break;
     }
 }
-
+/*
 #pragma mark - share
 +(void)sndMesgAndImgToWChat:(enum WXScene)scene title:(NSString *)title{
     [[PayViewAndLogic shareInstance] sedLikContet:scene title:title];
@@ -657,5 +657,5 @@ static float linespace = 10;
         }
     }
 }
-
+*/
 @end
