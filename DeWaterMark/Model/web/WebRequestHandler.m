@@ -45,8 +45,14 @@
     NSURLSessionConfiguration *conf = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:conf];
     
+    NSRange range = [urlString rangeOfString:@"?"];
+    NSString *dataString = [urlString substringFromIndex:range.location+1];
+    urlString = [urlString substringToIndex:range.location];
+    
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:0];
+    request.HTTPMethod = @"POST";
+    request.HTTPBody = [dataString dataUsingEncoding:NSUTF8StringEncoding];
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error) {
             completeBlock(nil);
