@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 typedef NS_ENUM(char,LoginState){
     LoginStateSuccess,
@@ -17,6 +18,13 @@ typedef NS_ENUM(char,LoginState){
 
 @interface CommonConfig : NSObject
 @property(nonatomic, assign) LoginState loginState;
+@property(nonatomic, copy) NSString *nickName;
+@property(nonatomic, copy) NSString *openid;
+@property(nonatomic, copy) NSString *userIcon;
+@property(nonatomic, assign) BOOL isVIP;
+@property(nonatomic, assign) int restFreeTime;
+@property(nonatomic, assign) long long vipInterval;
+@property(nonatomic, assign) int vipFinishDate;
 
 + (instancetype)shareInstance;
 

@@ -456,6 +456,9 @@
 			isa = PBXGroup;
 			children = (
 				78CD7AFD1FFF6989004F63AF /* Utils */,
+				7816B1B41FAD61C8007A6350 /* EditGroup */,
+				78CE36C01FC9C72E00F84932 /* MyProducts */,
+				78F8A3D2201D658700981B79 /* Self */,
 				7885D7C51FCD468E00A4B59E /* root */,
 			);
 			path = View;
@@ -788,9 +791,6 @@
 		7885D7C51FCD468E00A4B59E /* root */ = {
 			isa = PBXGroup;
 			children = (
-				7816B1B41FAD61C8007A6350 /* EditGroup */,
-				78CE36C01FC9C72E00F84932 /* MyProducts */,
-				78F8A3D2201D658700981B79 /* Self */,
 				7885D8061FCD9A1300A4B59E /* MyTableViewCell.h */,
 				7885D8051FCD9A1300A4B59E /* MyTableViewCell.m */,
 				7885D8071FCD9A1300A4B59E /* MyTableViewCell.xib */,
