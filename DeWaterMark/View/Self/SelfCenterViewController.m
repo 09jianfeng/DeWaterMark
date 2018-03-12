@@ -12,6 +12,7 @@
 #import "CommonConfig.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PayViewAndLogic.h"
+#import "WebRequestHandler.h"
 
 @interface SelfCenterViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
@@ -48,23 +49,38 @@
     if(!nickName) return;
     if(!iconPath) return;
     
-    BOOL isVIP = [CommonConfig isVIP];
-    if(isVIP){
-        NSString *vipFinishDa = [CommonConfig getVIPFinishDate];
-        if (vipFinishDa) {
-            NSString *vipDateFinish = [NSString stringWithFormat:@"会员到期时间 %@",vipFinishDa];
-            _btnBuyVIP.hidden = YES;
-            _btnWeixinLogin.hidden = YES;
-            _labelVIPDetail.text = vipDateFinish;
+    //登陆成功后，获取是否vip的信息。
+    [WebRequestHandler requestDataWithUseTime:0 completeBlock:^(NSDictionary *dicData) {
+        NSLog(@"__ DicData:%@",dicData);
+        if (dicData) {
+            NSString *v_t = dicData[@"data"][@"config"][@"v_t"];
+            int vipTime = [v_t intValue];
+            [CommonConfig setVIPInterval:vipTime];
             
-            [_imageIcon sd_setImageWithURL:[NSURL URLWithString:iconPath] placeholderImage:[UIImage imageNamed:@"self_ctl"]];
-            _labelLoginDetail.text = nickName;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                BOOL isVIP = [CommonConfig isVIP];
+                if(isVIP){
+                    NSString *vipFinishDa = [CommonConfig getVIPFinishDate];
+                    if (vipFinishDa) {
+                        NSString *vipDateFinish = [NSString stringWithFormat:@"会员到期时间 %@",vipFinishDa];
+                        _btnBuyVIP.hidden = YES;
+                        _btnWeixinLogin.hidden = YES;
+                        _labelVIPDetail.text = vipDateFinish;
+                        
+                        [_imageIcon sd_setImageWithURL:[NSURL URLWithString:iconPath] placeholderImage:[UIImage imageNamed:@"self_ctl"]];
+                        _labelLoginDetail.text = nickName;
+                    }
+                }else{
+                    _btnWeixinLogin.hidden = YES;
+                    [_imageIcon sd_setImageWithURL:[NSURL URLWithString:iconPath] placeholderImage:[UIImage imageNamed:@"self_ctl"]];
+                    _labelLoginDetail.text = nickName;
+                }
+            });
         }
-    }else{
-        _btnWeixinLogin.hidden = YES;
-        [_imageIcon sd_setImageWithURL:[NSURL URLWithString:iconPath] placeholderImage:[UIImage imageNamed:@"self_ctl"]];
-        _labelLoginDetail.text = nickName;
-    }
+        else{
+            
+        }
+    }];
 }
 
 #pragma mark - wxinlogin

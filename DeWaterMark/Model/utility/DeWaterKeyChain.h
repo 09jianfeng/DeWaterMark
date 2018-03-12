@@ -12,6 +12,8 @@
 
 + (void)setValue:(NSString *)value forKey:(NSString *)key;
 + (NSString *)getValueForKey:(NSString *)key;
++ (void)deleteKey:(NSString *)key;
+
 + (void)removeall;
 
 @end

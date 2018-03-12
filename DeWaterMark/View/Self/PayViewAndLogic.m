@@ -84,6 +84,16 @@ static NSString *VIPORDER_ID = @"VIPORDER_ID";
             _payData.v_t = dicData[@"data"][@"user"][@"v_t"];
             _payData.openId = dicData[@"data"][@"user"][@"openId"];
             _payData.wx = dicData[@"data"][@"user"][@"wx"];
+            
+            BOOL needWxLogin = [_payData.needWxLogin boolValue];
+            if (needWxLogin) {
+                [CommonConfig shareInstance].loginState = LoginStateDoNotLogin;
+                [CommonConfig setVIP:NO];
+                [CommonConfig setVIPInterval:0];
+                [CommonConfig setHeadImageURL:nil];
+                [CommonConfig setNickName:nil];
+                [CommonConfig setUID:nil];
+            }
         }
     }];
 }

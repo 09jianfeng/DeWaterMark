@@ -88,4 +88,15 @@ static NSString * const kPDKeyChainKey = @"com.watermark.keychainKey";
 + (void)delete:(NSString *)service {
     NSMutableDictionary *keychainQuery = [self getKeychainQuery:service];
     SecItemDelete((CFDictionaryRef)keychainQuery);
-}@end
+}
+
++ (void)deleteKey:(NSString *)key{
+    NSMutableDictionary *tempDic = [[DeWaterKeyChain keyChainLoad] mutableCopy];
+    if (!tempDic) {
+        tempDic = [NSMutableDictionary new];
+    }
+    [tempDic removeObjectForKey:key];
+    [DeWaterKeyChain keyChainSave:tempDic];
+}
+
+@end

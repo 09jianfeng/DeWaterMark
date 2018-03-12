@@ -41,6 +41,7 @@ static NSString *SWITCHPRICE = @"SWITCHPRICE";
 
 + (void)setUID:(NSString *)uid{
     if(!uid || [uid isEqualToString:@""]){
+        [DeWaterKeyChain deleteKey:@"UID"];
         return;
     }
     
@@ -53,6 +54,7 @@ static NSString *SWITCHPRICE = @"SWITCHPRICE";
 
 + (void)setHeadImageURL:(NSString *)headImageURL{
     if(!headImageURL || [headImageURL isEqualToString:@""]){
+        [DeWaterKeyChain deleteKey:@"headImageURL"];
         return;
     }
     [DeWaterKeyChain setValue:headImageURL forKey:@"headImageURL"];
@@ -64,6 +66,7 @@ static NSString *SWITCHPRICE = @"SWITCHPRICE";
 
 + (void)setNickName:(NSString *)nickName{
     if(!nickName || [nickName isEqualToString:@""]){
+        [DeWaterKeyChain deleteKey:@"nickName"];
         return;
     }
     [DeWaterKeyChain setValue:nickName forKey:@"nickName"];
