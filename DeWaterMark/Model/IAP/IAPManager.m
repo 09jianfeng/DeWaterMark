@@ -160,7 +160,8 @@ NSString *KIAPSuccessNotification = @"KIAPSuccessNotification";
                 
                 NSURL *localReceiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
                 NSData *data = [NSData dataWithContentsOfURL:localReceiptURL];
-                NSString *receiptStr = [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];                NSString *productid = [NSString stringWithFormat:@"%d",_productid];
+                NSString *receiptStr = [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+                NSString *productid = [NSString stringWithFormat:@"%d",_productid];
                 NSDictionary *productDic = @{@"productid":productid,@"data":receiptStr};
                 [[NSNotificationCenter defaultCenter] postNotificationName:KIAPSuccessNotification object:productDic];
                 break;

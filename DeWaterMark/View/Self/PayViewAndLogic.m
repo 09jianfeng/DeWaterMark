@@ -493,6 +493,12 @@ static float linespace = 10;
     [WebRequestHandler requestOrderInfos:data completeBlock:^(NSDictionary *dicData) {
         NSLog(@"____ %@",dicData);
     }];
+
+    /*
+    [WebRequestHandler checkAppleOrderid:data completeBlock:^(NSDictionary *dicData) {
+        NSLog(@"____ %@",dicData);
+    }];
+     */
     
     /*
     int productid_int = [productid intValue];

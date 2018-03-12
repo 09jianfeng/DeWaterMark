@@ -17,5 +17,4 @@
 
 + (NSString *)getWeixinLoginURL:(NSString *)code;
 + (NSString *)getCheckIAPURL:(NSString *)IAPData;
-
 @end

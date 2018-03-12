@@ -66,5 +66,48 @@
 
 }
 
++ (void)checkAppleOrderid:(NSString *)receiptString completeBlock:(void(^)(NSDictionary *dicData))completeBlock{
+    NSURLSessionConfiguration *conf = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:conf];
+    
+    NSDictionary *requestContents = @{
+                                      @"receipt-data": receiptString
+                                      };
+    
+    NSError *error;
+    NSData *requestData = [NSJSONSerialization dataWithJSONObject:requestContents
+                                                          options:0
+                                                            error:&error];
+    
+    NSURL *url = [NSURL URLWithString:@"https://sandbox.itunes.apple.com/verifyReceipt"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:0];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:requestData];
+//    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:
+//                                      ^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+//                                            if (error) {
+//                                                completeBlock(nil);
+//                                                return ;
+//                                            }
+//
+//                                            completeBlock(responseObject);
+//                                        }];
+//
+//    [dataTask resume];
+    
+ // Make a connection to the iTunes Store on a background queue.
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:request queue:queue
+    completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (connectionError) {
+        } else {
+            NSError *error;
+            NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            if (!jsonResponse) {
+
+            }
+        }
+    }];
+}
 
 @end

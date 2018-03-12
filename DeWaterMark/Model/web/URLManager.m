@@ -111,9 +111,9 @@
 }
 
 + (NSString *)getCheckIAPURL:(NSString *)IAPData{
-    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/ios/remove/check_iap?data=%@&openid=%@",IAPData,[CommonConfig getUID]];
+    NSString * encodedString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)IAPData,NULL,(CFStringRef)@"!*'();@&+$,/?%#[]~=_-.:",kCFStringEncodingUTF8 ));
+    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/ios/remove/check_iap?data=%@&openid=%@",encodedString,[CommonConfig getUID]];
     return path;
-
 }
 
 @end
