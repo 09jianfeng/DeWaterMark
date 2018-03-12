@@ -14,8 +14,6 @@
 //全屏大小
 + (instancetype)shareInstance;
 
-+(void)sndMesgAndImgToWChat:(enum WXScene)scene title:(NSString *)title;
-
 //先设置frame后再调用getVIP
 - (void)getVIP;
 - (void)requestWebData;

@@ -16,17 +16,14 @@
 static NSString *VIPORDER_ID = @"VIPORDER_ID";
 
 @interface PayDataStruct:NSObject
-@property(nonatomic, strong) NSString *memberId;
-@property(nonatomic, strong) NSString *f_t;
-@property(nonatomic, strong) NSString *v_t;
 @property(nonatomic, strong) NSString *price_switch;
-/*
- @property(nonatomic, strong) NSString *amount;
- @property(nonatomic, strong) NSString *appDesc;
- @property(nonatomic, strong) NSString *f_id;
- @property(nonatomic, strong) NSString *name;
- */
 @property(nonatomic, strong) NSArray *price;
+@property(nonatomic, strong) NSString *u_t;
+@property(nonatomic, strong) NSString *f_t;
+@property(nonatomic, strong) NSString *needWxLogin;
+@property(nonatomic, strong) NSString *v_t;
+@property(nonatomic, strong) NSDictionary *wx;
+@property(nonatomic, strong) NSString *openId;
 @end
 
 @implementation PayDataStruct{
@@ -83,6 +80,10 @@ static NSString *VIPORDER_ID = @"VIPORDER_ID";
             _payData.f_t = dicData[@"data"][@"config"][@"f_t"];
             _payData.v_t = dicData[@"data"][@"config"][@"v_t"];
             _payData.price = dicData[@"data"][@"config"][@"price"];
+            _payData.needWxLogin = dicData[@"data"][@"user"][@"needWxLogin"];
+            _payData.v_t = dicData[@"data"][@"user"][@"v_t"];
+            _payData.openId = dicData[@"data"][@"user"][@"openId"];
+            _payData.wx = dicData[@"data"][@"user"][@"wx"];
         }
     }];
 }

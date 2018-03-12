@@ -105,14 +105,14 @@
  }
  */
 
-+ (NSString *)getWeixinLoginURL:(NSString *)code{
-    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/ios/remove/wx_login?code=%@",code];
-    return path;
-}
-
 + (NSString *)getCheckIAPURL:(NSString *)IAPData{
     NSString * encodedString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)IAPData,NULL,(CFStringRef)@"!*'();@&+$,/?%#[]~=_-.:",kCFStringEncodingUTF8 ));
     NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/ios/remove/check_iap?data=%@&openid=%@",encodedString,[CommonConfig getUID]];
+    return path;
+}
+
++ (NSString *)getWxLoginURL:(NSString *)code{
+    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/ios/remove/wx_login?code=%@",code];
     return path;
 }
 
