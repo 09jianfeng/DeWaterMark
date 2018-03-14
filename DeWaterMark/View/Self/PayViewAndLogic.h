@@ -18,5 +18,5 @@
 - (void)getVIP;
 - (void)requestWebData;
 
-- (void)wxLogin;
+- (void)wxLoginWithCompleteBlock:(void(^)(bool isSuccess))completeBlock;
 @end

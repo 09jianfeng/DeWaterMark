@@ -18,10 +18,14 @@
     [self baseRequest:urlString completeBlock:completeBlock];
 }
 
++ (void)requestWebChatLogin:(NSString *)code completeBlock:(void(^)(NSDictionary *dicData))completeBlock{
+    NSString *urlString = [URLManager getWeixinLoginURL:code];
+    [self baseRequest:urlString completeBlock:completeBlock];
+}
+
 + (void)requestOrderInfos:(NSString *)data completeBlock:(void(^)(NSDictionary *dicData))completeBlock{
     NSString *urlString = [URLManager getCheckIAPURL:data];
     [self baseRequest:urlString completeBlock:completeBlock];
-
 }
 
 //+(void)requestWxPayWithUseTime:(NSString *)priceId completeBlock:(void(^)(NSDictionary *dicData))completeBlock{

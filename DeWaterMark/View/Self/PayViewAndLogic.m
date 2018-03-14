@@ -15,6 +15,8 @@
 
 static NSString *VIPORDER_ID = @"VIPORDER_ID";
 
+typedef void(^CompleteBlock)(bool isSuccess);
+
 @interface PayDataStruct:NSObject
 @property(nonatomic, strong) NSString *price_switch;
 @property(nonatomic, strong) NSArray *price;
@@ -40,6 +42,7 @@ static NSString *VIPORDER_ID = @"VIPORDER_ID";
 @implementation PayViewAndLogic{
     UICollectionView *_collectionView;
     NSString *_orderID;
+    CompleteBlock _loginBlock;
 }
 
 + (instancetype)shareInstance{
@@ -649,11 +652,9 @@ static float linespace = 10;
     {
         SendAuthResp *temp = (SendAuthResp*)resp;
         
-        NSString *strTitle = [NSString stringWithFormat:@"Auth结果"];
-        NSString *strMsg = [NSString stringWithFormat:@"code:%@,state:%@,errcode:%d", temp.code, temp.state, temp.errCode];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+//        NSString *strTitle = [NSString stringWithFormat:@"Auth结果"];
+//        NSString *strMsg = [NSString stringWithFormat:@"code:%@,state:%@,errcode:%d", temp.code, temp.state, temp.errCode];
+        [self loginSuccessByCode:temp.code];
     }
     else if ([resp isKindOfClass:[AddCardToWXCardPackageResp class]])
     {
@@ -688,17 +689,36 @@ static NSString *kAuthScope = @"snsapi_userinfo";
 static NSString *kAuthOpenID = @"这个我现在没使用";
 static NSString *kAuthState = @"123";
 //微信登陆
-- (void)wxLogin
+- (void)wxLoginWithCompleteBlock:(void(^)(bool isSuccess))completeBlock
 {
     SendAuthReq *req = [[SendAuthReq alloc] init];
     req.scope = kAuthScope;
     req.state = kAuthState;
     req.openID = kAuthOpenID;
     [WXApi sendReq:req];
+    _loginBlock = [completeBlock copy];
 }
 
 #pragma mark 微信登录回调。
 -(void)loginSuccessByCode:(NSString *)code{
     NSLog(@"code %@",code);
+    [WebRequestHandler requestWebChatLogin:code completeBlock:^(NSDictionary *dicData) {
+        if (dicData) {
+            NSString *icon = dicData[@"data"][@"wx"][@"headimgurl"];
+            NSString *openid = dicData[@"data"][@"wx"][@"openid"];
+            NSString *nickName = dicData[@"data"][@"wx"][@"nickname"];
+            
+            long long v_t = [dicData[@"v_t"] longLongValue];
+            [CommonConfig setVIPInterval:v_t];
+            [CommonConfig shareInstance].loginState = LoginStateSuccess;
+            [CommonConfig setNickName:nickName];
+            [CommonConfig setHeadImageURL:icon];
+            [CommonConfig setUID:openid];
+            
+            _loginBlock(YES);
+        }else{
+            _loginBlock(NO);
+        }
+    }];
 }
 @end

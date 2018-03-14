@@ -21,4 +21,6 @@
 + (void)requestOrderInfos:(NSString *)data completeBlock:(void(^)(NSDictionary *dicData))completeBlock;
 
 + (void)checkAppleOrderid:(NSString *)receiptString completeBlock:(void(^)(NSDictionary *dicData))completeBlock;
+
++ (void)requestWebChatLogin:(NSString *)code completeBlock:(void(^)(NSDictionary *dicData))completeBlock;
 @end

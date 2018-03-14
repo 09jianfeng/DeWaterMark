@@ -111,7 +111,7 @@
     return path;
 }
 
-+ (NSString *)getWxLoginURL:(NSString *)code{
++ (NSString *)getWeixinLoginURL:(NSString *)code{
     NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/ios/remove/wx_login?code=%@",code];
     return path;
 }

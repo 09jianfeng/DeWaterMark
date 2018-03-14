@@ -125,7 +125,11 @@
 	}];
      */
     
-    [[PayViewAndLogic shareInstance] wxLogin];
+    [[PayViewAndLogic shareInstance] wxLoginWithCompleteBlock:^(bool isSuccess) {
+        NSString *nickNam = [CommonConfig getNickName];
+        NSString *icon = [CommonConfig getHeadImageURL];
+        [self loginSuccess:nickNam iconPath:icon uid:@""];
+    }];
 }
 
 - (IBAction)btnBuyVIP:(id)sender {
