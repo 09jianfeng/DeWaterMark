@@ -123,7 +123,6 @@ static NSString *SWITCHPRICE = @"SWITCHPRICE";
         [DeWaterKeyChain setValue:@"3" forKey:RESTTIME];
         restTime = @"3";
     }
-    
     return [restTime intValue];
 }
 
@@ -150,11 +149,6 @@ static NSString *SWITCHPRICE = @"SWITCHPRICE";
 }
 
 + (BOOL)isVIP{
-    BOOL isVIP = [[DeWaterKeyChain getValueForKey:GETISVIP] boolValue];
-    if (!isVIP) {
-        return NO;
-    }
-    
     long long now = [NSDate date].timeIntervalSince1970;
     long long vipInterval = [[DeWaterKeyChain getValueForKey:SETVIPDAYINTER] longLongValue];
     
@@ -162,7 +156,7 @@ static NSString *SWITCHPRICE = @"SWITCHPRICE";
         return NO;
     }
     
-    return isVIP;
+    return YES;
 }
 
 + (NSString *)versionName{

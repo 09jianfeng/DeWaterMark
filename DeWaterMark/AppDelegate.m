@@ -42,6 +42,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = draw;
     
+    //向微信注册应用。
+    [WXApi registerApp:@"wx2949e151b02d46de"];
+
     /**初始化ShareSDK应用
      
      @param activePlatforms
@@ -51,6 +54,7 @@
      @param configurationHandler (onConfiguration)
      配置回调处理，在此方法中根据设置的platformType来填充应用配置信息
      */
+    
     [ShareSDK registerActivePlatforms:@[
                                         @(SSDKPlatformSubTypeWechatSession),
                                         @(SSDKPlatformSubTypeQZone),
@@ -83,12 +87,12 @@
                                       appKey:@"Hvzp79TrDD5Yb9Gz"
                                     authType:SSDKAuthTypeBoth];
                  break;
-            }
-    }];
-    
+         }
+     }];
     
     [MobClick setLogEnabled:YES];
     [MobClick startWithAppkey:@"5a24eb86a40fa30c3400006c"];
+     
     return YES;
 }
 
@@ -97,33 +101,13 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
     
-    if ([url.host isEqualToString:@"safepay"]) {
-        //跳转支付宝钱包进行支付，处理支付结果
-        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-            NSLog(@"result = %@",resultDic);
-        }];
-        
-        return YES;
-    }else{
-        return  [WXApi handleOpenURL:url delegate:[PayViewAndLogic shareInstance]];
-    }
-    return YES;
+    return  [WXApi handleOpenURL:url delegate:[PayViewAndLogic shareInstance]];
 }
 
 // NOTE: 9.0以后使用新API接口
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
-    if ([url.host isEqualToString:@"safepay"]) {
-        //跳转支付宝钱包进行支付，处理支付结果
-        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-            NSLog(@"result = %@",resultDic);
-        }];
-        
-        return YES;
-    }else{
-        return  [WXApi handleOpenURL:url delegate:[PayViewAndLogic shareInstance]];
-    }
-    
+    [WXApi handleOpenURL:url delegate:[PayViewAndLogic shareInstance]];
     return YES;
 }
 

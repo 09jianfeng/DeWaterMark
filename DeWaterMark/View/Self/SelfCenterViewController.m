@@ -13,6 +13,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PayViewAndLogic.h"
 #import "WebRequestHandler.h"
+#import "WXApi.h"
+#import "WXApiObject.h"
 
 @interface SelfCenterViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
@@ -85,6 +87,8 @@
 
 #pragma mark - wxinlogin
 - (IBAction)btnWeixinLogin:(id)sender {
+    
+    /*
     [ShareSDK getUserInfo:SSDKPlatformSubTypeWechatSession onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
         NSLog(@"state:%lu user:%@ error:%@",(unsigned long)state,user,error);
         
@@ -118,7 +122,10 @@
             default:
                 break;
         }
-            }];
+	}];
+     */
+    
+    [[PayViewAndLogic shareInstance] wxLogin];
 }
 
 - (IBAction)btnBuyVIP:(id)sender {

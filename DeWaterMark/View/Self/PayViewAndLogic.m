@@ -465,37 +465,8 @@ static float linespace = 10;
         }
     }];
 }
-
-#pragma makr - check
-
-- (void)checkOrder{
-    if ([CommonConfig isVIP]) {
-        return;
-    }
-    
-    [WebRequestHandler requestOrderId:_orderID completeBlock:^(NSDictionary *dicData) {
-        NSLog(@"____ order dicData:%@",dicData);
-        
-        if (dicData) {
-            int code = [dicData[@"code"] intValue];
-            if (code == 0) {
-                NSDictionary *data = dicData[@"data"];
-                long long v_t = [data[@"v_t"] longLongValue];
-                [CommonConfig setVIPInterval:v_t/1000];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:@"充值成功" message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-                    [alerView show];
-                    
-                    [self removeFromSuperview];
-                });
-            }
-        }
-    }];
-}
-
 */
- 
+#pragma makr - check
 - (void)didActiveFromBackground:(id)notifica{
 //    [self checkOrder];
 }
@@ -515,6 +486,11 @@ static float linespace = 10;
                                                                 message:@"购买成功"
                                                                delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];
             [alerView show];
+            
+            if ([CommonConfig isVIP]) {
+                [self removeFromSuperview];
+                return;
+            }
         }else{
             UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
                                                                 message:@"网络发生错误\n如果已经扣了费用。请重启App"
@@ -610,6 +586,8 @@ static float linespace = 10;
     req.scene = scene;
     [WXApi sendReq:req];
 }
+ 
+ */
 
 #pragma mark - 微信接口回调
 -(void)onReq:(BaseReq*)req{
@@ -702,5 +680,25 @@ static float linespace = 10;
         }
     }
 }
-*/
+
+
+#pragma mark 微信登
+
+static NSString *kAuthScope = @"snsapi_userinfo";
+static NSString *kAuthOpenID = @"这个我现在没使用";
+static NSString *kAuthState = @"123";
+//微信登陆
+- (void)wxLogin
+{
+    SendAuthReq *req = [[SendAuthReq alloc] init];
+    req.scope = kAuthScope;
+    req.state = kAuthState;
+    req.openID = kAuthOpenID;
+    [WXApi sendReq:req];
+}
+
+#pragma mark 微信登录回调。
+-(void)loginSuccessByCode:(NSString *)code{
+    NSLog(@"code %@",code);
+}
 @end
