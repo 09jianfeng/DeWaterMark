@@ -287,7 +287,12 @@ static float linespace = 10;
     isswitch = 0;
     
     if (isswitch == 0) {
-        NSIndexPath *indexPath = [[_collectionView indexPathsForSelectedItems] objectAtIndex:0];
+        NSArray *array = [_collectionView indexPathsForSelectedItems];
+        NSIndexPath *indexPath = nil;
+        if (array.count > 0) {
+            indexPath = [[_collectionView indexPathsForSelectedItems] objectAtIndex:0];
+        }
+        
         ProductID productid = 1005;
         switch (indexPath.row) {
                 case 0:
@@ -503,6 +508,19 @@ static float linespace = 10;
     NSString *data = productDic[@"data"];
     [WebRequestHandler requestOrderInfos:data completeBlock:^(NSDictionary *dicData) {
         NSLog(@"____ %@",dicData);
+        if (data) {
+            long long vipInter = [dicData[@"v_t"] longLongValue];
+            [CommonConfig setVIPInterval:vipInter];
+            UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                                message:@"购买成功"
+                                                               delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];
+            [alerView show];
+        }else{
+            UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                                message:@"网络发生错误\n如果已经扣了费用。请重启App"
+                                                               delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];
+            [alerView show];
+        }
     }];
 
     /*

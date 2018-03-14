@@ -151,11 +151,6 @@ NSString *KIAPSuccessNotification = @"KIAPSuccessNotification";
             {
                 [self completeTransaction:transaction];
                 NSLog(@"-----交易完成 --------");
-                UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                                    message:@"购买成功"
-                                                                   delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];
-                [alerView show];
-                
                 [[ActivityIndicator shareInstance] closeActivityIndicator];
                 
                 NSURL *localReceiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
