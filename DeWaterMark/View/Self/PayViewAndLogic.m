@@ -483,7 +483,7 @@ static float linespace = 10;
     [WebRequestHandler requestOrderInfos:data completeBlock:^(NSDictionary *dicData) {
         NSLog(@"____ %@",dicData);
         if (data) {
-            long long vipInter = [dicData[@"v_t"] longLongValue];
+            long long vipInter = [dicData[@"data"][@"v_t"] longLongValue];
             [CommonConfig setVIPInterval:vipInter];
             UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
                                                                 message:@"购买成功"

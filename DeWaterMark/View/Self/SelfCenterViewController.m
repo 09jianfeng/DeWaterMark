@@ -55,8 +55,8 @@
     [WebRequestHandler requestDataWithUseTime:0 completeBlock:^(NSDictionary *dicData) {
         NSLog(@"__ DicData:%@",dicData);
         if (dicData) {
-            NSString *v_t = dicData[@"data"][@"config"][@"v_t"];
-            int vipTime = [v_t intValue];
+            NSString *v_t = dicData[@"data"][@"user"][@"v_t"];
+            long long vipTime = [v_t longLongValue];
             [CommonConfig setVIPInterval:vipTime];
             
             dispatch_async(dispatch_get_main_queue(), ^{

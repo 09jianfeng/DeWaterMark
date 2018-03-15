@@ -131,6 +131,7 @@ static NSString *SWITCHPRICE = @"SWITCHPRICE";
 }
 
 + (void)setVIPInterval:(long long)vipinterval{
+    vipinterval /= 1000;
     [DeWaterKeyChain setValue:[NSString stringWithFormat:@"%lld",vipinterval] forKey:SETVIPDAYINTER];
     [CommonConfig setVIP:1];
 }
