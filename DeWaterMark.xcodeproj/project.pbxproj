@@ -401,6 +401,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		780241A2205F58DF00FFFD5B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				780241A6205F597500FFFD5B /* EditViewVC */,
+				780241A5205F596200FFFD5B /* MyVideoVC */,
+				780241A4205F593000FFFD5B /* SelfCenterVC */,
+				780241A3205F591B00FFFD5B /* RootVC */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		780241A3205F591B00FFFD5B /* RootVC */ = {
+			isa = PBXGroup;
+			children = (
+				7885D7FF1FCD98FF00A4B59E /* AboutViewController.h */,
+				7885D8011FCD990000A4B59E /* AboutViewController.m */,
+				7885D8001FCD98FF00A4B59E /* RightDrawerTableViewController.h */,
+				7885D8021FCD990000A4B59E /* RightDrawerTableViewController.m */,
+				7885D7FC1FCD974900A4B59E /* MyNavigationViewController.h */,
+				7885D7FD1FCD974900A4B59E /* MyNavigationViewController.m */,
+				78F8A3D4201D668800981B79 /* QAViewController.h */,
+				78F8A3D3201D668800981B79 /* QAViewController.m */,
+			);
+			path = RootVC;
+			sourceTree = "<group>";
+		};
+		780241A4205F593000FFFD5B /* SelfCenterVC */ = {
+			isa = PBXGroup;
+			children = (
+				78F8A3D6201D67B600981B79 /* SelfCenterViewController.h */,
+				78F8A3D7201D67B600981B79 /* SelfCenterViewController.m */,
+				7885D7B51FCCFEE900A4B59E /* SelectedViewController.h */,
+				7885D7B61FCCFEE900A4B59E /* SelectedViewController.m */,
+			);
+			path = SelfCenterVC;
+			sourceTree = "<group>";
+		};
+		780241A5205F596200FFFD5B /* MyVideoVC */ = {
+			isa = PBXGroup;
+			children = (
+				78CE36C11FC9C81100F84932 /* MyVideosController.h */,
+				78CE36C21FC9C81100F84932 /* MyVideosController.m */,
+			);
+			path = MyVideoVC;
+			sourceTree = "<group>";
+		};
+		780241A6205F597500FFFD5B /* EditViewVC */ = {
+			isa = PBXGroup;
+			children = (
+				7816B1B51FAD61FD007A6350 /* EditViewController.h */,
+				7816B1B61FAD61FD007A6350 /* EditViewController.m */,
+				78E41F741FDA8249001A938A /* PreviewViewController.h */,
+				78E41F751FDA8249001A938A /* PreviewViewController.m */,
+			);
+			path = EditViewVC;
+			sourceTree = "<group>";
+		};
 		7816B1921FAD5F77007A6350 = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +483,7 @@
 				7816B24C1FAE0E09007A6350 /* resource.bundle */,
 				7816B1BC1FADF1ED007A6350 /* Model */,
 				7816B1BB1FADF1D3007A6350 /* View */,
+				780241A2205F58DF00FFFD5B /* Controller */,
 				7816B19E1FAD5F77007A6350 /* AppDelegate.h */,
 				7816B19F1FAD5F77007A6350 /* AppDelegate.m */,
 				7816B1A41FAD5F77007A6350 /* Main.storyboard */,
@@ -440,14 +498,10 @@
 		7816B1B41FAD61C8007A6350 /* EditGroup */ = {
 			isa = PBXGroup;
 			children = (
-				7816B1B51FAD61FD007A6350 /* EditViewController.h */,
-				7816B1B61FAD61FD007A6350 /* EditViewController.m */,
 				7816B1B81FAD66AA007A6350 /* EditSliderView.h */,
 				7816B1B91FAD66AA007A6350 /* EditSliderView.m */,
 				7816B3041FAF5622007A6350 /* ChoosingRectView.h */,
 				7816B3051FAF5622007A6350 /* ChoosingRectView.m */,
-				78E41F741FDA8249001A938A /* PreviewViewController.h */,
-				78E41F751FDA8249001A938A /* PreviewViewController.m */,
 			);
 			path = EditGroup;
 			sourceTree = "<group>";
@@ -457,9 +511,9 @@
 			children = (
 				78CD7AFD1FFF6989004F63AF /* Utils */,
 				7816B1B41FAD61C8007A6350 /* EditGroup */,
-				78CE36C01FC9C72E00F84932 /* MyProducts */,
-				78F8A3D2201D658700981B79 /* Self */,
-				7885D7C51FCD468E00A4B59E /* root */,
+				78CE36C01FC9C72E00F84932 /* MyProductsView */,
+				78F8A3D2201D658700981B79 /* SelfCenter */,
+				7885D7C51FCD468E00A4B59E /* RootView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -788,24 +842,16 @@
 			path = CustomControls;
 			sourceTree = "<group>";
 		};
-		7885D7C51FCD468E00A4B59E /* root */ = {
+		7885D7C51FCD468E00A4B59E /* RootView */ = {
 			isa = PBXGroup;
 			children = (
 				7885D8061FCD9A1300A4B59E /* MyTableViewCell.h */,
 				7885D8051FCD9A1300A4B59E /* MyTableViewCell.m */,
 				7885D8071FCD9A1300A4B59E /* MyTableViewCell.xib */,
-				7885D7FF1FCD98FF00A4B59E /* AboutViewController.h */,
-				7885D8011FCD990000A4B59E /* AboutViewController.m */,
-				7885D8001FCD98FF00A4B59E /* RightDrawerTableViewController.h */,
-				7885D8021FCD990000A4B59E /* RightDrawerTableViewController.m */,
-				7885D7FC1FCD974900A4B59E /* MyNavigationViewController.h */,
-				7885D7FD1FCD974900A4B59E /* MyNavigationViewController.m */,
 				7816B1A11FAD5F77007A6350 /* ViewController.h */,
 				7816B1A21FAD5F77007A6350 /* ViewController.m */,
-				78F8A3D4201D668800981B79 /* QAViewController.h */,
-				78F8A3D3201D668800981B79 /* QAViewController.m */,
 			);
-			path = root;
+			path = RootView;
 			sourceTree = "<group>";
 		};
 		7885D7D41FCD89E400A4B59E /* thirdPart */ = {
@@ -882,28 +928,22 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		78CE36C01FC9C72E00F84932 /* MyProducts */ = {
+		78CE36C01FC9C72E00F84932 /* MyProductsView */ = {
 			isa = PBXGroup;
 			children = (
-				7885D7B51FCCFEE900A4B59E /* SelectedViewController.h */,
-				7885D7B61FCCFEE900A4B59E /* SelectedViewController.m */,
 				7885D7A01FCC466900A4B59E /* MyVideoConfigView.h */,
 				7885D7A11FCC466900A4B59E /* MyVideoConfigView.m */,
-				78CE36C11FC9C81100F84932 /* MyVideosController.h */,
-				78CE36C21FC9C81100F84932 /* MyVideosController.m */,
 			);
-			path = MyProducts;
+			path = MyProductsView;
 			sourceTree = "<group>";
 		};
-		78F8A3D2201D658700981B79 /* Self */ = {
+		78F8A3D2201D658700981B79 /* SelfCenter */ = {
 			isa = PBXGroup;
 			children = (
 				785E0D411FD4CFEC00ADF46D /* PayViewAndLogic.h */,
 				785E0D421FD4CFEC00ADF46D /* PayViewAndLogic.m */,
-				78F8A3D6201D67B600981B79 /* SelfCenterViewController.h */,
-				78F8A3D7201D67B600981B79 /* SelfCenterViewController.m */,
 			);
-			path = Self;
+			path = SelfCenter;
 			sourceTree = "<group>";
 		};
 		AD5B086707C6767EB09DF68C /* Frameworks */ = {
