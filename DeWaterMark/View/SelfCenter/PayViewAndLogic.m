@@ -76,33 +76,50 @@ typedef void(^CompleteBlock)(bool isSuccess);
     }
     
     [WebRequestHandler requestDataWithUseTime:0 completeBlock:^(NSDictionary *dicData) {
-        NSLog(@"__ DicData:%@",dicData);
-        if (dicData) {
-            [CommonConfig shareInstance].isInit = YES;
-
-            self.vipDic = dicData;
-            _payData.f_t = dicData[@"data"][@"config"][@"f_t"];
-            _payData.v_t = dicData[@"data"][@"user"][@"v_t"];
-            
-            _payData.price = dicData[@"data"][@"config"][@"price"];
-            _payData.needWxLogin = dicData[@"data"][@"user"][@"needWxLogin"];
-            _payData.v_t = dicData[@"data"][@"user"][@"v_t"];
-            _payData.openId = dicData[@"data"][@"user"][@"openId"];
-            _payData.wx = dicData[@"data"][@"user"][@"wx"];
-            
-            BOOL needWxLogin = [_payData.needWxLogin boolValue];
-            if (needWxLogin) {
-                [CommonConfig shareInstance].loginState = LoginStateDoNotLogin;
-                [CommonConfig setVIP:NO];
-                [CommonConfig setVIPInterval:0];
-                [CommonConfig setHeadImageURL:nil];
-                [CommonConfig setNickName:nil];
-                [CommonConfig setUID:nil];
-            }else{
-                long long vipTime = [_payData.v_t longLongValue];
-                [CommonConfig setVIPInterval:vipTime];
-                [CommonConfig setVIP:YES];
+        
+        @try{
+            NSLog(@"__ DicData:%@",dicData);
+            if (dicData) {
+                [CommonConfig shareInstance].isInit = YES;
+                
+                self.vipDic = dicData;
+                _payData.f_t = dicData[@"data"][@"config"][@"f_t"];
+                _payData.v_t = dicData[@"data"][@"user"][@"v_t"];
+                
+                _payData.price = dicData[@"data"][@"config"][@"price"];
+                _payData.needWxLogin = dicData[@"data"][@"user"][@"needWxLogin"];
+                _payData.v_t = dicData[@"data"][@"user"][@"v_t"];
+                _payData.openId = dicData[@"data"][@"user"][@"openId"];
+                _payData.wx = dicData[@"data"][@"user"][@"wx"];
+                
+                BOOL needWxLogin = [_payData.needWxLogin boolValue];
+                if (needWxLogin) {
+                    [CommonConfig shareInstance].loginState = LoginStateDoNotLogin;
+                    [CommonConfig setVIP:NO];
+                    [CommonConfig setVIPInterval:0];
+                    [CommonConfig setHeadImageURL:nil];
+                    [CommonConfig setNickName:nil];
+                    [CommonConfig setUID:nil];
+                }else{
+                    NSString *vt = _payData.v_t;
+                    long long vipInter = 0;
+                    if (vt) {
+                        vipInter = [vt longLongValue];
+                    }
+                    [CommonConfig setVIPInterval:vipInter];
+                }
             }
+        }
+        @catch(NSException *exception){
+            NSString *mesg = [NSString stringWithFormat:@"exception:%@ dicData:%@",exception,dicData];
+            UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"异常警告⚠️"
+                                                                message:mesg
+                                                               delegate:nil cancelButtonTitle:NSLocalizedString(@"关闭",nil) otherButtonTitles:nil];
+            
+            [alerView show];
+        }
+        @finally{
+            
         }
     }];
 }
@@ -489,7 +506,12 @@ static float linespace = 10;
     [WebRequestHandler requestOrderInfos:data completeBlock:^(NSDictionary *dicData) {
         NSLog(@"____ %@",dicData);
         if (data) {
-            long long vipInter = [dicData[@"data"][@"v_t"] longLongValue];
+            
+            NSString *vt = dicData[@"data"][@"v_t"];
+            long long vipInter = 0;
+            if (vt) {
+                vipInter = [vt longLongValue];
+            }
             [CommonConfig setVIPInterval:vipInter];
             UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
                                                                 message:@"购买成功"
@@ -714,8 +736,12 @@ static NSString *kAuthState = @"123";
             NSString *openid = dicData[@"data"][@"wx"][@"openid"];
             NSString *nickName = dicData[@"data"][@"wx"][@"nickname"];
             
-            long long v_t = [dicData[@"v_t"] longLongValue];
-            [CommonConfig setVIPInterval:v_t];
+            NSString *vt = dicData[@"v_t"];
+            long long vipInter = 0;
+            if (vt) {
+                vipInter = [vt longLongValue];
+            }
+            [CommonConfig setVIPInterval:vipInter];
             [CommonConfig shareInstance].loginState = LoginStateSuccess;
             [CommonConfig setNickName:nickName];
             [CommonConfig setHeadImageURL:icon];

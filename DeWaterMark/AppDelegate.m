@@ -91,7 +91,7 @@
     
     [MobClick setLogEnabled:YES];
     [MobClick startWithAppkey:@"5a24eb86a40fa30c3400006c"];
-     
+    
     return YES;
 }
 
