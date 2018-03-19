@@ -10,7 +10,6 @@
 #import "Masonry.h"
 #import "WebRequestHandler.h"
 #import "CommonConfig.h"
-#import <AlipaySDK/AlipaySDK.h>
 #import "IAPManager.h"
 
 static NSString *VIPORDER_ID = @"VIPORDER_ID";

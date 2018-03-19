@@ -8,7 +8,6 @@
 
 
 #import "AppDelegate.h"
-#import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
 #import "MMDrawerController.h"
 #import "RightDrawerTableViewController.h"
