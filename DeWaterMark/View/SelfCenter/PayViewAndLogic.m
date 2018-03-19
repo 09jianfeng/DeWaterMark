@@ -78,9 +78,12 @@ typedef void(^CompleteBlock)(bool isSuccess);
     [WebRequestHandler requestDataWithUseTime:0 completeBlock:^(NSDictionary *dicData) {
         NSLog(@"__ DicData:%@",dicData);
         if (dicData) {
+            [CommonConfig shareInstance].isInit = YES;
+
             self.vipDic = dicData;
             _payData.f_t = dicData[@"data"][@"config"][@"f_t"];
-            _payData.v_t = dicData[@"data"][@"config"][@"v_t"];
+            _payData.v_t = dicData[@"data"][@"user"][@"v_t"];
+            
             _payData.price = dicData[@"data"][@"config"][@"price"];
             _payData.needWxLogin = dicData[@"data"][@"user"][@"needWxLogin"];
             _payData.v_t = dicData[@"data"][@"user"][@"v_t"];
@@ -95,6 +98,10 @@ typedef void(^CompleteBlock)(bool isSuccess);
                 [CommonConfig setHeadImageURL:nil];
                 [CommonConfig setNickName:nil];
                 [CommonConfig setUID:nil];
+            }else{
+                long long vipTime = [_payData.v_t longLongValue];
+                [CommonConfig setVIPInterval:vipTime];
+                [CommonConfig setVIP:YES];
             }
         }
     }];

@@ -36,7 +36,12 @@
     
     NSString *nickNam = [CommonConfig getNickName];
     NSString *icon = [CommonConfig getHeadImageURL];
-    [self loginSuccess:nickNam iconPath:icon uid:@""];
+    
+    if ([CommonConfig shareInstance].isInit) {
+        [self loginSuccess:nickNam iconPath:icon uid:@"" shouldCheck:FALSE];
+    }else{
+        [self loginSuccess:nickNam iconPath:icon uid:@"" shouldCheck:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,42 +52,52 @@
 - (void)loginSuccess:(NSString *)nickName
             iconPath:(NSString *)iconPath
                  uid:(NSString *)uid
+         shouldCheck:(BOOL)shouldCheck
 {
     if(!nickName) return;
     if(!iconPath) return;
     
-    //登陆成功后，获取是否vip的信息。
-    [WebRequestHandler requestDataWithUseTime:0 completeBlock:^(NSDictionary *dicData) {
-        NSLog(@"__ DicData:%@",dicData);
-        if (dicData) {
-            NSString *v_t = dicData[@"data"][@"user"][@"v_t"];
-            long long vipTime = [v_t longLongValue];
-            [CommonConfig setVIPInterval:vipTime];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                BOOL isVIP = [CommonConfig isVIP];
-                if(isVIP){
-                    NSString *vipFinishDa = [CommonConfig getVIPFinishDate];
-                    if (vipFinishDa) {
-                        NSString *vipDateFinish = [NSString stringWithFormat:@"会员到期时间 %@",vipFinishDa];
-                        _btnBuyVIP.hidden = YES;
-                        _btnWeixinLogin.hidden = YES;
-                        _labelVIPDetail.text = vipDateFinish;
-                        
-                        [_imageIcon sd_setImageWithURL:[NSURL URLWithString:iconPath] placeholderImage:[UIImage imageNamed:@"self_ctl"]];
-                        _labelLoginDetail.text = nickName;
+    _btnWeixinLogin.hidden = YES;
+    [_imageIcon sd_setImageWithURL:[NSURL URLWithString:iconPath] placeholderImage:[UIImage imageNamed:@"self_ctl"]];
+    _labelLoginDetail.text = nickName;
+    
+    
+    if (shouldCheck) {
+        //登陆成功后，获取是否vip的信息。
+        [WebRequestHandler requestDataWithUseTime:0 completeBlock:^(NSDictionary *dicData) {
+            NSLog(@"__ DicData:%@",dicData);
+            if (dicData) {
+                [CommonConfig shareInstance].isInit = YES;
+                NSString *v_t = dicData[@"data"][@"user"][@"v_t"];
+                long long vipTime = [v_t longLongValue];
+                [CommonConfig setVIPInterval:vipTime];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    BOOL isVIP = [CommonConfig isVIP];
+                    if(isVIP){
+                        NSString *vipFinishDa = [CommonConfig getVIPFinishDate];
+                        if (vipFinishDa) {
+                            NSString *vipDateFinish = [NSString stringWithFormat:@"会员到期时间 %@",vipFinishDa];
+                            _btnBuyVIP.hidden = YES;
+                            _labelVIPDetail.text = vipDateFinish;
+                        }
                     }
-                }else{
-                    _btnWeixinLogin.hidden = YES;
-                    [_imageIcon sd_setImageWithURL:[NSURL URLWithString:iconPath] placeholderImage:[UIImage imageNamed:@"self_ctl"]];
-                    _labelLoginDetail.text = nickName;
-                }
-            });
+                });
+            }
+            else{
+            }
+        }];
+    }else{
+        BOOL isVIP = [CommonConfig isVIP];
+        if(isVIP){
+            NSString *vipFinishDa = [CommonConfig getVIPFinishDate];
+            if (vipFinishDa) {
+                NSString *vipDateFinish = [NSString stringWithFormat:@"会员到期时间 %@",vipFinishDa];
+                _btnBuyVIP.hidden = YES;
+                _labelVIPDetail.text = vipDateFinish;
+            }
         }
-        else{
-            
-        }
-    }];
+    }
 }
 
 #pragma mark - wxinlogin
@@ -126,9 +141,14 @@
      */
     
     [[PayViewAndLogic shareInstance] wxLoginWithCompleteBlock:^(bool isSuccess) {
-        NSString *nickNam = [CommonConfig getNickName];
-        NSString *icon = [CommonConfig getHeadImageURL];
-        [self loginSuccess:nickNam iconPath:icon uid:@""];
+        if (isSuccess) {
+            NSString *nickNam = [CommonConfig getNickName];
+            NSString *icon = [CommonConfig getHeadImageURL];
+            [self loginSuccess:nickNam iconPath:icon uid:@"" shouldCheck:YES];
+            [CommonConfig shareInstance].loginState = LoginStateSuccess;
+        }else{
+            [CommonConfig shareInstance].loginState = LoginStateFail;
+        }
     }];
 }
 

@@ -1327,7 +1327,7 @@
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart",
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart/UMAnalytics_Sdk_3.5.10",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.slothpg.removelogo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.slothpg.removelogo.qao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1368,7 +1368,7 @@
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart",
 					"$(PROJECT_DIR)/DeWaterMark/thirdPart/UMAnalytics_Sdk_3.5.10",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.slothpg.removelogo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.slothpg.removelogo.qao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
