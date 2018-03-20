@@ -481,9 +481,11 @@ static float linespace = 10;
     NSString *data = productDic[@"data"];
     [WebRequestHandler requestOrderInfos:data completeBlock:^(NSDictionary *dicData) {
         NSLog(@"____ %@",dicData);
+        [[ActivityIndicator shareInstance] closeActivityIndicator];
+        
         if (dicData) {
-            
-            if(![dicData[@"code"] isEqualToString:@"0"]){
+            int code = [dicData[@"code"] intValue];
+            if(code != 0){
                 
                 UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"验证失败"
                                                                     message:@"请重新购买，如果已经付费成功\n重新购买不会产生任何费用"
@@ -512,8 +514,6 @@ static float linespace = 10;
             if ([CommonConfig isVIP]) {
                 [self removeFromSuperview];
                 _iapBlock(YES);
-                
-                [[ActivityIndicator shareInstance] closeActivityIndicator];
                 return;
             }
         }else{

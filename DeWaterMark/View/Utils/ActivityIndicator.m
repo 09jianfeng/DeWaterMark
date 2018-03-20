@@ -50,6 +50,8 @@
         label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 50)];
         label.center = CGPointMake(_activityIndicator.center.x, _activityIndicator.center.y + 30);
         label.tag = 1001;
+        label.textColor = [UIColor whiteColor];
+        label.textAlignment = NSTextAlignmentCenter;
         [self addSubview:label];
     }
     
