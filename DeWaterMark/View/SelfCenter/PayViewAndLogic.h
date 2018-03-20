@@ -15,7 +15,7 @@
 + (instancetype)shareInstance;
 
 //先设置frame后再调用getVIP
-- (void)getVIP;
+- (void)getVIP:(void(^)(bool isSuccess))completeBlock;
 - (void)requestWebData;
 
 - (void)wxLoginWithCompleteBlock:(void(^)(bool isSuccess))completeBlock;

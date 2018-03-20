@@ -202,7 +202,9 @@
 - (void)getVIP{
     PayViewAndLogic *payView = [PayViewAndLogic shareInstance];
     payView.frame = CGRectMake(0, -self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-    [payView getVIP];
+    [payView getVIP:^(bool isSuccess) {
+        
+    }];
     
     [self.view addSubview:payView];
     

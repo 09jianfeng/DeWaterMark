@@ -158,7 +158,13 @@
 - (IBAction)btnBuyVIP:(id)sender {
     PayViewAndLogic *payView = [PayViewAndLogic shareInstance];
     payView.frame = CGRectMake(0, -self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-    [payView getVIP];
+    [payView getVIP:^(bool isSuccess) {
+        if (isSuccess) {
+            NSString *nickNam = [CommonConfig getNickName];
+            NSString *icon = [CommonConfig getHeadImageURL];
+            [self loginSuccess:nickNam iconPath:icon uid:@"" shouldCheck:NO];
+        }
+    }];
     
     [self.view addSubview:payView];
     [UIView animateWithDuration:0.2 animations:^{

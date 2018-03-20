@@ -42,6 +42,7 @@ typedef void(^CompleteBlock)(bool isSuccess);
     UICollectionView *_collectionView;
     NSString *_orderID;
     CompleteBlock _loginBlock;
+    CompleteBlock _iapBlock;
 }
 
 + (instancetype)shareInstance{
@@ -124,8 +125,10 @@ typedef void(^CompleteBlock)(bool isSuccess);
     }];
 }
 
-- (void)getVIP{
+- (void)getVIP:(void(^)(bool isSuccess))completeBlock{
     [self requestWebData];
+    
+    _iapBlock = [completeBlock copy];
     
     UIView *payView = [self viewWithTag:10001];
     if (payView) {
@@ -494,14 +497,10 @@ static float linespace = 10;
 */
 #pragma makr - check
 - (void)didActiveFromBackground:(id)notifica{
-//    [self checkOrder];
 }
 
 - (void)IAPPaySuccess:(id)notifica{
-//    NSDictionary *productDic = @{@"productid":productid,@"data":receiveData};
-    
     NSDictionary *productDic = [notifica object];
-//    int productid_int = [productDic[@"productid"] intValue];
     NSString *data = productDic[@"data"];
     [WebRequestHandler requestOrderInfos:data completeBlock:^(NSDictionary *dicData) {
         NSLog(@"____ %@",dicData);
@@ -513,13 +512,18 @@ static float linespace = 10;
                 vipInter = [vt longLongValue];
             }
             [CommonConfig setVIPInterval:vipInter];
+            
+            NSString *vipFinishDa = [CommonConfig getVIPFinishDate];
+            NSString *msg = [NSString stringWithFormat:@"购买成功： 会员到期时间 %@",vipFinishDa];
+
             UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                                message:@"购买成功"
+                                                                message:msg
                                                                delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];
             [alerView show];
             
             if ([CommonConfig isVIP]) {
                 [self removeFromSuperview];
+                _iapBlock(YES);
                 return;
             }
         }else{
@@ -529,96 +533,7 @@ static float linespace = 10;
             [alerView show];
         }
     }];
-
-    /*
-    [WebRequestHandler checkAppleOrderid:data completeBlock:^(NSDictionary *dicData) {
-        NSLog(@"____ %@",dicData);
-    }];
-     */
-    
-    /*
-    int productid_int = [productid intValue];
-    switch (productid_int) {
-            case 1000:{
-                productid_int = 0;
-            }
-            break;
-            case 1001:{
-                productid_int = 1;
-            }
-            break;
-
-            case 1004:{
-                productid_int = 2;
-            }
-            break;
-
-            case 1005:{
-                productid_int = 3;
-            }
-            break;
-
-            
-        default:
-            break;
-    }
-     */
 }
-/*
-#pragma mark - share
-+(void)sndMesgAndImgToWChat:(enum WXScene)scene title:(NSString *)title{
-    [[PayViewAndLogic shareInstance] sedLikContet:scene title:title];
-}
-
-//分享图片
-+(void)sndImgShr:(UIImage*)image{
-    
-}
-
-- (void) sedImgCont:(enum WXScene)scene
-{
-    WXMediaMessage *message = [WXMediaMessage message];
-    [message setThumbImage:[UIImage imageNamed:@"res1thumb.png"]];
-    
-    WXImageObject *ext = [WXImageObject object];
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res1" ofType:@"jpg"];
-    ext.imageData = [NSData dataWithContentsOfFile:filePath];
-    
-    message.mediaObject = ext;
-    message.mediaTagName = @"WECHAT_TAG_JUMP_APP";
-    message.messageExt = @"这是第三方带的测试字段";
-    message.messageAction = @"<action>dotalist</action>";
-    
-    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-    req.bText = NO;
-    req.message = message;
-    req.scene = scene;
-    
-    [WXApi sendReq:req];
-}
-
-
--(void)sedLikContet:(enum WXScene)scene title:(NSString *)title
-{
-    WXMediaMessage *message = [WXMediaMessage message];
-    message.title = title;
-    message.description = @"很简陋朴素的消除类游戏，十字消除的玩法，比手速";
-    [message setThumbImage:[UIImage imageNamed:@"icon.png"]];
-    
-    WXWebpageObject *ext = [WXWebpageObject object];
-    ext.webpageUrl = @"";
-    
-    message.mediaObject = ext;
-    message.mediaTagName = @"WECHAT_TAG_JUMP_SHOWRANK";
-    
-    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-    req.bText = NO;
-    req.message = message;
-    req.scene = scene;
-    [WXApi sendReq:req];
-}
- 
- */
 
 #pragma mark - 微信接口回调
 -(void)onReq:(BaseReq*)req{
@@ -679,9 +594,6 @@ static float linespace = 10;
     else if([resp isKindOfClass:[SendAuthResp class]])
     {
         SendAuthResp *temp = (SendAuthResp*)resp;
-        
-//        NSString *strTitle = [NSString stringWithFormat:@"Auth结果"];
-//        NSString *strMsg = [NSString stringWithFormat:@"code:%@,state:%@,errcode:%d", temp.code, temp.state, temp.errCode];
         [self loginSuccessByCode:temp.code];
     }
     else if ([resp isKindOfClass:[AddCardToWXCardPackageResp class]])
