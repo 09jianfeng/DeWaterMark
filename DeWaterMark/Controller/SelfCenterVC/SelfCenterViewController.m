@@ -163,6 +163,7 @@
             NSString *nickNam = [CommonConfig getNickName];
             NSString *icon = [CommonConfig getHeadImageURL];
             [self loginSuccess:nickNam iconPath:icon uid:@"" shouldCheck:NO];
+            NSLog(@"———————— 购买成功");
         }
     }];
     
