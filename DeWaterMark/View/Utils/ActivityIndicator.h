@@ -13,4 +13,5 @@
 
 -(void)showActivityIndicator;
 -(void)closeActivityIndicator;
+- (void)showText:(NSString *)text;
 @end

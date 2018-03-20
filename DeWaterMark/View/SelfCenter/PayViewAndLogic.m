@@ -11,6 +11,7 @@
 #import "WebRequestHandler.h"
 #import "CommonConfig.h"
 #import "IAPManager.h"
+#import "ActivityIndicator.h"
 
 static NSString *VIPORDER_ID = @"VIPORDER_ID";
 
@@ -474,11 +475,22 @@ static float linespace = 10;
 }
 
 - (void)IAPPaySuccess:(id)notifica{
+    [[ActivityIndicator shareInstance] showText:@"正在验证"];
+    
     NSDictionary *productDic = [notifica object];
     NSString *data = productDic[@"data"];
     [WebRequestHandler requestOrderInfos:data completeBlock:^(NSDictionary *dicData) {
         NSLog(@"____ %@",dicData);
-        if (data) {
+        if (dicData) {
+            
+            if(![dicData[@"code"] isEqualToString:@"0"]){
+                
+                UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"验证失败"
+                                                                    message:@"请重新购买，如果已经付费成功\n重新购买不会产生任何费用"
+                                                                   delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];
+                [alerView show];
+                return;
+            }
             
             NSString *vt = dicData[@"data"][@"v_t"];
             long long vipInter = 0;
@@ -500,6 +512,8 @@ static float linespace = 10;
             if ([CommonConfig isVIP]) {
                 [self removeFromSuperview];
                 _iapBlock(YES);
+                
+                [[ActivityIndicator shareInstance] closeActivityIndicator];
                 return;
             }
         }else{

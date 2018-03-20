@@ -151,7 +151,6 @@ NSString *KIAPSuccessNotification = @"KIAPSuccessNotification";
             {
                 [self completeTransaction:transaction];
                 NSLog(@"-----交易完成 --------");
-                [[ActivityIndicator shareInstance] closeActivityIndicator];
                 
                 NSURL *localReceiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
                 NSData *data = [NSData dataWithContentsOfURL:localReceiptURL];

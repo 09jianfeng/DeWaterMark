@@ -42,6 +42,20 @@
     [self.activityIndicator stopAnimating];
     [self hide];
 }
+
+- (void)showText:(NSString *)text{
+    
+    UILabel *label = [self viewWithTag:1001];
+    if (!label) {
+        label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 50)];
+        label.center = CGPointMake(_activityIndicator.center.x, _activityIndicator.center.y + 30);
+        label.tag = 1001;
+        [self addSubview:label];
+    }
+    
+    label.text = text;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
