@@ -52,7 +52,7 @@
  }
  */
 + (NSString *)getInitURL:(NSString *)u_t{
-    NSString *path = [NSString stringWithFormat:@"http://u22.oboard.net:8888/ios/remove/init?u_t=%@&od=%@&%@",u_t,[CommonConfig getUID],[self getCommondString]];
+    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/ios/remove/init?u_t=%@&od=%@&%@",u_t,[CommonConfig getUID],[self getCommondString]];
     return path;
 }
 
@@ -71,7 +71,7 @@
 // }
 // */
 //+ (NSString *)getWeXPaURL:(NSString *)priceId{
-//    NSString *path = [NSString stringWithFormat:@"http://u22.oboard.net:8888/remove_ios/wechat_pay?priceId=%@&%@",priceId,[self getCommondString]];
+//    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/remove_ios/wechat_pay?priceId=%@&%@",priceId,[self getCommondString]];
 //    return path;
 //}
 //
@@ -93,7 +93,7 @@
 // }
 // */
 //+ (NSString *)getAliPURL:(NSString *)priceId{
-//    NSString *path = [NSString stringWithFormat:@"http://u22.oboard.net:8888/remove_ios/ali_pay?priceId=%@&%@",priceId,[self getCommondString]];
+//    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/remove_ios/ali_pay?priceId=%@&%@",priceId,[self getCommondString]];
 //    return path;
 //}
 
@@ -107,12 +107,12 @@
 
 + (NSString *)getCheckIAPURL:(NSString *)IAPData{
     NSString * encodedString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)IAPData,NULL,(CFStringRef)@"!*'();@&+$,/?%#[]~=_-.:",kCFStringEncodingUTF8 ));
-    NSString *path = [NSString stringWithFormat:@"http://u22.oboard.net:8888/ios/remove/check_iap?data=%@&openId=%@",encodedString,[CommonConfig getUID]];
+    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/ios/remove/check_iap?data=%@&openId=%@",encodedString,[CommonConfig getUID]];
     return path;
 }
 
 + (NSString *)getWeixinLoginURL:(NSString *)code{
-    NSString *path = [NSString stringWithFormat:@"http://u22.oboard.net:8888/ios/remove/wx_login?code=%@",code];
+    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/ios/remove/wx_login?code=%@",code];
     return path;
 }
 
