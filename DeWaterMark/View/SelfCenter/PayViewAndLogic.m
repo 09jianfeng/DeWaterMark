@@ -503,35 +503,38 @@ static float linespace = 10;
     NSDictionary *productDic = [notifica object];
     NSString *data = productDic[@"data"];
     [WebRequestHandler requestOrderInfos:data completeBlock:^(NSDictionary *dicData) {
-        NSLog(@"____ %@",dicData);
-        if (data) {
-            
-            NSString *vt = dicData[@"data"][@"v_t"];
-            long long vipInter = 0;
-            if (vt) {
-                vipInter = [vt longLongValue];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"____ %@",dicData);
+            if (data) {
+                
+                NSString *vt = dicData[@"data"][@"v_t"];
+                long long vipInter = 0;
+                if (vt) {
+                    vipInter = [vt longLongValue];
+                }
+                [CommonConfig setVIPInterval:vipInter];
+                
+                NSString *vipFinishDa = [CommonConfig getVIPFinishDate];
+                NSString *msg = [NSString stringWithFormat:@"购买成功： 会员到期时间 %@",vipFinishDa];
+                
+                UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                                    message:msg
+                                                                   delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];
+                [alerView show];
+                
+                if ([CommonConfig isVIP]) {
+                    [self removeFromSuperview];
+                    _iapBlock(YES);
+                    return;
+                }
+            }else{
+                UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                                    message:@"网络发生错误\n如果已经扣了费用。请重启App"
+                                                                   delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];
+                [alerView show];
             }
-            [CommonConfig setVIPInterval:vipInter];
-            
-            NSString *vipFinishDa = [CommonConfig getVIPFinishDate];
-            NSString *msg = [NSString stringWithFormat:@"购买成功： 会员到期时间 %@",vipFinishDa];
-
-            UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                                message:msg
-                                                               delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];
-            [alerView show];
-            
-            if ([CommonConfig isVIP]) {
-                [self removeFromSuperview];
-                _iapBlock(YES);
-                return;
-            }
-        }else{
-            UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                                message:@"网络发生错误\n如果已经扣了费用。请重启App"
-                                                               delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];
-            [alerView show];
-        }
+        });
     }];
 }
 
