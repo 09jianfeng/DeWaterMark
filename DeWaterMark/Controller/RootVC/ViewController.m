@@ -134,11 +134,10 @@
             //                i ++;
             //            }
             
-            _baseView.hidden = NO;
-            [HUD showAnimated:YES];
-            HUD.label.text = @"正在从相册导入";
-            
             for (id asset in imageSources) {
+                _baseView.hidden = NO;
+                [HUD showAnimated:YES];
+                HUD.label.text = @"正在从相册导入";
                 [[YZYPhotoDataManager shareInstance] fetchVideoPathFromAsset:asset result:^(NSString *path , NSError *error) {
                     NSLog(@"____ videoPath:%@",path);
                     _videoPath = path;

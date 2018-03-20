@@ -322,34 +322,8 @@ static float linespace = 10;
             indexPath = [[_collectionView indexPathsForSelectedItems] objectAtIndex:0];
         }
         
-        ProductID productid = 1005;
-        switch (indexPath.row) {
-                case 0:
-            {
-                productid = 1000;
-            }
-                break;
-                case 1:
-            {
-                productid = 1001;
-            }
-                break;
-                case 2:
-            {
-                productid = 1004;
-            }
-                break;
-                case 3:
-            {
-                productid = 1005;
-            }
-                break;
-                
-            default:{
-                productid = 1005;
-            }
-                break;
-        }
+        NSDictionary *priceText = self.payData.price[indexPath.row];
+        int productid = [priceText[@"appleProductId"] intValue];
         [[IAPManager shareInstance] buy:productid];
         return;
     }

@@ -410,6 +410,8 @@
 		780241A3205F591B00FFFD5B /* RootVC */ = {
 			isa = PBXGroup;
 			children = (
+				7816B1A11FAD5F77007A6350 /* ViewController.h */,
+				7816B1A21FAD5F77007A6350 /* ViewController.m */,
 				7885D7FF1FCD98FF00A4B59E /* AboutViewController.h */,
 				7885D8011FCD990000A4B59E /* AboutViewController.m */,
 				7885D8001FCD98FF00A4B59E /* RightDrawerTableViewController.h */,
@@ -843,8 +845,6 @@
 				7885D8061FCD9A1300A4B59E /* MyTableViewCell.h */,
 				7885D8051FCD9A1300A4B59E /* MyTableViewCell.m */,
 				7885D8071FCD9A1300A4B59E /* MyTableViewCell.xib */,
-				7816B1A11FAD5F77007A6350 /* ViewController.h */,
-				7816B1A21FAD5F77007A6350 /* ViewController.m */,
 			);
 			path = RootView;
 			sourceTree = "<group>";
