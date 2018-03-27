@@ -29,7 +29,6 @@ typedef NS_ENUM(char,LoginState){
 + (NSString *)phoneModel;
 + (NSString *)mobileType;
 
-+ (void)setSwitchPrice:(NSString *)switchPrice;
 + (NSString *)getSwitchPrice;
 
 + (NSString *)getMemberId;

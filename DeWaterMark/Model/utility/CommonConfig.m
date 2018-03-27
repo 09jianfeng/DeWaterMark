@@ -89,10 +89,6 @@ static NSString *SWITCHPRICE = @"SWITCHPRICE";
     return userMember;
 }
 
-+ (void)setSwitchPrice:(NSString *)switchPrice{
-    [DeWaterKeyChain setValue:switchPrice forKey:SWITCHPRICE];
-}
-
 + (NSString *)getSwitchPrice{
     NSString *userMember = [DeWaterKeyChain getValueForKey:SWITCHPRICE];
     if (!userMember) {

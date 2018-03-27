@@ -46,7 +46,7 @@ PODS:
   - mob_sharesdk/ShareSDKPlatforms/QQ (4.1.0):
     - mob_sharesdk/ShareSDK
     - MOBFoundation
-  - mob_sharesdk/ShareSDKPlatforms/WeChatFull (4.1.0):
+  - mob_sharesdk/ShareSDKPlatforms/WeChat (4.1.0):
     - mob_sharesdk/ShareSDK
     - MOBFoundation
   - mob_sharesdk/ShareSDKUI (4.1.0):
@@ -69,8 +69,8 @@ DEPENDENCIES:
   - MBProgressHUD (= 1.1.0)
   - MMDrawerController (~> 0.5.7)
   - mob_sharesdk/ShareSDKExtension
-  - mob_sharesdk/ShareSDKPlatforms/QQ
-  - mob_sharesdk/ShareSDKPlatforms/WeChatFull
+  - mob_sharesdk/ShareSDKPlatforms/QQ (= 4.1.0)
+  - mob_sharesdk/ShareSDKPlatforms/WeChat (= 4.1.0)
   - mob_sharesdk/ShareSDKUI
   - NSLogger (= 1.8.3)
   - SDWebImage (= 4.2.2)
@@ -88,6 +88,6 @@ SPEC CHECKSUMS:
   NSLogger: c9b80dbeee1d65eb553647a1f6f1f72171b04808
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
 
-PODFILE CHECKSUM: da39f9d1291d5ba42714a3b97ab5c27477d3f6c0
+PODFILE CHECKSUM: a246def90cd204585269d266aa318a4c9e7f8dda
 
 COCOAPODS: 1.3.1

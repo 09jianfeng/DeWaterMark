@@ -567,52 +567,6 @@ static float linespace = 10;
     }
 }
 
--(void) onResp:(BaseResp*)resp{
-    if([resp isKindOfClass:[SendMessageToWXResp class]])
-    {
-        NSString *strTitle = [NSString stringWithFormat:@"提醒"];
-        NSString *strMsg = @"";
-        if (0 == resp.errCode) {
-            strMsg = @"分享成功";
-        }else{
-            strMsg = @"分享失败";
-        }
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    else if([resp isKindOfClass:[SendAuthResp class]])
-    {
-        SendAuthResp *temp = (SendAuthResp*)resp;
-        [self loginSuccessByCode:temp.code];
-    }
-    else if ([resp isKindOfClass:[AddCardToWXCardPackageResp class]])
-    {
-        AddCardToWXCardPackageResp* temp = (AddCardToWXCardPackageResp*)resp;
-        NSMutableString* cardStr = [[NSMutableString alloc] init];
-        for (WXCardItem* cardItem in temp.cardAry) {
-            [cardStr appendString:[NSString stringWithFormat:@"cardid:%@ cardext:%@ cardstate:%d\n",cardItem.cardId,cardItem.extMsg,(unsigned int)cardItem.cardState]];
-        }
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"add card resp" message:cardStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        
-    }else if ([resp isKindOfClass:[PayResp class]]){
-        PayResp*response=(PayResp*)resp;
-        switch(response.errCode){
-            case WXSuccess:
-            {
-                //服务器端查询支付通知或查询API返回的结果再提示成功
-                NSLog(@"==== 支付成功");
-                break;
-            }
-            default:
-                NSLog(@"==== 支付失败，retcode=%d",resp.errCode);
-                break;
-        }
-    }
-}
-
-
 #pragma mark 微信登
 
 static NSString *kAuthScope = @"snsapi_userinfo";
