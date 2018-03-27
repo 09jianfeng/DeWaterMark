@@ -66,7 +66,8 @@
         //登陆成功后，获取是否vip的信息。
         [WebRequestHandler requestDataWithUseTime:0 completeBlock:^(NSDictionary *dicData) {
             NSLog(@"__ DicData:%@",dicData);
-            if (dicData) {
+            int code = [dicData[@"code"] intValue];
+            if (dicData && code == 0) {
                 [CommonConfig shareInstance].isInit = YES;
                 NSString *vt = dicData[@"data"][@"user"][@"v_t"];
                 long long vipInter = 0;
@@ -88,6 +89,7 @@
                 });
             }
             else{
+                
             }
         }];
     }else{

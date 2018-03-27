@@ -81,7 +81,9 @@ typedef void(^CompleteBlock)(bool isSuccess);
         
         @try{
             NSLog(@"__ DicData:%@",dicData);
-            if (dicData) {
+            int code = [dicData[@"code"] intValue];
+            
+            if (dicData && code == 0) {
                 [CommonConfig shareInstance].isInit = YES;
                 
                 self.vipDic = dicData;
@@ -110,6 +112,13 @@ typedef void(^CompleteBlock)(bool isSuccess);
                     }
                     [CommonConfig setVIPInterval:vipInter];
                 }
+            }else{
+                [CommonConfig shareInstance].loginState = LoginStateDoNotLogin;
+                [CommonConfig setVIP:NO];
+                [CommonConfig setVIPInterval:0];
+                [CommonConfig setHeadImageURL:nil];
+                [CommonConfig setNickName:nil];
+                [CommonConfig setUID:nil];
             }
         }
         @catch(NSException *exception){
@@ -581,6 +590,38 @@ static NSString *kAuthState = @"123";
     req.openID = kAuthOpenID;
     [WXApi sendReq:req];
     _loginBlock = [completeBlock copy];
+}
+
+-(void) onResp:(BaseResp*)resp{
+    if([resp isKindOfClass:[SendMessageToWXResp class]])
+    {
+        NSString *strTitle = [NSString stringWithFormat:@"提醒"];
+        NSString *strMsg = @"";
+        if (0 == resp.errCode) {
+            strMsg = @"分享成功";
+        }else{
+            strMsg = @"分享失败";
+        }
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else if([resp isKindOfClass:[SendAuthResp class]])
+    {
+        SendAuthResp *temp = (SendAuthResp*)resp;
+        [self loginSuccessByCode:temp.code];
+    }
+    else if ([resp isKindOfClass:[AddCardToWXCardPackageResp class]])
+    {
+        AddCardToWXCardPackageResp* temp = (AddCardToWXCardPackageResp*)resp;
+        NSMutableString* cardStr = [[NSMutableString alloc] init];
+        for (WXCardItem* cardItem in temp.cardAry) {
+            [cardStr appendString:[NSString stringWithFormat:@"cardid:%@ cardext:%@ cardstate:%d\n",cardItem.cardId,cardItem.extMsg,(unsigned int)cardItem.cardState]];
+        }
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"add card resp" message:cardStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
 }
 
 #pragma mark 微信登录回调。
