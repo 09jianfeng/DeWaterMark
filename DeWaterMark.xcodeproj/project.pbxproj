@@ -78,7 +78,7 @@
 		78B76C581FC08BE6003DA58E /* YZYPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B76C4A1FC08BE6003DA58E /* YZYPhotoPicker.m */; };
 		78B76C661FC179F4003DA58E /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B76C651FC179EA003DA58E /* Photos.framework */; };
 		78B76C691FC17E0F003DA58E /* AlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B76C681FC17E0F003DA58E /* AlbumManager.m */; };
-		78CD7AFA1FFF684A004F63AF /* IAPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD7AF81FFF684A004F63AF /* IAPManager.m */; };
+		78CD7AFA1FFF684A004F63AF /* MyIAPHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD7AF81FFF684A004F63AF /* MyIAPHandler.m */; };
 		78CD7AFC1FFF6872004F63AF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CD7AFB1FFF686B004F63AF /* StoreKit.framework */; };
 		78CD7B001FFF6998004F63AF /* ActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD7AFF1FFF6998004F63AF /* ActivityIndicator.m */; };
 		78CD7B031FFF69D5004F63AF /* DialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD7B021FFF69D5004F63AF /* DialogView.m */; };
@@ -316,8 +316,8 @@
 		78B76C651FC179EA003DA58E /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		78B76C671FC17E0F003DA58E /* AlbumManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumManager.h; sourceTree = "<group>"; };
 		78B76C681FC17E0F003DA58E /* AlbumManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumManager.m; sourceTree = "<group>"; };
-		78CD7AF81FFF684A004F63AF /* IAPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPManager.m; sourceTree = "<group>"; };
-		78CD7AF91FFF684A004F63AF /* IAPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPManager.h; sourceTree = "<group>"; };
+		78CD7AF81FFF684A004F63AF /* MyIAPHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIAPHandler.m; sourceTree = "<group>"; };
+		78CD7AF91FFF684A004F63AF /* MyIAPHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIAPHandler.h; sourceTree = "<group>"; };
 		78CD7AFB1FFF686B004F63AF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		78CD7AFE1FFF6998004F63AF /* ActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicator.h; sourceTree = "<group>"; };
 		78CD7AFF1FFF6998004F63AF /* ActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicator.m; sourceTree = "<group>"; };
@@ -840,8 +840,8 @@
 		78CD7AF71FFF682B004F63AF /* IAP */ = {
 			isa = PBXGroup;
 			children = (
-				78CD7AF91FFF684A004F63AF /* IAPManager.h */,
-				78CD7AF81FFF684A004F63AF /* IAPManager.m */,
+				78CD7AF91FFF684A004F63AF /* MyIAPHandler.h */,
+				78CD7AF81FFF684A004F63AF /* MyIAPHandler.m */,
 			);
 			path = IAP;
 			sourceTree = "<group>";
@@ -1058,7 +1058,7 @@
 				7816B1BA1FAD66AA007A6350 /* EditSliderView.m in Sources */,
 				7816B2E31FAE1186007A6350 /* cmdutils.c in Sources */,
 				7885D7A21FCC466900A4B59E /* MyVideoConfigView.m in Sources */,
-				78CD7AFA1FFF684A004F63AF /* IAPManager.m in Sources */,
+				78CD7AFA1FFF684A004F63AF /* MyIAPHandler.m in Sources */,
 				7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */,
 				785E0D431FD4CFEC00ADF46D /* PayViewAndLogic.m in Sources */,
 				7816B2E41FAE1186007A6350 /* ffmpeg_filter.c in Sources */,

@@ -10,7 +10,7 @@
 #import "Masonry.h"
 #import "WebRequestHandler.h"
 #import "CommonConfig.h"
-#import "IAPManager.h"
+#import "MyIAPHandler.h"
 #import "ActivityIndicator.h"
 
 static NSString *VIPORDER_ID = @"VIPORDER_ID";
@@ -64,7 +64,7 @@ typedef void(^CompleteBlock)(bool isSuccess);
         
         _orderID = [[NSUserDefaults standardUserDefaults] objectForKey:VIPORDER_ID];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didActiveFromBackground:) name:UIApplicationDidBecomeActiveNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(IAPPaySuccess:) name:KIAPSuccessNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(IAPPaySuccess:) name:KIAPSuccessNotifi object:nil];
     }
     
     return self;
@@ -334,7 +334,7 @@ static float linespace = 10;
         
         NSDictionary *priceText = self.payData.price[indexPath.row];
         int productid = [priceText[@"appleProductId"] intValue];
-        [[IAPManager shareInstance] buy:productid];
+        [[MyIAPHandler shareInstance] buy:productid];
         return;
     }
     

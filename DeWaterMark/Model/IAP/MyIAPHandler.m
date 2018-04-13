@@ -1,12 +1,12 @@
 //
-//  IAPManager.m
+//  MyIAPHandler.m
 //  storyBoardBook
 //
 //  Created by 陈建峰 on 14-8-22.
 //  Copyright (c) 2014年 陈建峰. All rights reserved.
 //
 
-#import "IAPManager.h"
+#import "MyIAPHandler.h"
 //#import "GlobalInstanceClass.h"
 #import <StoreKit/SKPayment.h>
 #import <StoreKit/SKPaymentTransaction.h>
@@ -14,21 +14,21 @@
 #import <StoreKit/SKError.h>
 #import "ActivityIndicator.h"
 
-NSString *KIAPSuccessNotification = @"KIAPSuccessNotification";
+NSString *KIAPSuccessNotifi = @"KIAPSuccessNotifi";
 
-@interface IAPManager()
+@interface MyIAPHandler()
 @end
 
-@implementation IAPManager{
+@implementation MyIAPHandler{
     ProductID _productid;
 }
 
 
-+(IAPManager *)shareInstance{
-    static IAPManager *iapMana = nil;
++(MyIAPHandler *)shareInstance{
+    static MyIAPHandler *iapMana = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        iapMana = [IAPManager new];
+        iapMana = [MyIAPHandler new];
     });
     return iapMana;
 }
@@ -47,7 +47,7 @@ NSString *KIAPSuccessNotification = @"KIAPSuccessNotification";
     _productid = productid;
     if ([SKPaymentQueue canMakePayments]) {
         //[[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
-        [self requestProductData:productid];
+        [self requestDewaterProductData:productid];
         NSLog(@"允许程序内付费购买");
         [[ActivityIndicator shareInstance] showActivityIndicator];
 //        [ActivityIndicator shareInstance].labelStatue.text = @"正在请求AppStore服务器";
@@ -69,7 +69,7 @@ NSString *KIAPSuccessNotification = @"KIAPSuccessNotification";
 //    [ActivityIndicator shareInstance].labelStatue.text = @"正在请求恢复内购";
 }
 
--(void)requestProductData:(ProductID)productid
+-(void)requestDewaterProductData:(ProductID)productid
 {
     NSLog(@"---------请求对应的产品信息------------");
 //    [ActivityIndicator shareInstance].labelStatue.text = @"正在请求购买";
@@ -157,7 +157,7 @@ NSString *KIAPSuccessNotification = @"KIAPSuccessNotification";
                 NSString *receiptStr = [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
                 NSString *productid = [NSString stringWithFormat:@"%d",_productid];
                 NSDictionary *productDic = @{@"productid":productid,@"data":receiptStr};
-                [[NSNotificationCenter defaultCenter] postNotificationName:KIAPSuccessNotification object:productDic];
+                [[NSNotificationCenter defaultCenter] postNotificationName:KIAPSuccessNotifi object:productDic];
                 break;
             }
             case SKPaymentTransactionStateFailed://交易失败
@@ -215,16 +215,13 @@ NSString *KIAPSuccessNotification = @"KIAPSuccessNotification";
 
 //记录交易
 -(void)recordTransaction:(NSString *)product{
-    NSLog(@"-----记录交易--------");
 }
 
 //处理下载内容
 -(void)provideContent:(NSString *)product{
-    NSLog(@"-----下载--------");
 }
 
 - (void) failedTransaction: (SKPaymentTransaction *)transaction{
-    NSLog(@"失败 error:%@",transaction.error);
     if (transaction.error.code != SKErrorPaymentCancelled)
     {
     }
@@ -238,11 +235,9 @@ NSString *KIAPSuccessNotification = @"KIAPSuccessNotification";
 
 - (void) restoreTransaction: (SKPaymentTransaction *)transaction
 {
-    NSLog(@" 交易恢复处理");
 }
 
 -(void) paymentQueue:(SKPaymentQueue *) paymentQueue restoreCompletedTransactionsFailedWithError:(NSError *)error{
-    NSLog(@"-------paymentQueue----，恢复内购出错");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"com.book.wulinchuanqivip" object:nil];
     UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
                                                         message:@"恢复失败"
@@ -284,7 +279,6 @@ NSString *KIAPSuccessNotification = @"KIAPSuccessNotification";
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"test");
 }
 
 -(void)dealloc

@@ -1,5 +1,5 @@
 //
-//  IAPManager.h
+//  MyIAPHandler.h
 //  storyBoardBook
 //
 //  Created by 陈建峰 on 14-8-22.
@@ -10,7 +10,7 @@
 #import <StoreKit/SKProductsRequest.h>
 #import <StoreKit/SKPaymentQueue.h>
 
-extern NSString *KIAPSuccessNotification;
+extern NSString *KIAPSuccessNotifi;
 
 typedef NS_ENUM(int,ProductID){
     ProductIDMonth = 1000,
@@ -19,9 +19,9 @@ typedef NS_ENUM(int,ProductID){
     ProductIDTest = 1005
 };
 
-@interface IAPManager : NSObject<SKProductsRequestDelegate,SKPaymentTransactionObserver>
+@interface MyIAPHandler : NSObject<SKProductsRequestDelegate,SKPaymentTransactionObserver>
 
-+(IAPManager *)shareInstance;
++(MyIAPHandler *)shareInstance;
 -(void)buy:(ProductID)productid;
 -(void)restore;
 @end
