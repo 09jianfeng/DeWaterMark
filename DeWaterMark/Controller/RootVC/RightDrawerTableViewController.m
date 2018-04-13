@@ -13,7 +13,7 @@
 //#import "SGQRCodeScanningVC.h"
 #import "MMDrawerController.h"
 #import "AboutViewController.h"
-#import "WebRequestHandler.h"
+#import "WebRequestManager.h"
 #import "Masonry.h"
 #import "PayViewAndLogic.h"
 #import "MyFileManage.h"

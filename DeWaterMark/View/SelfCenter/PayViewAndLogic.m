@@ -8,7 +8,7 @@
 
 #import "PayViewAndLogic.h"
 #import "Masonry.h"
-#import "WebRequestHandler.h"
+#import "WebRequestManager.h"
 #import "CommonConfig.h"
 #import "MyIAPHandler.h"
 #import "ActivityIndicator.h"
@@ -77,7 +77,7 @@ typedef void(^CompleteBlock)(bool isSuccess);
         return;
     }
     
-    [WebRequestHandler requestDataWithUseTime:0 completeBlock:^(NSDictionary *dicData) {
+    [WebRequestManager requestDataWithUseTime:0 completeBlock:^(NSDictionary *dicData) {
         
         @try{
             NSLog(@"__ DicData:%@",dicData);
@@ -424,7 +424,7 @@ static float linespace = 10;
     
     NSDictionary *payInfo = _payData.price[indexPath.row];
     NSString *priceId = payInfo[@"id"];
-    [WebRequestHandler requestWxPayWithUseTime:priceId completeBlock:^(NSDictionary *dicData) {
+    [WebRequestManager requestWxPayWithUseTime:priceId completeBlock:^(NSDictionary *dicData) {
         NSLog(@"wxPay __ %@",dicData);
         if (dicData) {
 //            NSString *order_no = dicData[@"data"][@"order_no"];
@@ -461,7 +461,7 @@ static float linespace = 10;
     NSDictionary *payInfo = _payData.price[indexPath.row];
     NSString *priceId = payInfo[@"id"];
     
-    [WebRequestHandler requestAliPayWithUseTime:priceId completeBlock:^(NSDictionary *dicData) {
+    [WebRequestManager requestAliPayWithUseTime:priceId completeBlock:^(NSDictionary *dicData) {
         NSLog(@"alipay __ %@",dicData);
         if (dicData) {
             NSString *order_info = dicData[@"data"][@"order_info"];
@@ -488,7 +488,7 @@ static float linespace = 10;
     
     NSDictionary *productDic = [notifica object];
     NSString *data = productDic[@"data"];
-    [WebRequestHandler requestOrderInfos:data completeBlock:^(NSDictionary *dicData) {
+    [WebRequestManager requestOrderInfos:data completeBlock:^(NSDictionary *dicData) {
         NSLog(@"____ %@",dicData);
         [[ActivityIndicator shareInstance] closeActivityIndicator];
         
@@ -627,7 +627,7 @@ static NSString *kAuthState = @"123";
 #pragma mark 微信登录回调。
 -(void)loginSuccessByCode:(NSString *)code{
     NSLog(@"code %@",code);
-    [WebRequestHandler requestWebChatLogin:code completeBlock:^(NSDictionary *dicData) {
+    [WebRequestManager requestWebChatLogin:code completeBlock:^(NSDictionary *dicData) {
         if (dicData) {
             NSString *icon = dicData[@"data"][@"wx"][@"headimgurl"];
             NSString *openid = dicData[@"data"][@"wx"][@"openid"];

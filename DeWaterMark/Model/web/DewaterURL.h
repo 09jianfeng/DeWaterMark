@@ -1,5 +1,5 @@
 //
-//  URLManager.h
+//  DewaterURL.h
 //  DeWaterMark
 //
 //  Created by JFChen on 2017/11/30.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface URLManager : NSObject
+@interface DewaterURL : NSObject
 
 + (NSString *)getInitURL:(NSString *)u_t;
 //+ (NSString *)getWeXPaURL:(NSString *)priceId;

@@ -1,45 +1,45 @@
 //
-//  WebRequestHandler.m
+//  WebRequestManager.m
 //  DeWaterMark
 //
 //  Created by JFChen on 2017/12/3.
 //  Copyright © 2017年 JFChen. All rights reserved.
 //
 
-#import "WebRequestHandler.h"
-#import "URLManager.h"
+#import "WebRequestManager.h"
+#import "DewaterURL.h"
 #import "AFNetworking.h"
 
-@implementation WebRequestHandler
+@implementation WebRequestManager
 
 
 +(void)requestDataWithUseTime:(int)useTime completeBlock:(void(^)(NSDictionary *dicData))completeBlock{
-    NSString *urlString = [URLManager getInitURL:[NSString stringWithFormat:@"%d",useTime]];
+    NSString *urlString = [DewaterURL getInitURL:[NSString stringWithFormat:@"%d",useTime]];
     [self baseRequest:urlString completeBlock:completeBlock];
 }
 
 + (void)requestWebChatLogin:(NSString *)code completeBlock:(void(^)(NSDictionary *dicData))completeBlock{
-    NSString *urlString = [URLManager getWeixinLoginURL:code];
+    NSString *urlString = [DewaterURL getWeixinLoginURL:code];
     [self baseRequest:urlString completeBlock:completeBlock];
 }
 
 + (void)requestOrderInfos:(NSString *)data completeBlock:(void(^)(NSDictionary *dicData))completeBlock{
-    NSString *urlString = [URLManager getCheckIAPURL:data];
+    NSString *urlString = [DewaterURL getCheckIAPURL:data];
     [self baseRequest:urlString completeBlock:completeBlock];
 }
 
 //+(void)requestWxPayWithUseTime:(NSString *)priceId completeBlock:(void(^)(NSDictionary *dicData))completeBlock{
-//    NSString *urlString = [URLManager getWeXPaURL:[NSString stringWithFormat:@"%@",priceId]];
+//    NSString *urlString = [DewaterURL getWeXPaURL:[NSString stringWithFormat:@"%@",priceId]];
 //    [self baseRequest:urlString completeBlock:completeBlock];
 //}
 //
 //+(void)requestAliPayWithUseTime:(NSString *)priceId completeBlock:(void(^)(NSDictionary *dicData))completeBlock{
-//    NSString *urlString = [URLManager getAliPURL:[NSString stringWithFormat:@"%@",priceId]];
+//    NSString *urlString = [DewaterURL getAliPURL:[NSString stringWithFormat:@"%@",priceId]];
 //    [self baseRequest:urlString completeBlock:completeBlock];
 //}
 
 //+(void)requestOrderId:(NSString *)orderId completeBlock:(void(^)(NSDictionary *dicData))completeBlock{
-//    NSString *urlString = [URLManager getQueryOrderURL:[NSString stringWithFormat:@"%@",orderId]];
+//    NSString *urlString = [DewaterURL getQueryOrderURL:[NSString stringWithFormat:@"%@",orderId]];
 //    [self baseRequest:urlString completeBlock:completeBlock];
 //}
 

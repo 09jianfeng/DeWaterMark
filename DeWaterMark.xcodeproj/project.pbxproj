@@ -46,8 +46,8 @@
 		782EBBAD1FDD095F005D3DEC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782EBBAC1FDD0958005D3DEC /* AssetsLibrary.framework */; };
 		783B459C1FCFEA56003770C9 /* CommonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 783B459B1FCFEA56003770C9 /* CommonConfig.m */; };
 		783B459E1FCFEA6B003770C9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783B459D1FCFEA64003770C9 /* AdSupport.framework */; };
-		783B45AB1FCFED87003770C9 /* URLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 783B45AA1FCFED87003770C9 /* URLManager.m */; };
-		785E0D241FD4415C00ADF46D /* WebRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 785E0D231FD4415C00ADF46D /* WebRequestHandler.m */; };
+		783B45AB1FCFED87003770C9 /* DewaterURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 783B45AA1FCFED87003770C9 /* DewaterURL.m */; };
+		785E0D241FD4415C00ADF46D /* WebRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 785E0D231FD4415C00ADF46D /* WebRequestManager.m */; };
 		785E0D431FD4CFEC00ADF46D /* PayViewAndLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 785E0D421FD4CFEC00ADF46D /* PayViewAndLogic.m */; };
 		7885D7A21FCC466900A4B59E /* MyVideoConfigView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D7A11FCC466900A4B59E /* MyVideoConfigView.m */; };
 		7885D7B71FCCFEE900A4B59E /* SelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885D7B61FCCFEE900A4B59E /* SelectedViewController.m */; };
@@ -259,10 +259,10 @@
 		783B459A1FCFEA56003770C9 /* CommonConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonConfig.h; sourceTree = "<group>"; };
 		783B459B1FCFEA56003770C9 /* CommonConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonConfig.m; sourceTree = "<group>"; };
 		783B459D1FCFEA64003770C9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		783B45A91FCFED87003770C9 /* URLManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLManager.h; sourceTree = "<group>"; };
-		783B45AA1FCFED87003770C9 /* URLManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLManager.m; sourceTree = "<group>"; };
-		785E0D221FD4415C00ADF46D /* WebRequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebRequestHandler.h; sourceTree = "<group>"; };
-		785E0D231FD4415C00ADF46D /* WebRequestHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebRequestHandler.m; sourceTree = "<group>"; };
+		783B45A91FCFED87003770C9 /* DewaterURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DewaterURL.h; sourceTree = "<group>"; };
+		783B45AA1FCFED87003770C9 /* DewaterURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DewaterURL.m; sourceTree = "<group>"; };
+		785E0D221FD4415C00ADF46D /* WebRequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebRequestManager.h; sourceTree = "<group>"; };
+		785E0D231FD4415C00ADF46D /* WebRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebRequestManager.m; sourceTree = "<group>"; };
 		785E0D411FD4CFEC00ADF46D /* PayViewAndLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayViewAndLogic.h; sourceTree = "<group>"; };
 		785E0D421FD4CFEC00ADF46D /* PayViewAndLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayViewAndLogic.m; sourceTree = "<group>"; };
 		7885D7A01FCC466900A4B59E /* MyVideoConfigView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyVideoConfigView.h; sourceTree = "<group>"; };
@@ -768,10 +768,10 @@
 		783B459F1FCFEBBD003770C9 /* web */ = {
 			isa = PBXGroup;
 			children = (
-				783B45A91FCFED87003770C9 /* URLManager.h */,
-				783B45AA1FCFED87003770C9 /* URLManager.m */,
-				785E0D221FD4415C00ADF46D /* WebRequestHandler.h */,
-				785E0D231FD4415C00ADF46D /* WebRequestHandler.m */,
+				783B45A91FCFED87003770C9 /* DewaterURL.h */,
+				783B45AA1FCFED87003770C9 /* DewaterURL.m */,
+				785E0D221FD4415C00ADF46D /* WebRequestManager.h */,
+				785E0D231FD4415C00ADF46D /* WebRequestManager.m */,
 			);
 			path = web;
 			sourceTree = "<group>";
@@ -1064,7 +1064,7 @@
 				7816B2E41FAE1186007A6350 /* ffmpeg_filter.c in Sources */,
 				7816B1B71FAD61FD007A6350 /* EditViewController.m in Sources */,
 				7885D7FE1FCD974900A4B59E /* MyNavigationViewController.m in Sources */,
-				785E0D241FD4415C00ADF46D /* WebRequestHandler.m in Sources */,
+				785E0D241FD4415C00ADF46D /* WebRequestManager.m in Sources */,
 				7885D7B71FCCFEE900A4B59E /* SelectedViewController.m in Sources */,
 				7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */,
 				7816B1BF1FADF224007A6350 /* MyFileManage.m in Sources */,
@@ -1074,7 +1074,7 @@
 				78B76C581FC08BE6003DA58E /* YZYPhotoPicker.m in Sources */,
 				78F8A3D5201D668800981B79 /* QAViewController.m in Sources */,
 				7885D8081FCD9A1400A4B59E /* MyTableViewCell.m in Sources */,
-				783B45AB1FCFED87003770C9 /* URLManager.m in Sources */,
+				783B45AB1FCFED87003770C9 /* DewaterURL.m in Sources */,
 				7816B3021FAE1BD4007A6350 /* KxMovieGLView.m in Sources */,
 				78B76C501FC08BE6003DA58E /* YZYAlbumDropView.m in Sources */,
 				7816B1A31FAD5F77007A6350 /* ViewController.m in Sources */,

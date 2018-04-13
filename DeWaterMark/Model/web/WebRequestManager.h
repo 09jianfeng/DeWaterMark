@@ -1,5 +1,5 @@
 //
-//  WebRequestHandler.h
+//  WebRequestManager.h
 //  DeWaterMark
 //
 //  Created by JFChen on 2017/12/3.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WebRequestHandler : NSObject
+@interface WebRequestManager : NSObject
 
 +(void)requestDataWithUseTime:(int)useTime completeBlock:(void(^)(NSDictionary *dicData))completeBlock;
 

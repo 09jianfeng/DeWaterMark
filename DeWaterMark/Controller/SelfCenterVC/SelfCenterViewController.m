@@ -12,7 +12,7 @@
 #import "CommonConfig.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PayViewAndLogic.h"
-#import "WebRequestHandler.h"
+#import "WebRequestManager.h"
 #import "WXApi.h"
 #import "WXApiObject.h"
 
@@ -64,7 +64,7 @@
     
     if (shouldCheck) {
         //登陆成功后，获取是否vip的信息。
-        [WebRequestHandler requestDataWithUseTime:0 completeBlock:^(NSDictionary *dicData) {
+        [WebRequestManager requestDataWithUseTime:0 completeBlock:^(NSDictionary *dicData) {
             NSLog(@"__ DicData:%@",dicData);
             int code = [dicData[@"code"] intValue];
             if (dicData && code == 0) {

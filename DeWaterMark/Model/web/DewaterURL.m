@@ -1,18 +1,18 @@
 //
-//  URLManager.m
+//  DewaterURL.m
 //  DeWaterMark
 //
 //  Created by JFChen on 2017/11/30.
 //  Copyright © 2017年 JFChen. All rights reserved.
 //
 
-#import "URLManager.h"
+#import "DewaterURL.h"
 #import "CommonConfig.h"
 #import "MyFileManage.h"
 
-@implementation URLManager
+@implementation DewaterURL
 
-+ (NSString *)getCommondString{
++ (NSString *)getWaterCommondString{
     NSString *imei = [CommonConfig getIMEIorIDFA];
     NSString *memberId = [CommonConfig getMemberId];
     NSString *verName = [CommonConfig versionName];
@@ -52,7 +52,7 @@
  }
  */
 + (NSString *)getInitURL:(NSString *)u_t{
-    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/ios/remove/init?u_t=%@&od=%@&%@",u_t,[CommonConfig getUID],[self getCommondString]];
+    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/ios/remove/init?u_t=%@&od=%@&%@",u_t,[CommonConfig getUID],[self getWaterCommondString]];
     return path;
 }
 
@@ -71,7 +71,7 @@
 // }
 // */
 //+ (NSString *)getWeXPaURL:(NSString *)priceId{
-//    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/remove_ios/wechat_pay?priceId=%@&%@",priceId,[self getCommondString]];
+//    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/remove_ios/wechat_pay?priceId=%@&%@",priceId,[self getWaterCommondString]];
 //    return path;
 //}
 //
@@ -93,7 +93,7 @@
 // }
 // */
 //+ (NSString *)getAliPURL:(NSString *)priceId{
-//    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/remove_ios/ali_pay?priceId=%@&%@",priceId,[self getCommondString]];
+//    NSString *path = [NSString stringWithFormat:@"http://www.shulantech.com/remove_ios/ali_pay?priceId=%@&%@",priceId,[self getWaterCommondString]];
 //    return path;
 //}
 
