@@ -584,12 +584,18 @@ static NSString *kAuthState = @"123";
 //微信登陆
 - (void)wxLoginWithCompleteBlock:(void(^)(bool isSuccess))completeBlock
 {
-    SendAuthReq *req = [[SendAuthReq alloc] init];
+    _loginBlock = [completeBlock copy];
+    
+    SendAuthReq* req =[[SendAuthReq alloc ] init];
     req.scope = kAuthScope;
     req.state = kAuthState;
     req.openID = kAuthOpenID;
-    [WXApi sendReq:req];
-    _loginBlock = [completeBlock copy];
+    
+    UIViewController *rootVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+    BOOL succeed = [WXApi sendAuthReq:req viewController:rootVC delegate:self];
+    if (succeed) {
+        
+    }
 }
 
 -(void) onResp:(BaseResp*)resp{
@@ -626,6 +632,10 @@ static NSString *kAuthState = @"123";
 
 #pragma mark 微信登录回调。
 -(void)loginSuccessByCode:(NSString *)code{
+    if (!code) {
+        return;
+    }
+    
     NSLog(@"code %@",code);
     [WebRequestManager requestWebChatLogin:code completeBlock:^(NSDictionary *dicData) {
         if (dicData) {
