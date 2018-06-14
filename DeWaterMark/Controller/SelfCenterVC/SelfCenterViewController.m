@@ -34,6 +34,16 @@
     // Do any additional setup after loading the view.
     _loginStat = [[CommonConfig shareInstance] loginState];
     
+    BOOL isWxInstall = [WXApi isWXAppInstalled];
+    if (!isWxInstall) {
+        NSString *nickNam = @"去水印新人";
+        NSString *icon = [[NSBundle mainBundle] pathForResource:@"self_ctl" ofType:@"png"];
+        NSString *uid = [CommonConfig getIMEIorIDFA];
+        [CommonConfig setNickName:nickNam];
+        [CommonConfig setHeadImageURL:icon];
+        [CommonConfig setUID:uid];
+    }
+    
     NSString *nickNam = [CommonConfig getNickName];
     NSString *icon = [CommonConfig getHeadImageURL];
     

@@ -41,6 +41,7 @@
 		7816B3021FAE1BD4007A6350 /* KxMovieGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FC1FAE1BD4007A6350 /* KxMovieGLView.m */; };
 		7816B3031FAE1BD4007A6350 /* KxMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */; };
 		7816B3061FAF5622007A6350 /* ChoosingRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816B3051FAF5622007A6350 /* ChoosingRectView.m */; };
+		781A990620D209CB00412B45 /* self_ctl.png in Resources */ = {isa = PBXBuildFile; fileRef = 781A990520D209CB00412B45 /* self_ctl.png */; };
 		782A0BB81FDADDBB0041E76F /* DeWaterKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 782A0BB71FDADDBB0041E76F /* DeWaterKeyChain.m */; };
 		782EBBAB1FDCD31D005D3DEC /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782EBBA81FDCD31C005D3DEC /* libMobClickLibrary.a */; };
 		782EBBAD1FDD095F005D3DEC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782EBBAC1FDD0958005D3DEC /* AssetsLibrary.framework */; };
@@ -250,6 +251,7 @@
 		7816B2FE1FAE1BD4007A6350 /* KxMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMovieViewController.m; sourceTree = "<group>"; };
 		7816B3041FAF5622007A6350 /* ChoosingRectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChoosingRectView.h; sourceTree = "<group>"; };
 		7816B3051FAF5622007A6350 /* ChoosingRectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoosingRectView.m; sourceTree = "<group>"; };
+		781A990520D209CB00412B45 /* self_ctl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = self_ctl.png; path = DeWaterMark/Assets.xcassets/self_ctl.imageset/self_ctl.png; sourceTree = SOURCE_ROOT; };
 		782A0BB61FDADDBB0041E76F /* DeWaterKeyChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeWaterKeyChain.h; sourceTree = "<group>"; };
 		782A0BB71FDADDBB0041E76F /* DeWaterKeyChain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeWaterKeyChain.m; sourceTree = "<group>"; };
 		782EBBA81FDCD31C005D3DEC /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 		780241A4205F593000FFFD5B /* SelfCenterVC */ = {
 			isa = PBXGroup;
 			children = (
+				781A990520D209CB00412B45 /* self_ctl.png */,
 				78F8A3D6201D67B600981B79 /* SelfCenterViewController.h */,
 				78F8A3D7201D67B600981B79 /* SelfCenterViewController.m */,
 				7885D7B51FCCFEE900A4B59E /* SelectedViewController.h */,
@@ -979,6 +982,7 @@
 				7816B1A81FAD5F77007A6350 /* Assets.xcassets in Resources */,
 				78B76C4C1FC08BE6003DA58E /* arrow@3x.png in Resources */,
 				7816B1A61FAD5F77007A6350 /* Main.storyboard in Resources */,
+				781A990620D209CB00412B45 /* self_ctl.png in Resources */,
 				7816B24D1FAE0E09007A6350 /* resource.bundle in Resources */,
 				78B76C4E1FC08BE6003DA58E /* gridCell_unSelect@2x.png in Resources */,
 				78E41F511FDA0322001A938A /* StringsFile.strings in Resources */,
