@@ -87,10 +87,10 @@ typedef void(^CompleteBlock)(bool isSuccess);
                 [CommonConfig shareInstance].isInit = YES;
                 
                 self.vipDic = dicData;
-                _payData.f_t = dicData[@"data"][@"config"][@"f_t"];
+                _payData.f_t = dicData[@"data"][@"f_t"];
                 _payData.v_t = dicData[@"data"][@"user"][@"v_t"];
                 
-                _payData.price = dicData[@"data"][@"config"][@"price"];
+                _payData.price = dicData[@"data"][@"price"];
                 _payData.needWxLogin = dicData[@"data"][@"user"][@"needWxLogin"];
                 _payData.v_t = dicData[@"data"][@"user"][@"v_t"];
                 _payData.openId = dicData[@"data"][@"user"][@"openId"];

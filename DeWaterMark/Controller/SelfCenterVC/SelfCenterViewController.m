@@ -34,6 +34,10 @@
     // Do any additional setup after loading the view.
     _loginStat = [[CommonConfig shareInstance] loginState];
     
+//    [CommonConfig setNickName:@""];
+//    [CommonConfig setHeadImageURL:@""];
+//    [CommonConfig setUID:@""];
+    
     BOOL isWxInstall = [WXApi isWXAppInstalled];
     if (!isWxInstall) {
         NSString *nickNam = @"去水印新人";
