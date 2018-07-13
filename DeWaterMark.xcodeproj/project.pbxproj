@@ -923,7 +923,6 @@
 				7816B1971FAD5F77007A6350 /* Sources */,
 				7816B1981FAD5F77007A6350 /* Frameworks */,
 				7816B1991FAD5F77007A6350 /* Resources */,
-				7B299A2694CA986E823E448F /* [CP] Embed Pods Frameworks */,
 				4B523D80C64980C6546B3844 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -1022,26 +1021,12 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDK.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDKUI.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7B299A2694CA986E823E448F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeWaterMark/Pods-DeWaterMark-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -88,13 +88,15 @@ typedef void(^CompleteBlock)(bool isSuccess);
                 
                 self.vipDic = dicData;
                 _payData.f_t = dicData[@"data"][@"f_t"];
-                _payData.v_t = dicData[@"data"][@"user"][@"v_t"];
+                _payData.v_t = dicData[@"data"][@"v_t"];
                 
                 _payData.price = dicData[@"data"][@"price"];
                 _payData.needWxLogin = dicData[@"data"][@"user"][@"needWxLogin"];
-                _payData.v_t = dicData[@"data"][@"user"][@"v_t"];
                 _payData.openId = dicData[@"data"][@"user"][@"openId"];
                 _payData.wx = dicData[@"data"][@"user"][@"wx"];
+                
+                NSString *memberID = dicData[@"data"][@"memberId"];
+                [CommonConfig setMemberId:memberID];
                 
                 BOOL needWxLogin = [_payData.needWxLogin boolValue];
                 if (needWxLogin) {

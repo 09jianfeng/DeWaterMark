@@ -83,7 +83,7 @@
             int code = [dicData[@"code"] intValue];
             if (dicData && code == 0) {
                 [CommonConfig shareInstance].isInit = YES;
-                NSString *vt = dicData[@"data"][@"user"][@"v_t"];
+                NSString *vt = dicData[@"data"][@"v_t"];
                 long long vipInter = 0;
                 if (vt) {
                     vipInter = [vt longLongValue];
