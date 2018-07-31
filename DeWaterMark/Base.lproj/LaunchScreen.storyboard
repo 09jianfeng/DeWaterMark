@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,16 +21,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myluanch" translatesAutoresizingMaskIntoConstraints="NO" id="ejb-fp-6N9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-513" translatesAutoresizingMaskIntoConstraints="NO" id="Yh2-sX-F3Z">
+                                <rect key="frame" x="105.5" y="251.5" width="164" height="164"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="164" id="639-za-Jvb"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="164" id="AaI-Fo-3jD"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="164" id="chR-pE-l2H"/>
+                                    <constraint firstAttribute="width" constant="164" id="tkt-lD-t0c"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ejb-fp-6N9" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="8o2-Wo-sLR"/>
-                            <constraint firstItem="tej-92-ZTi" firstAttribute="top" secondItem="ejb-fp-6N9" secondAttribute="bottom" id="DfI-AP-3Ui"/>
-                            <constraint firstItem="ejb-fp-6N9" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="bq0-dg-QFh"/>
-                            <constraint firstAttribute="trailing" secondItem="ejb-fp-6N9" secondAttribute="trailing" id="yBk-IJ-k7q"/>
+                            <constraint firstItem="Yh2-sX-F3Z" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="3hf-CN-bfG"/>
+                            <constraint firstItem="Yh2-sX-F3Z" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Ugw-iv-Uve"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,6 +44,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="myluanch" width="720" height="1280"/>
+        <image name="Icon-513" width="167" height="167"/>
     </resources>
 </document>
