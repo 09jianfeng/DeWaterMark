@@ -75,20 +75,6 @@ DEPENDENCIES:
   - NSLogger (= 1.8.3)
   - SDWebImage (= 4.2.2)
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - AFNetworking
-    - CocoaLumberjack
-    - GCDWebServer
-    - KVOController
-    - Masonry
-    - MBProgressHUD
-    - MMDrawerController
-    - mob_sharesdk
-    - MOBFoundation
-    - NSLogger
-    - SDWebImage
-
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CocoaLumberjack: 8311463ddf9ee86a06ef92a071dd656c89244500
@@ -104,4 +90,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 23516731082b38d75fc0d4c7502d758e5ab41533
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.2.0

@@ -13,9 +13,9 @@
 extern NSString *KIAPSuccessNotifi;
 
 typedef NS_ENUM(int,ProductID){
-    ProductIDMonth = 1000,
-    ProductIDThreeMonth = 1001,
-    ProductIDYear = 1004,
+    ProductIDMonth = 1007,
+    ProductIDThreeMonth = 1008,
+    ProductIDYear = 1009,
     ProductIDTest = 1005
 };
 
